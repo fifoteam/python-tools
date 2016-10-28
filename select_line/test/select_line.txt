@@ -1,6 +1,0 @@
-line num is 45	Read ExposureAuto 0x0004Byte
-line num is 47	ReadAck 0x00000000
-line num is 48	Read ExposureAuto 0x0004Byte
-line num is 50	ReadAck 0x00000000
-line num is 51	Write ExposureTime 0x000075f6
-line num is 53	WriteAck 0x0004Byte

@@ -1,0 +1,5 @@
+line num is 21	 block is 0x1cfc. chunk_mode_active is 1. timestamp is 0x10c68de0775c. pixel_format is 0x01080008(BayerGR8). size_x is 0x1200(4608). size_y is 0x0cd8(3288). offset_x is 0x0000(0). offset_y is 0x0000(0).
+line num is 361	 trailer_size is 36. block is 0x1d02. status is 0x0000. valid_payload_size is 0x00e73028(15151144). trailer_size_y is 0x0cd8(3288). chunk_layout_id is 0x09(9).
+line num is 364	 block is 0x1d03. chunk_mode_active is 1. timestamp is 0x10c6bc46c862. pixel_format is 0x01080008(BayerGR8). size_x is 0x1200(4608). size_y is 0x0cd8(3288). offset_x is 0x0000(0). offset_y is 0x0000(0).
+line num is 399	 trailer_size is 36. block is 0x1d03. status is 0x0000. valid_payload_size is 0x00e73028(15151144). trailer_size_y is 0x0cd8(3288). chunk_layout_id is 0x09(9).
+line num is 402	 block is 0x1d04. chunk_mode_active is 1. timestamp is 0x10c6c2dcdce8. pixel_format is 0x01080008(BayerGR8). size_x is 0x1200(4608). size_y is 0x0cd8(3288). offset_x is 0x0000(0). offset_y is 0x0000(0).

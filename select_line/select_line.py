@@ -80,7 +80,10 @@ def select_line() :
 	##	-------------------------------------------------------------------------------------
 	temp = os.path.split(src_path);
 	only_path = temp[0];
-	path = only_path+'\\'+"select_line.txt";
+	temp = os.path.basename(src_path);
+	temp = temp.split('.');
+	only_name = temp[0];
+	path = only_path+'\\'+only_name+"_select_line.txt";
 
 
 	##	-------------------------------------------------------------------------------------
