@@ -789,6 +789,7 @@ def u3vt_proc(*params) :
 	line_content	= file_content[line_cnt];
 	line_content	= line_content[first_byte_pos:first_byte_pos+13*4];
 	if(debug==1):	print("here is u3vt proc,line_content is",line_content);
+	if(debug==1):	print("here is u3vt proc,line_cnt is",line_cnt);
 
 	##	-------------------------------------------------------------------------------------
 	##	获得 trailer_size
@@ -845,31 +846,36 @@ def u3vt_proc(*params) :
 	trailer_size_y		= " trailer_size_y is 0x"+trailer_size_y+'('+trailer_size_y_dec+').';
 	if(debug==1):	print("here is u3vt proc,trailer_size_y is ",trailer_size_y);
 
-	##	-------------------------------------------------------------------------------------
-	##	进入下一行
-	##	-------------------------------------------------------------------------------------
-	##	-------------------------------------------------------------------------------------
-	##	如果已经是文件末尾，就不要再读了，直接返回空值
-	##	-------------------------------------------------------------------------------------
-	if(line_cnt==len(file_content)-2):
-		ret	= [line_cnt,"data not enough"];
-		return	ret;
-	line_content	= file_content[line_cnt+2];
-	line_content	= line_content[first_byte_pos:first_byte_pos+13*4];
-
-	##	-------------------------------------------------------------------------------------
-	##	获得 chunk_layout_id
-	##	-------------------------------------------------------------------------------------
-	chunk_layout_id		= line_content[0:2];
-	chunk_layout_id_dec	= int(chunk_layout_id,16);
-	chunk_layout_id_dec	= str(chunk_layout_id_dec);
-	chunk_layout_id		= " chunk_layout_id is 0x"+chunk_layout_id+'('+chunk_layout_id_dec+').';
-	if(debug==1):	print("here is u3vt proc,chunk_layout_id is ",chunk_layout_id);
+#	##	-------------------------------------------------------------------------------------
+#	##	进入下一行
+#	##	-------------------------------------------------------------------------------------
+#	##	-------------------------------------------------------------------------------------
+#	##	如果已经是文件末尾，就不要再读了，直接返回空值
+#	##	-------------------------------------------------------------------------------------
+#	if(line_cnt==len(file_content)-2):
+#		ret	= [line_cnt,"data not enough"];
+#		return	ret;
+#	line_content	= file_content[line_cnt+2];
+#	line_content	= line_content[first_byte_pos:first_byte_pos+13*4];
+#
+#	if(debug==1):	print("here is u3vt proc,line_content is",line_content);
+#	if(debug==1):	print("here is u3vt proc,line_cnt is",line_cnt);
+#
+#	##	-------------------------------------------------------------------------------------
+#	##	获得 chunk_layout_id
+#	##	-------------------------------------------------------------------------------------
+#	chunk_layout_id		= line_content[0:2];
+#	chunk_layout_id_dec	= int(chunk_layout_id,16);
+#	chunk_layout_id_dec	= str(chunk_layout_id_dec);
+#	chunk_layout_id		= " chunk_layout_id is 0x"+chunk_layout_id+'('+chunk_layout_id_dec+').';
+#	if(debug==1):	print("here is u3vt proc,chunk_layout_id is ",chunk_layout_id);
 
 	##	===============================================================================================
 	##	ref ***return***
 	##	===============================================================================================
-	ret	= [line_cnt,trailer_size+blockid+status+valid_payload_size+trailer_size_y+chunk_layout_id];
+#	ret	= [line_cnt,trailer_size+blockid+status+valid_payload_size+trailer_size_y+chunk_layout_id];
+	##	只解析 32 byte 的trailer 大小
+	ret	= [line_cnt,trailer_size+blockid+status+valid_payload_size+trailer_size_y];
 	return	ret;
 
 def pixel_format_match(*params) :
