@@ -172,10 +172,10 @@ def rtl_parser() :
 	##	-------------------------------------------------------------------------------------
 	##	头
 	##	-------------------------------------------------------------------------------------
-	print("rtl_parser v1.1 2016.10.12");
-	print("src file is ",src_path);
-	print("selected word is ",word_sel);
-	print("find times :",len(all_list));
+	print("https://github.com/fifoteam/python-tools/tree/master/rtl_parser v1.2 2016.10.31");
+	print("src file is : ",src_path);
+	print("selected word is \""+word_sel+"\"");
+	print("find num :",len(all_list));
 	##	-------------------------------------------------------------------------------------
 	##	引用部分
 	##	-------------------------------------------------------------------------------------
