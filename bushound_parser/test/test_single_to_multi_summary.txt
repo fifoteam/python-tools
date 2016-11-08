@@ -1,0 +1,1424 @@
+line num is 23	Read DeviceLinkCurrentThroughput_Link0 0x0004Byte
+line num is 25	ReadAck 0x07c368a4
+line num is 26	Read LineStatus_Line0 0x0004Byte
+line num is 28	ReadAck 0x00000000
+line num is 29	Read LineStatusAll 0x0004Byte
+line num is 31	ReadAck 0x0000000e
+line num is 32	Read BalanceWhiteAuto 0x0004Byte
+line num is 34	ReadAck 0x00000000
+line num is 35	Read ExposureAuto 0x0004Byte
+line num is 37	ReadAck 0x00000000
+line num is 38	Read GainAuto_All 0x0004Byte
+line num is 40	ReadAck 0x00000000
+line num is 41	Read GainAuto_All 0x0004Byte
+line num is 43	ReadAck 0x00000000
+line num is 44	Read GainAuto_All 0x0004Byte
+line num is 46	ReadAck 0x00000000
+line num is 47	Read GainAuto_All 0x0004Byte
+line num is 49	ReadAck 0x00000000
+line num is 50	Read Gain_All 0x0004Byte
+line num is 52	ReadAck 0x00000000
+line num is 53	Read GainAuto_All 0x0004Byte
+line num is 55	ReadAck 0x00000000
+line num is 56	Read UnKnown RegAddr 0x0004Byte
+line num is 58	ReadAck 0x000003e1
+line num is 59	Read ExposureAuto 0x0004Byte
+line num is 61	ReadAck 0x00000000
+line num is 62	Read ExposureAuto 0x0004Byte
+line num is 64	ReadAck 0x00000000
+line num is 65	Read ExposureAuto 0x0004Byte
+line num is 67	ReadAck 0x00000000
+line num is 68	Read ExposureAuto 0x0004Byte
+line num is 70	ReadAck 0x00000000
+line num is 71	Read ExposureTime 0x0004Byte
+line num is 73	ReadAck 0x00002710
+line num is 74	Read ExposureAuto 0x0004Byte
+line num is 76	ReadAck 0x00000000
+line num is 77	Read GainAuto_All 0x0004Byte
+line num is 79	ReadAck 0x00000000
+line num is 80	Read BalanceWhiteAuto 0x0004Byte
+line num is 82	ReadAck 0x00000000
+line num is 83	Read BalanceWhiteAuto 0x0004Byte
+line num is 85	ReadAck 0x00000000
+line num is 86	Read BalanceWhiteAuto 0x0004Byte
+line num is 88	ReadAck 0x00000000
+line num is 89	Read BalanceWhiteAuto 0x0004Byte
+line num is 91	ReadAck 0x00000000
+line num is 92	Read BalanceRatio_Red 0x0004Byte
+line num is 94	ReadAck 0x00000100
+line num is 95	Read BalanceWhiteAuto 0x0004Byte
+line num is 97	ReadAck 0x00000000
+line num is 98	Read DeviceLinkCurrentThroughput_Link0 0x0004Byte
+line num is 100	ReadAck 0x07c368a4
+line num is 101	Read LineStatus_Line0 0x0004Byte
+line num is 103	ReadAck 0x00000000
+line num is 104	Read LineStatusAll 0x0004Byte
+line num is 106	ReadAck 0x0000000e
+line num is 107	Read BalanceWhiteAuto 0x0004Byte
+line num is 109	ReadAck 0x00000000
+line num is 110	Read ExposureAuto 0x0004Byte
+line num is 112	ReadAck 0x00000000
+line num is 113	Read GainAuto_All 0x0004Byte
+line num is 115	ReadAck 0x00000000
+line num is 116	Read GainAuto_All 0x0004Byte
+line num is 118	ReadAck 0x00000000
+line num is 119	Read GainAuto_All 0x0004Byte
+line num is 121	ReadAck 0x00000000
+line num is 122	Read GainAuto_All 0x0004Byte
+line num is 124	ReadAck 0x00000000
+line num is 125	Read Gain_All 0x0004Byte
+line num is 127	ReadAck 0x00000000
+line num is 128	Read GainAuto_All 0x0004Byte
+line num is 130	ReadAck 0x00000000
+line num is 131	Read UnKnown RegAddr 0x0004Byte
+line num is 133	ReadAck 0x000003e1
+line num is 134	Read ExposureAuto 0x0004Byte
+line num is 136	ReadAck 0x00000000
+line num is 137	Read ExposureAuto 0x0004Byte
+line num is 139	ReadAck 0x00000000
+line num is 140	Read ExposureAuto 0x0004Byte
+line num is 142	ReadAck 0x00000000
+line num is 143	Read ExposureAuto 0x0004Byte
+line num is 145	ReadAck 0x00000000
+line num is 146	Read ExposureTime 0x0004Byte
+line num is 148	ReadAck 0x00002710
+line num is 149	Read ExposureAuto 0x0004Byte
+line num is 151	ReadAck 0x00000000
+line num is 152	Read GainAuto_All 0x0004Byte
+line num is 154	ReadAck 0x00000000
+line num is 155	Read BalanceWhiteAuto 0x0004Byte
+line num is 157	ReadAck 0x00000000
+line num is 158	Read BalanceWhiteAuto 0x0004Byte
+line num is 160	ReadAck 0x00000000
+line num is 161	Read BalanceWhiteAuto 0x0004Byte
+line num is 163	ReadAck 0x00000000
+line num is 164	Read BalanceWhiteAuto 0x0004Byte
+line num is 166	ReadAck 0x00000000
+line num is 167	Read BalanceRatio_Red 0x0004Byte
+line num is 169	ReadAck 0x00000100
+line num is 170	Read BalanceWhiteAuto 0x0004Byte
+line num is 172	ReadAck 0x00000000
+line num is 173	Write UnKnown RegAddr 0x00000001
+line num is 175	WriteAck 0x0004Byte
+line num is 176	Read RegionSelectorInfo 0x0004Byte
+line num is 178	ReadAck 0x000000ff
+line num is 179	Read UnKnown RegAddr 0x0004Byte
+line num is 181	ReadAck 0x00000001
+line num is 182	Read UnKnown RegAddr 0x0004Byte
+line num is 184	ReadAck 0x00000000
+line num is 185	Read UnKnown RegAddr 0x0004Byte
+line num is 187	ReadAck 0x00000010
+line num is 188	Read UnKnown RegAddr 0x0004Byte
+line num is 190	ReadAck 0x00000500
+line num is 191	Read UnKnown RegAddr 0x0004Byte
+line num is 193	ReadAck 0x00000500
+line num is 194	Read UnKnown RegAddr 0x0004Byte
+line num is 196	ReadAck 0x00000000
+line num is 197	Read DeviceLinkCurrentThroughput_Link0 0x0004Byte
+line num is 199	ReadAck 0x07c368a4
+line num is 200	Read UnKnown RegAddr 0x0004Byte
+line num is 202	ReadAck 0x00000001
+line num is 203	Read UnKnown RegAddr 0x0004Byte
+line num is 205	ReadAck 0x00000400
+line num is 206	Read UnKnown RegAddr 0x0004Byte
+line num is 208	ReadAck 0x00000002
+line num is 209	Read UnKnown RegAddr 0x0004Byte
+line num is 211	ReadAck 0x00000400
+line num is 212	Read UnKnown RegAddr 0x0004Byte
+line num is 214	ReadAck 0x00000000
+line num is 215	Read UnKnown RegAddr 0x0004Byte
+line num is 217	ReadAck 0x00000040
+line num is 218	Read UnKnown RegAddr 0x0004Byte
+line num is 220	ReadAck 0x00000010
+line num is 221	Read UnKnown RegAddr 0x0004Byte
+line num is 223	ReadAck 0x00000040
+line num is 224	Read UnKnown RegAddr 0x0004Byte
+line num is 226	ReadAck 0x00000001
+line num is 227	Read UnKnown RegAddr 0x0004Byte
+line num is 229	ReadAck 0x00000002
+line num is 230	Read UnKnown RegAddr 0x0004Byte
+line num is 232	ReadAck 0x00000000
+line num is 233	Read SI Required Payload Size 0x0004Byte
+line num is 235	ReadAck 0x00140000
+line num is 236	Read AAROIWidth 0x0004Byte
+line num is 238	ReadAck 0x00000500
+line num is 239	Read AAROIOffsetX 0x0004Byte
+line num is 241	ReadAck 0x00000000
+line num is 242	Read AWBROIOffsetX 0x0004Byte
+line num is 244	ReadAck 0x00000000
+line num is 245	Read AWBROIWidth 0x0004Byte
+line num is 247	ReadAck 0x00000500
+line num is 248	Read AAROIOffsetY 0x0004Byte
+line num is 250	ReadAck 0x00000000
+line num is 251	Read AAROIHeight 0x0004Byte
+line num is 253	ReadAck 0x00000400
+line num is 254	Read AWBROIHeight 0x0004Byte
+line num is 256	ReadAck 0x00000400
+line num is 257	Read AWBROIOffsetY 0x0004Byte
+line num is 259	ReadAck 0x00000000
+line num is 260	Read UnKnown RegAddr 0x0004Byte
+line num is 262	ReadAck 0x000003e1
+line num is 263	Read DeviceLinkCurrentThroughput_Link0 0x0004Byte
+line num is 265	ReadAck 0x07c368a4
+line num is 266	Read LineStatus_Line0 0x0004Byte
+line num is 268	ReadAck 0x00000000
+line num is 269	Read LineStatusAll 0x0004Byte
+line num is 271	ReadAck 0x0000000e
+line num is 272	Read BalanceWhiteAuto 0x0004Byte
+line num is 274	ReadAck 0x00000000
+line num is 275	Read ExposureAuto 0x0004Byte
+line num is 277	ReadAck 0x00000000
+line num is 278	Read GainAuto_All 0x0004Byte
+line num is 280	ReadAck 0x00000000
+line num is 281	Read GainAuto_All 0x0004Byte
+line num is 283	ReadAck 0x00000000
+line num is 284	Read GainAuto_All 0x0004Byte
+line num is 286	ReadAck 0x00000000
+line num is 287	Read GainAuto_All 0x0004Byte
+line num is 289	ReadAck 0x00000000
+line num is 290	Read Gain_All 0x0004Byte
+line num is 292	ReadAck 0x00000000
+line num is 293	Read GainAuto_All 0x0004Byte
+line num is 295	ReadAck 0x00000000
+line num is 296	Read UnKnown RegAddr 0x0004Byte
+line num is 298	ReadAck 0x000003e1
+line num is 299	Read ExposureAuto 0x0004Byte
+line num is 301	ReadAck 0x00000000
+line num is 302	Read ExposureAuto 0x0004Byte
+line num is 304	ReadAck 0x00000000
+line num is 305	Read ExposureAuto 0x0004Byte
+line num is 307	ReadAck 0x00000000
+line num is 308	Read ExposureAuto 0x0004Byte
+line num is 310	ReadAck 0x00000000
+line num is 311	Read ExposureTime 0x0004Byte
+line num is 313	ReadAck 0x00002710
+line num is 314	Read ExposureAuto 0x0004Byte
+line num is 316	ReadAck 0x00000000
+line num is 317	Read GainAuto_All 0x0004Byte
+line num is 319	ReadAck 0x00000000
+line num is 320	Read BalanceWhiteAuto 0x0004Byte
+line num is 322	ReadAck 0x00000000
+line num is 323	Read BalanceWhiteAuto 0x0004Byte
+line num is 325	ReadAck 0x00000000
+line num is 326	Read BalanceWhiteAuto 0x0004Byte
+line num is 328	ReadAck 0x00000000
+line num is 329	Read BalanceWhiteAuto 0x0004Byte
+line num is 331	ReadAck 0x00000000
+line num is 332	Read BalanceRatio_Red 0x0004Byte
+line num is 334	ReadAck 0x00000100
+line num is 335	Read BalanceWhiteAuto 0x0004Byte
+line num is 337	ReadAck 0x00000000
+line num is 338	Read UnKnown RegAddr 0x0004Byte
+line num is 340	ReadAck 0x00000001
+line num is 341	Read UnKnown RegAddr 0x0004Byte
+line num is 343	ReadAck 0x00000000
+line num is 344	Read UnKnown RegAddr 0x0004Byte
+line num is 346	ReadAck 0x00000010
+line num is 347	Read UnKnown RegAddr 0x0004Byte
+line num is 349	ReadAck 0x00000500
+line num is 350	Read UnKnown RegAddr 0x0004Byte
+line num is 352	ReadAck 0x00000500
+line num is 353	Read UnKnown RegAddr 0x0004Byte
+line num is 355	ReadAck 0x00000000
+line num is 356	Read DeviceLinkCurrentThroughput_Link0 0x0004Byte
+line num is 358	ReadAck 0x07c368a4
+line num is 359	Read UnKnown RegAddr 0x0004Byte
+line num is 361	ReadAck 0x00000001
+line num is 362	Read UnKnown RegAddr 0x0004Byte
+line num is 364	ReadAck 0x00000400
+line num is 365	Read UnKnown RegAddr 0x0004Byte
+line num is 367	ReadAck 0x00000002
+line num is 368	Read UnKnown RegAddr 0x0004Byte
+line num is 370	ReadAck 0x00000400
+line num is 371	Read UnKnown RegAddr 0x0004Byte
+line num is 373	ReadAck 0x00000000
+line num is 374	Read UnKnown RegAddr 0x0004Byte
+line num is 376	ReadAck 0x00000040
+line num is 377	Read UnKnown RegAddr 0x0004Byte
+line num is 379	ReadAck 0x00000010
+line num is 380	Read UnKnown RegAddr 0x0004Byte
+line num is 382	ReadAck 0x00000040
+line num is 383	Read UnKnown RegAddr 0x0004Byte
+line num is 385	ReadAck 0x00000001
+line num is 386	Read UnKnown RegAddr 0x0004Byte
+line num is 388	ReadAck 0x00000002
+line num is 389	Read UnKnown RegAddr 0x0004Byte
+line num is 391	ReadAck 0x00000000
+line num is 392	Read SI Required Payload Size 0x0004Byte
+line num is 394	ReadAck 0x00140000
+line num is 395	Read AAROIWidth 0x0004Byte
+line num is 397	ReadAck 0x00000500
+line num is 398	Read AAROIOffsetX 0x0004Byte
+line num is 400	ReadAck 0x00000000
+line num is 401	Read AWBROIOffsetX 0x0004Byte
+line num is 403	ReadAck 0x00000000
+line num is 404	Read AWBROIWidth 0x0004Byte
+line num is 406	ReadAck 0x00000500
+line num is 407	Read AAROIOffsetY 0x0004Byte
+line num is 409	ReadAck 0x00000000
+line num is 410	Read AAROIHeight 0x0004Byte
+line num is 412	ReadAck 0x00000400
+line num is 413	Read AWBROIHeight 0x0004Byte
+line num is 415	ReadAck 0x00000400
+line num is 416	Read AWBROIOffsetY 0x0004Byte
+line num is 418	ReadAck 0x00000000
+line num is 419	Read UnKnown RegAddr 0x0004Byte
+line num is 421	ReadAck 0x000003e1
+line num is 422	Write UnKnown RegAddr 0x00000003
+line num is 424	WriteAck 0x0004Byte
+line num is 425	Read DeviceLinkCurrentThroughput_Link0 0x0004Byte
+line num is 427	ReadAck 0x0f86d148
+line num is 428	Read SI Required Payload Size 0x0004Byte
+line num is 430	ReadAck 0x00140000
+line num is 431	Read UnKnown RegAddr 0x0004Byte
+line num is 433	ReadAck 0x000003e1
+line num is 434	Read DeviceLinkCurrentThroughput_Link0 0x0004Byte
+line num is 436	ReadAck 0x0f86d148
+line num is 437	Read LineStatus_Line0 0x0004Byte
+line num is 439	ReadAck 0x00000000
+line num is 440	Read LineStatusAll 0x0004Byte
+line num is 442	ReadAck 0x0000000e
+line num is 443	Read BalanceWhiteAuto 0x0004Byte
+line num is 445	ReadAck 0x00000000
+line num is 446	Read ExposureAuto 0x0004Byte
+line num is 448	ReadAck 0x00000000
+line num is 449	Read GainAuto_All 0x0004Byte
+line num is 451	ReadAck 0x00000000
+line num is 452	Read GainAuto_All 0x0004Byte
+line num is 454	ReadAck 0x00000000
+line num is 455	Read GainAuto_All 0x0004Byte
+line num is 457	ReadAck 0x00000000
+line num is 458	Read GainAuto_All 0x0004Byte
+line num is 460	ReadAck 0x00000000
+line num is 461	Read Gain_All 0x0004Byte
+line num is 463	ReadAck 0x00000000
+line num is 464	Read GainAuto_All 0x0004Byte
+line num is 466	ReadAck 0x00000000
+line num is 467	Read UnKnown RegAddr 0x0004Byte
+line num is 469	ReadAck 0x000003e1
+line num is 470	Read ExposureAuto 0x0004Byte
+line num is 472	ReadAck 0x00000000
+line num is 473	Read ExposureAuto 0x0004Byte
+line num is 475	ReadAck 0x00000000
+line num is 476	Read ExposureAuto 0x0004Byte
+line num is 478	ReadAck 0x00000000
+line num is 479	Read ExposureAuto 0x0004Byte
+line num is 481	ReadAck 0x00000000
+line num is 482	Read ExposureTime 0x0004Byte
+line num is 484	ReadAck 0x00002710
+line num is 485	Read ExposureAuto 0x0004Byte
+line num is 487	ReadAck 0x00000000
+line num is 488	Read GainAuto_All 0x0004Byte
+line num is 490	ReadAck 0x00000000
+line num is 491	Read BalanceWhiteAuto 0x0004Byte
+line num is 493	ReadAck 0x00000000
+line num is 494	Read BalanceWhiteAuto 0x0004Byte
+line num is 496	ReadAck 0x00000000
+line num is 497	Read BalanceWhiteAuto 0x0004Byte
+line num is 499	ReadAck 0x00000000
+line num is 500	Read BalanceWhiteAuto 0x0004Byte
+line num is 502	ReadAck 0x00000000
+line num is 503	Read BalanceRatio_Red 0x0004Byte
+line num is 505	ReadAck 0x00000100
+line num is 506	Read BalanceWhiteAuto 0x0004Byte
+line num is 508	ReadAck 0x00000000
+line num is 509	Write UnKnown RegAddr 0x00000000
+line num is 511	WriteAck 0x0004Byte
+line num is 512	Read RegionSelectorInfo 0x0004Byte
+line num is 514	ReadAck 0x000000ff
+line num is 515	Read OffsetXImplemented_Region0 0x0004Byte
+line num is 517	ReadAck 0x00000001
+line num is 518	Read OffsetX_Region0 0x0004Byte
+line num is 520	ReadAck 0x00000000
+line num is 521	Read OffsetXStep_Region0 0x0004Byte
+line num is 523	ReadAck 0x00000010
+line num is 524	Read Width_Region0 0x0004Byte
+line num is 526	ReadAck 0x00000500
+line num is 527	Read WidthMax_Region0 0x0004Byte
+line num is 529	ReadAck 0x00000500
+line num is 530	Read OffsetXMin_Region0 0x0004Byte
+line num is 532	ReadAck 0x00000000
+line num is 533	Read DeviceLinkCurrentThroughput_Link0 0x0004Byte
+line num is 535	ReadAck 0x07c368a4
+line num is 536	Read UnKnown RegAddr 0x0004Byte
+line num is 538	ReadAck 0x00000003
+line num is 539	Read Height_Region0 0x0004Byte
+line num is 541	ReadAck 0x00000400
+line num is 542	Read HeightStep_Region0 0x0004Byte
+line num is 544	ReadAck 0x00000002
+line num is 545	Read HeightMax_Region0 0x0004Byte
+line num is 547	ReadAck 0x00000400
+line num is 548	Read OffsetY_Region0 0x0004Byte
+line num is 550	ReadAck 0x00000000
+line num is 551	Read HeightMin_Region0 0x0004Byte
+line num is 553	ReadAck 0x00000040
+line num is 554	Read WidthStep_Region0 0x0004Byte
+line num is 556	ReadAck 0x00000010
+line num is 557	Read WidthMin_Region0 0x0004Byte
+line num is 559	ReadAck 0x00000040
+line num is 560	Read OffsetYImplemented_Region0 0x0004Byte
+line num is 562	ReadAck 0x00000001
+line num is 563	Read OffsetYStep_Region0 0x0004Byte
+line num is 565	ReadAck 0x00000002
+line num is 566	Read OffsetYMin_Region0 0x0004Byte
+line num is 568	ReadAck 0x00000000
+line num is 569	Read SI Required Payload Size 0x0004Byte
+line num is 571	ReadAck 0x00140000
+line num is 572	Read AAROIWidth 0x0004Byte
+line num is 574	ReadAck 0x00000500
+line num is 575	Read AAROIOffsetX 0x0004Byte
+line num is 577	ReadAck 0x00000000
+line num is 578	Read AWBROIOffsetX 0x0004Byte
+line num is 580	ReadAck 0x00000000
+line num is 581	Read AWBROIWidth 0x0004Byte
+line num is 583	ReadAck 0x00000500
+line num is 584	Read AAROIOffsetY 0x0004Byte
+line num is 586	ReadAck 0x00000000
+line num is 587	Read AAROIHeight 0x0004Byte
+line num is 589	ReadAck 0x00000400
+line num is 590	Read AWBROIHeight 0x0004Byte
+line num is 592	ReadAck 0x00000400
+line num is 593	Read AWBROIOffsetY 0x0004Byte
+line num is 595	ReadAck 0x00000000
+line num is 596	Read UnKnown RegAddr 0x0004Byte
+line num is 598	ReadAck 0x000003e1
+line num is 599	Read DeviceLinkCurrentThroughput_Link0 0x0004Byte
+line num is 601	ReadAck 0x07c368a4
+line num is 602	Read LineStatus_Line0 0x0004Byte
+line num is 604	ReadAck 0x00000000
+line num is 605	Read LineStatusAll 0x0004Byte
+line num is 607	ReadAck 0x0000000e
+line num is 608	Read BalanceWhiteAuto 0x0004Byte
+line num is 610	ReadAck 0x00000000
+line num is 611	Read ExposureAuto 0x0004Byte
+line num is 613	ReadAck 0x00000000
+line num is 614	Read GainAuto_All 0x0004Byte
+line num is 616	ReadAck 0x00000000
+line num is 617	Read GainAuto_All 0x0004Byte
+line num is 619	ReadAck 0x00000000
+line num is 620	Read GainAuto_All 0x0004Byte
+line num is 622	ReadAck 0x00000000
+line num is 623	Read GainAuto_All 0x0004Byte
+line num is 625	ReadAck 0x00000000
+line num is 626	Read Gain_All 0x0004Byte
+line num is 628	ReadAck 0x00000000
+line num is 629	Read GainAuto_All 0x0004Byte
+line num is 631	ReadAck 0x00000000
+line num is 632	Read UnKnown RegAddr 0x0004Byte
+line num is 634	ReadAck 0x000003e1
+line num is 635	Read ExposureAuto 0x0004Byte
+line num is 637	ReadAck 0x00000000
+line num is 638	Read ExposureAuto 0x0004Byte
+line num is 640	ReadAck 0x00000000
+line num is 641	Read ExposureAuto 0x0004Byte
+line num is 643	ReadAck 0x00000000
+line num is 644	Read ExposureAuto 0x0004Byte
+line num is 646	ReadAck 0x00000000
+line num is 647	Read ExposureTime 0x0004Byte
+line num is 649	ReadAck 0x00002710
+line num is 650	Read ExposureAuto 0x0004Byte
+line num is 652	ReadAck 0x00000000
+line num is 653	Read GainAuto_All 0x0004Byte
+line num is 655	ReadAck 0x00000000
+line num is 656	Read BalanceWhiteAuto 0x0004Byte
+line num is 658	ReadAck 0x00000000
+line num is 659	Read BalanceWhiteAuto 0x0004Byte
+line num is 661	ReadAck 0x00000000
+line num is 662	Read BalanceWhiteAuto 0x0004Byte
+line num is 664	ReadAck 0x00000000
+line num is 665	Read BalanceWhiteAuto 0x0004Byte
+line num is 667	ReadAck 0x00000000
+line num is 668	Read BalanceRatio_Red 0x0004Byte
+line num is 670	ReadAck 0x00000100
+line num is 671	Read BalanceWhiteAuto 0x0004Byte
+line num is 673	ReadAck 0x00000000
+line num is 674	Read DeviceLinkCurrentThroughput_Link0 0x0004Byte
+line num is 676	ReadAck 0x07c368a4
+line num is 677	Read LineStatus_Line0 0x0004Byte
+line num is 679	ReadAck 0x00000000
+line num is 680	Read LineStatusAll 0x0004Byte
+line num is 682	ReadAck 0x0000000e
+line num is 683	Read BalanceWhiteAuto 0x0004Byte
+line num is 685	ReadAck 0x00000000
+line num is 686	Read ExposureAuto 0x0004Byte
+line num is 688	ReadAck 0x00000000
+line num is 689	Read GainAuto_All 0x0004Byte
+line num is 691	ReadAck 0x00000000
+line num is 692	Read GainAuto_All 0x0004Byte
+line num is 694	ReadAck 0x00000000
+line num is 695	Read GainAuto_All 0x0004Byte
+line num is 697	ReadAck 0x00000000
+line num is 698	Read GainAuto_All 0x0004Byte
+line num is 700	ReadAck 0x00000000
+line num is 701	Read Gain_All 0x0004Byte
+line num is 703	ReadAck 0x00000000
+line num is 704	Read GainAuto_All 0x0004Byte
+line num is 706	ReadAck 0x00000000
+line num is 707	Read UnKnown RegAddr 0x0004Byte
+line num is 709	ReadAck 0x000003e1
+line num is 710	Read ExposureAuto 0x0004Byte
+line num is 712	ReadAck 0x00000000
+line num is 713	Read ExposureAuto 0x0004Byte
+line num is 715	ReadAck 0x00000000
+line num is 716	Read ExposureAuto 0x0004Byte
+line num is 718	ReadAck 0x00000000
+line num is 719	Read ExposureAuto 0x0004Byte
+line num is 721	ReadAck 0x00000000
+line num is 722	Read ExposureTime 0x0004Byte
+line num is 724	ReadAck 0x00002710
+line num is 725	Read ExposureAuto 0x0004Byte
+line num is 727	ReadAck 0x00000000
+line num is 728	Read GainAuto_All 0x0004Byte
+line num is 730	ReadAck 0x00000000
+line num is 731	Read BalanceWhiteAuto 0x0004Byte
+line num is 733	ReadAck 0x00000000
+line num is 734	Read BalanceWhiteAuto 0x0004Byte
+line num is 736	ReadAck 0x00000000
+line num is 737	Read BalanceWhiteAuto 0x0004Byte
+line num is 739	ReadAck 0x00000000
+line num is 740	Read BalanceWhiteAuto 0x0004Byte
+line num is 742	ReadAck 0x00000000
+line num is 743	Read BalanceRatio_Red 0x0004Byte
+line num is 745	ReadAck 0x00000100
+line num is 746	Read BalanceWhiteAuto 0x0004Byte
+line num is 748	ReadAck 0x00000000
+line num is 749	Write Width_Region0 0x00000040
+line num is 751	WriteAck 0x0004Byte
+line num is 752	Read DeviceLinkCurrentThroughput_Link0 0x0004Byte
+line num is 754	ReadAck 0x00637dce
+line num is 755	Read SI Required Payload Size 0x0004Byte
+line num is 757	ReadAck 0x00010000
+line num is 758	Read AAROIWidth 0x0004Byte
+line num is 760	ReadAck 0x00000040
+line num is 761	Read AAROIOffsetX 0x0004Byte
+line num is 763	ReadAck 0x00000000
+line num is 764	Read AWBROIOffsetX 0x0004Byte
+line num is 766	ReadAck 0x00000000
+line num is 767	Read AWBROIWidth 0x0004Byte
+line num is 769	ReadAck 0x00000040
+line num is 770	Read AAROIOffsetY 0x0004Byte
+line num is 772	ReadAck 0x00000000
+line num is 773	Read AAROIHeight 0x0004Byte
+line num is 775	ReadAck 0x00000400
+line num is 776	Read AWBROIHeight 0x0004Byte
+line num is 778	ReadAck 0x00000400
+line num is 779	Read AWBROIOffsetY 0x0004Byte
+line num is 781	ReadAck 0x00000000
+line num is 782	Read UnKnown RegAddr 0x0004Byte
+line num is 784	ReadAck 0x000003e1
+line num is 785	Write Height_Region0 0x00000040
+line num is 787	WriteAck 0x0004Byte
+line num is 788	Read DeviceLinkCurrentThroughput_Link0 0x0004Byte
+line num is 790	ReadAck 0x0006566d
+line num is 791	Read SI Required Payload Size 0x0004Byte
+line num is 793	ReadAck 0x00001000
+line num is 794	Read AAROIWidth 0x0004Byte
+line num is 796	ReadAck 0x00000040
+line num is 797	Read AAROIOffsetX 0x0004Byte
+line num is 799	ReadAck 0x00000000
+line num is 800	Read AWBROIOffsetX 0x0004Byte
+line num is 802	ReadAck 0x00000000
+line num is 803	Read AWBROIWidth 0x0004Byte
+line num is 805	ReadAck 0x00000040
+line num is 806	Read AAROIOffsetY 0x0004Byte
+line num is 808	ReadAck 0x00000000
+line num is 809	Read AAROIHeight 0x0004Byte
+line num is 811	ReadAck 0x00000040
+line num is 812	Read AWBROIHeight 0x0004Byte
+line num is 814	ReadAck 0x00000040
+line num is 815	Read AWBROIOffsetY 0x0004Byte
+line num is 817	ReadAck 0x00000000
+line num is 818	Read UnKnown RegAddr 0x0004Byte
+line num is 820	ReadAck 0x000003e1
+line num is 821	Read DeviceLinkCurrentThroughput_Link0 0x0004Byte
+line num is 823	ReadAck 0x0006566d
+line num is 824	Read LineStatus_Line0 0x0004Byte
+line num is 826	ReadAck 0x00000000
+line num is 827	Read LineStatusAll 0x0004Byte
+line num is 829	ReadAck 0x0000000e
+line num is 830	Read BalanceWhiteAuto 0x0004Byte
+line num is 832	ReadAck 0x00000000
+line num is 833	Read ExposureAuto 0x0004Byte
+line num is 835	ReadAck 0x00000000
+line num is 836	Read GainAuto_All 0x0004Byte
+line num is 838	ReadAck 0x00000000
+line num is 839	Read GainAuto_All 0x0004Byte
+line num is 841	ReadAck 0x00000000
+line num is 842	Read GainAuto_All 0x0004Byte
+line num is 844	ReadAck 0x00000000
+line num is 845	Read GainAuto_All 0x0004Byte
+line num is 847	ReadAck 0x00000000
+line num is 848	Read Gain_All 0x0004Byte
+line num is 850	ReadAck 0x00000000
+line num is 851	Read GainAuto_All 0x0004Byte
+line num is 853	ReadAck 0x00000000
+line num is 854	Read UnKnown RegAddr 0x0004Byte
+line num is 856	ReadAck 0x000003e1
+line num is 857	Read ExposureAuto 0x0004Byte
+line num is 859	ReadAck 0x00000000
+line num is 860	Read ExposureAuto 0x0004Byte
+line num is 862	ReadAck 0x00000000
+line num is 863	Read ExposureAuto 0x0004Byte
+line num is 865	ReadAck 0x00000000
+line num is 866	Read ExposureAuto 0x0004Byte
+line num is 868	ReadAck 0x00000000
+line num is 869	Read ExposureTime 0x0004Byte
+line num is 871	ReadAck 0x00002710
+line num is 872	Read ExposureAuto 0x0004Byte
+line num is 874	ReadAck 0x00000000
+line num is 875	Read GainAuto_All 0x0004Byte
+line num is 877	ReadAck 0x00000000
+line num is 878	Read BalanceWhiteAuto 0x0004Byte
+line num is 880	ReadAck 0x00000000
+line num is 881	Read BalanceWhiteAuto 0x0004Byte
+line num is 883	ReadAck 0x00000000
+line num is 884	Read BalanceWhiteAuto 0x0004Byte
+line num is 886	ReadAck 0x00000000
+line num is 887	Read BalanceWhiteAuto 0x0004Byte
+line num is 889	ReadAck 0x00000000
+line num is 890	Read BalanceRatio_Red 0x0004Byte
+line num is 892	ReadAck 0x00000100
+line num is 893	Read BalanceWhiteAuto 0x0004Byte
+line num is 895	ReadAck 0x00000000
+line num is 896	Read DeviceLinkCurrentThroughput_Link0 0x0004Byte
+line num is 898	ReadAck 0x0006566d
+line num is 899	Read LineStatus_Line0 0x0004Byte
+line num is 901	ReadAck 0x00000000
+line num is 902	Read LineStatusAll 0x0004Byte
+line num is 904	ReadAck 0x0000000e
+line num is 905	Read BalanceWhiteAuto 0x0004Byte
+line num is 907	ReadAck 0x00000000
+line num is 908	Read ExposureAuto 0x0004Byte
+line num is 910	ReadAck 0x00000000
+line num is 911	Read GainAuto_All 0x0004Byte
+line num is 913	ReadAck 0x00000000
+line num is 914	Read GainAuto_All 0x0004Byte
+line num is 916	ReadAck 0x00000000
+line num is 917	Read GainAuto_All 0x0004Byte
+line num is 919	ReadAck 0x00000000
+line num is 920	Read GainAuto_All 0x0004Byte
+line num is 922	ReadAck 0x00000000
+line num is 923	Read Gain_All 0x0004Byte
+line num is 925	ReadAck 0x00000000
+line num is 926	Read GainAuto_All 0x0004Byte
+line num is 928	ReadAck 0x00000000
+line num is 929	Read UnKnown RegAddr 0x0004Byte
+line num is 931	ReadAck 0x000003e1
+line num is 932	Read ExposureAuto 0x0004Byte
+line num is 934	ReadAck 0x00000000
+line num is 935	Read ExposureAuto 0x0004Byte
+line num is 937	ReadAck 0x00000000
+line num is 938	Read ExposureAuto 0x0004Byte
+line num is 940	ReadAck 0x00000000
+line num is 941	Read ExposureAuto 0x0004Byte
+line num is 943	ReadAck 0x00000000
+line num is 944	Read ExposureTime 0x0004Byte
+line num is 946	ReadAck 0x00002710
+line num is 947	Read ExposureAuto 0x0004Byte
+line num is 949	ReadAck 0x00000000
+line num is 950	Read GainAuto_All 0x0004Byte
+line num is 952	ReadAck 0x00000000
+line num is 953	Read BalanceWhiteAuto 0x0004Byte
+line num is 955	ReadAck 0x00000000
+line num is 956	Read BalanceWhiteAuto 0x0004Byte
+line num is 958	ReadAck 0x00000000
+line num is 959	Read BalanceWhiteAuto 0x0004Byte
+line num is 961	ReadAck 0x00000000
+line num is 962	Read BalanceWhiteAuto 0x0004Byte
+line num is 964	ReadAck 0x00000000
+line num is 965	Read BalanceRatio_Red 0x0004Byte
+line num is 967	ReadAck 0x00000100
+line num is 968	Read BalanceWhiteAuto 0x0004Byte
+line num is 970	ReadAck 0x00000000
+line num is 971	Read RegionSelectorInfo 0x0004Byte
+line num is 973	ReadAck 0x000000ff
+line num is 974	Read OffsetXImplemented_Region0 0x0004Byte
+line num is 976	ReadAck 0x00000001
+line num is 977	Read OffsetX_Region0 0x0004Byte
+line num is 979	ReadAck 0x00000000
+line num is 980	Read OffsetXStep_Region0 0x0004Byte
+line num is 982	ReadAck 0x00000010
+line num is 983	Read Width_Region0 0x0004Byte
+line num is 985	ReadAck 0x00000040
+line num is 986	Read WidthMax_Region0 0x0004Byte
+line num is 988	ReadAck 0x00000500
+line num is 989	Read OffsetXMin_Region0 0x0004Byte
+line num is 991	ReadAck 0x00000000
+line num is 992	Read DeviceLinkCurrentThroughput_Link0 0x0004Byte
+line num is 994	ReadAck 0x0006566d
+line num is 995	Read DeviceLinkThroughputLimit_Link0 0x0004Byte
+line num is 997	ReadAck 0x11e1a300
+line num is 998	Read DeviceLinkThroughputLimitStep_Link0 0x0004Byte
+line num is 1000	ReadAck 0x000f4240
+line num is 1001	Read DeviceLinkThroughputLimitMax_Link0 0x0004Byte
+line num is 1003	ReadAck 0x17d78400
+line num is 1004	Read DeviceLinkThroughputLimitMin_Link0 0x0004Byte
+line num is 1006	ReadAck 0x02160ec0
+line num is 1007	Read UnKnown RegAddr 0x0004Byte
+line num is 1009	ReadAck 0x00000003
+line num is 1010	Read Height_Region0 0x0004Byte
+line num is 1012	ReadAck 0x00000040
+line num is 1013	Read HeightStep_Region0 0x0004Byte
+line num is 1015	ReadAck 0x00000002
+line num is 1016	Read HeightMax_Region0 0x0004Byte
+line num is 1018	ReadAck 0x00000400
+line num is 1019	Read OffsetY_Region0 0x0004Byte
+line num is 1021	ReadAck 0x00000000
+line num is 1022	Read HeightMin_Region0 0x0004Byte
+line num is 1024	ReadAck 0x00000040
+line num is 1025	Read WidthStep_Region0 0x0004Byte
+line num is 1027	ReadAck 0x00000010
+line num is 1028	Read WidthMin_Region0 0x0004Byte
+line num is 1030	ReadAck 0x00000040
+line num is 1031	Read OffsetYImplemented_Region0 0x0004Byte
+line num is 1033	ReadAck 0x00000001
+line num is 1034	Read OffsetYStep_Region0 0x0004Byte
+line num is 1036	ReadAck 0x00000002
+line num is 1037	Read OffsetYMin_Region0 0x0004Byte
+line num is 1039	ReadAck 0x00000000
+line num is 1040	Read SI Required Payload Size 0x0004Byte
+line num is 1042	ReadAck 0x00001000
+line num is 1043	Read AAROIWidth 0x0004Byte
+line num is 1045	ReadAck 0x00000040
+line num is 1046	Read AAROIOffsetX 0x0004Byte
+line num is 1048	ReadAck 0x00000000
+line num is 1049	Read AWBROIOffsetX 0x0004Byte
+line num is 1051	ReadAck 0x00000000
+line num is 1052	Read AWBROIWidth 0x0004Byte
+line num is 1054	ReadAck 0x00000040
+line num is 1055	Read AAROIOffsetY 0x0004Byte
+line num is 1057	ReadAck 0x00000000
+line num is 1058	Read AAROIHeight 0x0004Byte
+line num is 1060	ReadAck 0x00000040
+line num is 1061	Read AWBROIHeight 0x0004Byte
+line num is 1063	ReadAck 0x00000040
+line num is 1064	Read AWBROIOffsetY 0x0004Byte
+line num is 1066	ReadAck 0x00000000
+line num is 1067	Read UnKnown RegAddr 0x0004Byte
+line num is 1069	ReadAck 0x000003e1
+line num is 1070	Read UnKnown RegAddr 0x0004Byte
+line num is 1072	ReadAck 0x0000000a
+line num is 1073	Read SI Required Payload Size 0x0008Byte
+line num is 1075	ReadAck 0x00001000
+line num is 1077	Write SI Maximum Leader Size 0x00000400
+line num is 1079	WriteAck 0x0004Byte
+line num is 1080	Write SI Maximum Trailer Size 0x00000400
+line num is 1082	WriteAck 0x0004Byte
+line num is 1083	Write SI Payload Transfer Size 0x00100000
+line num is 1085	WriteAck 0x0004Byte
+line num is 1086	Write SI Payload Transfer Count 0x00000000
+line num is 1088	WriteAck 0x0004Byte
+line num is 1089	Write SI Payload Final Transfer1 Size 0x00001000
+line num is 1091	WriteAck 0x0004Byte
+line num is 1092	Write SI Payload Final Transfer2 Size 0x00000000
+line num is 1094	WriteAck 0x0004Byte
+line num is 1095	Write SI Control 0x00000001
+line num is 1097	WriteAck 0x0004Byte
+line num is 1098	Write AcquisitionStart 0x00000001
+line num is 1100	WriteAck 0x0004Byte
+line num is 1101	 block is 0x0. chunk_mode_active is 0. timestamp is 0xf5527e499. pixel_format is 0x01080009(BayerRG8). size_x is 0x0040(64). size_y is 0x0040(64). offset_x is 0x0000(0). offset_y is 0x0000(0).
+line num is 1109	 trailer_size is 32. block is 0x0. status is 0x0000. valid_payload_size is 0x00001000(4096). trailer_size_y is 0x0040(64).
+line num is 1111	 block is 0x1. chunk_mode_active is 0. timestamp is 0xf5527e499. pixel_format is 0x01080009(BayerRG8). size_x is 0x0500(1280). size_y is 0x0400(1024). offset_x is 0x0000(0). offset_y is 0x0000(0).
+line num is 1119	Write SI Control 0x00000001
+line num is 1125	WriteAck 0x0004Byte
+line num is 1392	Write SI Control 0x00000001
+line num is 1398	WriteAck 0x0004Byte
+line num is 1665	Write SI Control 0x00000001
+line num is 1667	WriteAck 0x0004Byte
+line num is 1671	 block is NA. chunk_mode_active is 0. timestamp is 0x0. pixel_format is 0x00010000(Unkown PixelFormat). size_x is 0x8447(33863). size_y is 0x000f(15). offset_x is 0xfffd(65533). offset_y is 0xffff(65535).
+line num is 1936	Write SI Control 0x00000001
+line num is 1942	WriteAck 0x0004Byte
+line num is 2155	Write SI Control 0x00000001
+line num is 2161	WriteAck 0x0004Byte
+line num is 2428	Write SI Control 0x00000001
+line num is 2430	WriteAck 0x0004Byte
+line num is 2701	Write SI Control 0x00000001
+line num is 2707	WriteAck 0x0004Byte
+line num is 2974	Write SI Control 0x00000001
+line num is 2980	WriteAck 0x0004Byte
+line num is 3247	Write SI Control 0x00000001
+line num is 3253	WriteAck 0x0004Byte
+line num is 3520	Write SI Control 0x00000001
+line num is 3526	WriteAck 0x0004Byte
+line num is 3793	Write SI Control 0x00000001
+line num is 3799	WriteAck 0x0004Byte
+line num is 4066	Write SI Control 0x00000001
+line num is 4072	WriteAck 0x0004Byte
+line num is 4273	Write SI Control 0x00000001
+line num is 4279	WriteAck 0x0004Byte
+line num is 4546	Write SI Control 0x00000001
+line num is 4548	WriteAck 0x0004Byte
+line num is 4819	Write SI Control 0x00000001
+line num is 4821	WriteAck 0x0004Byte
+line num is 5092	Write SI Control 0x00000001
+line num is 5094	WriteAck 0x0004Byte
+line num is 5095	Read DeviceLinkCurrentThroughput_Link0 0x0004Byte
+line num is 5097	ReadAck 0x0006566d
+line num is 5098	Read LineStatus_Line0 0x0004Byte
+line num is 5100	ReadAck 0x00000000
+line num is 5101	Read LineStatusAll 0x0004Byte
+line num is 5103	ReadAck 0x0000000e
+line num is 5104	Read BalanceWhiteAuto 0x0004Byte
+line num is 5106	ReadAck 0x00000000
+line num is 5107	Read ExposureAuto 0x0004Byte
+line num is 5109	ReadAck 0x00000000
+line num is 5110	Read GainAuto_All 0x0004Byte
+line num is 5112	ReadAck 0x00000000
+line num is 5113	Read GainAuto_All 0x0004Byte
+line num is 5115	ReadAck 0x00000000
+line num is 5116	Read GainAuto_All 0x0004Byte
+line num is 5118	ReadAck 0x00000000
+line num is 5119	Read GainAuto_All 0x0004Byte
+line num is 5121	ReadAck 0x00000000
+line num is 5122	Read Gain_All 0x0004Byte
+line num is 5124	ReadAck 0x00000000
+line num is 5125	Read GainAuto_All 0x0004Byte
+line num is 5127	ReadAck 0x00000000
+line num is 5128	Read UnKnown RegAddr 0x0004Byte
+line num is 5130	ReadAck 0x000003e1
+line num is 5131	Read ExposureAuto 0x0004Byte
+line num is 5133	ReadAck 0x00000000
+line num is 5134	Read ExposureAuto 0x0004Byte
+line num is 5136	ReadAck 0x00000000
+line num is 5137	Read ExposureAuto 0x0004Byte
+line num is 5139	ReadAck 0x00000000
+line num is 5140	Read ExposureAuto 0x0004Byte
+line num is 5142	ReadAck 0x00000000
+line num is 5143	Read ExposureTime 0x0004Byte
+line num is 5145	ReadAck 0x00002710
+line num is 5146	Read ExposureAuto 0x0004Byte
+line num is 5148	ReadAck 0x00000000
+line num is 5149	Read GainAuto_All 0x0004Byte
+line num is 5151	ReadAck 0x00000000
+line num is 5152	Read BalanceWhiteAuto 0x0004Byte
+line num is 5154	ReadAck 0x00000000
+line num is 5155	Read BalanceWhiteAuto 0x0004Byte
+line num is 5157	ReadAck 0x00000000
+line num is 5158	Read BalanceWhiteAuto 0x0004Byte
+line num is 5160	ReadAck 0x00000000
+line num is 5161	Read BalanceWhiteAuto 0x0004Byte
+line num is 5163	ReadAck 0x00000000
+line num is 5164	Read BalanceRatio_Red 0x0004Byte
+line num is 5166	ReadAck 0x00000100
+line num is 5167	Read BalanceWhiteAuto 0x0004Byte
+line num is 5169	ReadAck 0x00000000
+line num is 5170	Read DeviceLinkCurrentThroughput_Link0 0x0004Byte
+line num is 5172	ReadAck 0x0006566d
+line num is 5173	Read LineStatus_Line0 0x0004Byte
+line num is 5175	ReadAck 0x00000000
+line num is 5176	Read LineStatusAll 0x0004Byte
+line num is 5178	ReadAck 0x0000000e
+line num is 5179	Read BalanceWhiteAuto 0x0004Byte
+line num is 5181	ReadAck 0x00000000
+line num is 5182	Read ExposureAuto 0x0004Byte
+line num is 5184	ReadAck 0x00000000
+line num is 5185	Read GainAuto_All 0x0004Byte
+line num is 5187	ReadAck 0x00000000
+line num is 5188	Read GainAuto_All 0x0004Byte
+line num is 5190	ReadAck 0x00000000
+line num is 5191	Read GainAuto_All 0x0004Byte
+line num is 5193	ReadAck 0x00000000
+line num is 5194	Read GainAuto_All 0x0004Byte
+line num is 5196	ReadAck 0x00000000
+line num is 5197	Read Gain_All 0x0004Byte
+line num is 5199	ReadAck 0x00000000
+line num is 5200	Read GainAuto_All 0x0004Byte
+line num is 5202	ReadAck 0x00000000
+line num is 5203	Read UnKnown RegAddr 0x0004Byte
+line num is 5205	ReadAck 0x000003e1
+line num is 5206	Read ExposureAuto 0x0004Byte
+line num is 5208	ReadAck 0x00000000
+line num is 5209	Read ExposureAuto 0x0004Byte
+line num is 5211	ReadAck 0x00000000
+line num is 5212	Read ExposureAuto 0x0004Byte
+line num is 5214	ReadAck 0x00000000
+line num is 5215	Read ExposureAuto 0x0004Byte
+line num is 5217	ReadAck 0x00000000
+line num is 5218	Read ExposureTime 0x0004Byte
+line num is 5220	ReadAck 0x00002710
+line num is 5221	Read ExposureAuto 0x0004Byte
+line num is 5223	ReadAck 0x00000000
+line num is 5224	Read GainAuto_All 0x0004Byte
+line num is 5226	ReadAck 0x00000000
+line num is 5227	Read BalanceWhiteAuto 0x0004Byte
+line num is 5229	ReadAck 0x00000000
+line num is 5230	Read BalanceWhiteAuto 0x0004Byte
+line num is 5232	ReadAck 0x00000000
+line num is 5233	Read BalanceWhiteAuto 0x0004Byte
+line num is 5235	ReadAck 0x00000000
+line num is 5236	Read BalanceWhiteAuto 0x0004Byte
+line num is 5238	ReadAck 0x00000000
+line num is 5239	Read BalanceRatio_Red 0x0004Byte
+line num is 5241	ReadAck 0x00000100
+line num is 5242	Read BalanceWhiteAuto 0x0004Byte
+line num is 5244	ReadAck 0x00000000
+line num is 5245	Write AcquisitionStart 0x00000000
+line num is 5247	WriteAck 0x0004Byte
+line num is 5252	Read RegionSelectorInfo 0x0004Byte
+line num is 5254	ReadAck 0x000000ff
+line num is 5255	Read OffsetXImplemented_Region0 0x0004Byte
+line num is 5257	ReadAck 0x00000001
+line num is 5258	Read OffsetX_Region0 0x0004Byte
+line num is 5260	ReadAck 0x00000000
+line num is 5261	Read OffsetXStep_Region0 0x0004Byte
+line num is 5263	ReadAck 0x00000010
+line num is 5264	Read Width_Region0 0x0004Byte
+line num is 5266	ReadAck 0x00000040
+line num is 5267	Read WidthMax_Region0 0x0004Byte
+line num is 5269	ReadAck 0x00000500
+line num is 5270	Read OffsetXMin_Region0 0x0004Byte
+line num is 5272	ReadAck 0x00000000
+line num is 5273	Read DeviceLinkCurrentThroughput_Link0 0x0004Byte
+line num is 5275	ReadAck 0x0006566d
+line num is 5276	Read DeviceLinkThroughputLimit_Link0 0x0004Byte
+line num is 5278	ReadAck 0x11e1a300
+line num is 5279	Read DeviceLinkThroughputLimitStep_Link0 0x0004Byte
+line num is 5281	ReadAck 0x000f4240
+line num is 5282	Read DeviceLinkThroughputLimitMax_Link0 0x0004Byte
+line num is 5284	ReadAck 0x17d78400
+line num is 5285	Read DeviceLinkThroughputLimitMin_Link0 0x0004Byte
+line num is 5287	ReadAck 0x02160ec0
+line num is 5288	Read UnKnown RegAddr 0x0004Byte
+line num is 5290	ReadAck 0x00000003
+line num is 5291	Read Height_Region0 0x0004Byte
+line num is 5293	ReadAck 0x00000040
+line num is 5294	Read HeightStep_Region0 0x0004Byte
+line num is 5296	ReadAck 0x00000002
+line num is 5297	Read HeightMax_Region0 0x0004Byte
+line num is 5299	ReadAck 0x00000400
+line num is 5300	Read OffsetY_Region0 0x0004Byte
+line num is 5302	ReadAck 0x00000000
+line num is 5303	Read HeightMin_Region0 0x0004Byte
+line num is 5305	ReadAck 0x00000040
+line num is 5306	Read WidthStep_Region0 0x0004Byte
+line num is 5308	ReadAck 0x00000010
+line num is 5309	Read WidthMin_Region0 0x0004Byte
+line num is 5311	ReadAck 0x00000040
+line num is 5312	Read OffsetYImplemented_Region0 0x0004Byte
+line num is 5314	ReadAck 0x00000001
+line num is 5315	Read OffsetYStep_Region0 0x0004Byte
+line num is 5317	ReadAck 0x00000002
+line num is 5318	Read OffsetYMin_Region0 0x0004Byte
+line num is 5320	ReadAck 0x00000000
+line num is 5321	Read SI Required Payload Size 0x0004Byte
+line num is 5323	ReadAck 0x00001000
+line num is 5324	Read AAROIWidth 0x0004Byte
+line num is 5326	ReadAck 0x00000040
+line num is 5327	Read AAROIOffsetX 0x0004Byte
+line num is 5329	ReadAck 0x00000000
+line num is 5330	Read AWBROIOffsetX 0x0004Byte
+line num is 5332	ReadAck 0x00000000
+line num is 5333	Read AWBROIWidth 0x0004Byte
+line num is 5335	ReadAck 0x00000040
+line num is 5336	Read AAROIOffsetY 0x0004Byte
+line num is 5338	ReadAck 0x00000000
+line num is 5339	Read AAROIHeight 0x0004Byte
+line num is 5341	ReadAck 0x00000040
+line num is 5342	Read AWBROIHeight 0x0004Byte
+line num is 5344	ReadAck 0x00000040
+line num is 5345	Read AWBROIOffsetY 0x0004Byte
+line num is 5347	ReadAck 0x00000000
+line num is 5348	Read UnKnown RegAddr 0x0004Byte
+line num is 5350	ReadAck 0x000003e1
+line num is 5351	Read UnKnown RegAddr 0x0004Byte
+line num is 5353	ReadAck 0x0000000a
+line num is 5354	Read DeviceLinkCurrentThroughput_Link0 0x0004Byte
+line num is 5356	ReadAck 0x0006566d
+line num is 5357	Read LineStatus_Line0 0x0004Byte
+line num is 5359	ReadAck 0x00000000
+line num is 5360	Read LineStatusAll 0x0004Byte
+line num is 5362	ReadAck 0x0000000e
+line num is 5363	Read BalanceWhiteAuto 0x0004Byte
+line num is 5365	ReadAck 0x00000000
+line num is 5366	Read ExposureAuto 0x0004Byte
+line num is 5368	ReadAck 0x00000000
+line num is 5369	Read GainAuto_All 0x0004Byte
+line num is 5371	ReadAck 0x00000000
+line num is 5372	Read GainAuto_All 0x0004Byte
+line num is 5374	ReadAck 0x00000000
+line num is 5375	Read GainAuto_All 0x0004Byte
+line num is 5377	ReadAck 0x00000000
+line num is 5378	Read GainAuto_All 0x0004Byte
+line num is 5380	ReadAck 0x00000000
+line num is 5381	Read Gain_All 0x0004Byte
+line num is 5383	ReadAck 0x00000000
+line num is 5384	Read GainAuto_All 0x0004Byte
+line num is 5386	ReadAck 0x00000000
+line num is 5387	Read UnKnown RegAddr 0x0004Byte
+line num is 5389	ReadAck 0x000003e1
+line num is 5390	Read ExposureAuto 0x0004Byte
+line num is 5392	ReadAck 0x00000000
+line num is 5393	Read ExposureAuto 0x0004Byte
+line num is 5395	ReadAck 0x00000000
+line num is 5396	Read ExposureAuto 0x0004Byte
+line num is 5398	ReadAck 0x00000000
+line num is 5399	Read ExposureAuto 0x0004Byte
+line num is 5401	ReadAck 0x00000000
+line num is 5402	Read ExposureTime 0x0004Byte
+line num is 5404	ReadAck 0x00002710
+line num is 5405	Read ExposureAuto 0x0004Byte
+line num is 5407	ReadAck 0x00000000
+line num is 5408	Read GainAuto_All 0x0004Byte
+line num is 5410	ReadAck 0x00000000
+line num is 5411	Read BalanceWhiteAuto 0x0004Byte
+line num is 5413	ReadAck 0x00000000
+line num is 5414	Read BalanceWhiteAuto 0x0004Byte
+line num is 5416	ReadAck 0x00000000
+line num is 5417	Read BalanceWhiteAuto 0x0004Byte
+line num is 5419	ReadAck 0x00000000
+line num is 5420	Read BalanceWhiteAuto 0x0004Byte
+line num is 5422	ReadAck 0x00000000
+line num is 5423	Read BalanceRatio_Red 0x0004Byte
+line num is 5425	ReadAck 0x00000100
+line num is 5426	Read BalanceWhiteAuto 0x0004Byte
+line num is 5428	ReadAck 0x00000000
+line num is 5429	Read DeviceLinkCurrentThroughput_Link0 0x0004Byte
+line num is 5431	ReadAck 0x0006566d
+line num is 5432	Read LineStatus_Line0 0x0004Byte
+line num is 5434	ReadAck 0x00000000
+line num is 5435	Read LineStatusAll 0x0004Byte
+line num is 5437	ReadAck 0x0000000e
+line num is 5438	Read BalanceWhiteAuto 0x0004Byte
+line num is 5440	ReadAck 0x00000000
+line num is 5441	Read ExposureAuto 0x0004Byte
+line num is 5443	ReadAck 0x00000000
+line num is 5444	Read GainAuto_All 0x0004Byte
+line num is 5446	ReadAck 0x00000000
+line num is 5447	Read GainAuto_All 0x0004Byte
+line num is 5449	ReadAck 0x00000000
+line num is 5450	Read GainAuto_All 0x0004Byte
+line num is 5452	ReadAck 0x00000000
+line num is 5453	Read GainAuto_All 0x0004Byte
+line num is 5455	ReadAck 0x00000000
+line num is 5456	Read Gain_All 0x0004Byte
+line num is 5458	ReadAck 0x00000000
+line num is 5459	Read GainAuto_All 0x0004Byte
+line num is 5461	ReadAck 0x00000000
+line num is 5462	Read UnKnown RegAddr 0x0004Byte
+line num is 5464	ReadAck 0x000003e1
+line num is 5465	Read ExposureAuto 0x0004Byte
+line num is 5467	ReadAck 0x00000000
+line num is 5468	Read ExposureAuto 0x0004Byte
+line num is 5470	ReadAck 0x00000000
+line num is 5471	Read ExposureAuto 0x0004Byte
+line num is 5473	ReadAck 0x00000000
+line num is 5474	Read ExposureAuto 0x0004Byte
+line num is 5476	ReadAck 0x00000000
+line num is 5477	Read ExposureTime 0x0004Byte
+line num is 5479	ReadAck 0x00002710
+line num is 5480	Read ExposureAuto 0x0004Byte
+line num is 5482	ReadAck 0x00000000
+line num is 5483	Read GainAuto_All 0x0004Byte
+line num is 5485	ReadAck 0x00000000
+line num is 5486	Read BalanceWhiteAuto 0x0004Byte
+line num is 5488	ReadAck 0x00000000
+line num is 5489	Read BalanceWhiteAuto 0x0004Byte
+line num is 5491	ReadAck 0x00000000
+line num is 5492	Read BalanceWhiteAuto 0x0004Byte
+line num is 5494	ReadAck 0x00000000
+line num is 5495	Read BalanceWhiteAuto 0x0004Byte
+line num is 5497	ReadAck 0x00000000
+line num is 5498	Read BalanceRatio_Red 0x0004Byte
+line num is 5500	ReadAck 0x00000100
+line num is 5501	Read BalanceWhiteAuto 0x0004Byte
+line num is 5503	ReadAck 0x00000000
+line num is 5504	Read DeviceLinkCurrentThroughput_Link0 0x0004Byte
+line num is 5506	ReadAck 0x0006566d
+line num is 5507	Read LineStatus_Line0 0x0004Byte
+line num is 5509	ReadAck 0x00000000
+line num is 5510	Read LineStatusAll 0x0004Byte
+line num is 5512	ReadAck 0x0000000e
+line num is 5513	Read BalanceWhiteAuto 0x0004Byte
+line num is 5515	ReadAck 0x00000000
+line num is 5516	Read ExposureAuto 0x0004Byte
+line num is 5518	ReadAck 0x00000000
+line num is 5519	Read GainAuto_All 0x0004Byte
+line num is 5521	ReadAck 0x00000000
+line num is 5522	Read GainAuto_All 0x0004Byte
+line num is 5524	ReadAck 0x00000000
+line num is 5525	Read GainAuto_All 0x0004Byte
+line num is 5527	ReadAck 0x00000000
+line num is 5528	Read GainAuto_All 0x0004Byte
+line num is 5530	ReadAck 0x00000000
+line num is 5531	Read Gain_All 0x0004Byte
+line num is 5533	ReadAck 0x00000000
+line num is 5534	Read GainAuto_All 0x0004Byte
+line num is 5536	ReadAck 0x00000000
+line num is 5537	Read UnKnown RegAddr 0x0004Byte
+line num is 5539	ReadAck 0x000003e1
+line num is 5540	Read ExposureAuto 0x0004Byte
+line num is 5542	ReadAck 0x00000000
+line num is 5543	Read ExposureAuto 0x0004Byte
+line num is 5545	ReadAck 0x00000000
+line num is 5546	Read ExposureAuto 0x0004Byte
+line num is 5548	ReadAck 0x00000000
+line num is 5549	Read ExposureAuto 0x0004Byte
+line num is 5551	ReadAck 0x00000000
+line num is 5552	Read ExposureTime 0x0004Byte
+line num is 5554	ReadAck 0x00002710
+line num is 5555	Read ExposureAuto 0x0004Byte
+line num is 5557	ReadAck 0x00000000
+line num is 5558	Read GainAuto_All 0x0004Byte
+line num is 5560	ReadAck 0x00000000
+line num is 5561	Read BalanceWhiteAuto 0x0004Byte
+line num is 5563	ReadAck 0x00000000
+line num is 5564	Read BalanceWhiteAuto 0x0004Byte
+line num is 5566	ReadAck 0x00000000
+line num is 5567	Read BalanceWhiteAuto 0x0004Byte
+line num is 5569	ReadAck 0x00000000
+line num is 5570	Read BalanceWhiteAuto 0x0004Byte
+line num is 5572	ReadAck 0x00000000
+line num is 5573	Read BalanceRatio_Red 0x0004Byte
+line num is 5575	ReadAck 0x00000100
+line num is 5576	Read BalanceWhiteAuto 0x0004Byte
+line num is 5578	ReadAck 0x00000000
+line num is 5579	Read DeviceLinkCurrentThroughput_Link0 0x0004Byte
+line num is 5581	ReadAck 0x0006566d
+line num is 5582	Read LineStatus_Line0 0x0004Byte
+line num is 5584	ReadAck 0x00000000
+line num is 5585	Read LineStatusAll 0x0004Byte
+line num is 5587	ReadAck 0x0000000e
+line num is 5588	Read BalanceWhiteAuto 0x0004Byte
+line num is 5590	ReadAck 0x00000000
+line num is 5591	Read ExposureAuto 0x0004Byte
+line num is 5593	ReadAck 0x00000000
+line num is 5594	Read GainAuto_All 0x0004Byte
+line num is 5596	ReadAck 0x00000000
+line num is 5597	Read GainAuto_All 0x0004Byte
+line num is 5599	ReadAck 0x00000000
+line num is 5600	Read GainAuto_All 0x0004Byte
+line num is 5602	ReadAck 0x00000000
+line num is 5603	Read GainAuto_All 0x0004Byte
+line num is 5605	ReadAck 0x00000000
+line num is 5606	Read Gain_All 0x0004Byte
+line num is 5608	ReadAck 0x00000000
+line num is 5609	Read GainAuto_All 0x0004Byte
+line num is 5611	ReadAck 0x00000000
+line num is 5612	Read UnKnown RegAddr 0x0004Byte
+line num is 5614	ReadAck 0x000003e1
+line num is 5615	Read ExposureAuto 0x0004Byte
+line num is 5617	ReadAck 0x00000000
+line num is 5618	Read ExposureAuto 0x0004Byte
+line num is 5620	ReadAck 0x00000000
+line num is 5621	Read ExposureAuto 0x0004Byte
+line num is 5623	ReadAck 0x00000000
+line num is 5624	Read ExposureAuto 0x0004Byte
+line num is 5626	ReadAck 0x00000000
+line num is 5627	Read ExposureTime 0x0004Byte
+line num is 5629	ReadAck 0x00002710
+line num is 5630	Read ExposureAuto 0x0004Byte
+line num is 5632	ReadAck 0x00000000
+line num is 5633	Read GainAuto_All 0x0004Byte
+line num is 5635	ReadAck 0x00000000
+line num is 5636	Read BalanceWhiteAuto 0x0004Byte
+line num is 5638	ReadAck 0x00000000
+line num is 5639	Read BalanceWhiteAuto 0x0004Byte
+line num is 5641	ReadAck 0x00000000
+line num is 5642	Read BalanceWhiteAuto 0x0004Byte
+line num is 5644	ReadAck 0x00000000
+line num is 5645	Read BalanceWhiteAuto 0x0004Byte
+line num is 5647	ReadAck 0x00000000
+line num is 5648	Read BalanceRatio_Red 0x0004Byte
+line num is 5650	ReadAck 0x00000100
+line num is 5651	Read BalanceWhiteAuto 0x0004Byte
+line num is 5653	ReadAck 0x00000000
+line num is 5654	Read DeviceLinkCurrentThroughput_Link0 0x0004Byte
+line num is 5656	ReadAck 0x0006566d
+line num is 5657	Read LineStatus_Line0 0x0004Byte
+line num is 5659	ReadAck 0x00000000
+line num is 5660	Read LineStatusAll 0x0004Byte
+line num is 5662	ReadAck 0x0000000e
+line num is 5663	Read BalanceWhiteAuto 0x0004Byte
+line num is 5665	ReadAck 0x00000000
+line num is 5666	Read ExposureAuto 0x0004Byte
+line num is 5668	ReadAck 0x00000000
+line num is 5669	Read GainAuto_All 0x0004Byte
+line num is 5671	ReadAck 0x00000000
+line num is 5672	Read GainAuto_All 0x0004Byte
+line num is 5674	ReadAck 0x00000000
+line num is 5675	Read GainAuto_All 0x0004Byte
+line num is 5677	ReadAck 0x00000000
+line num is 5678	Read GainAuto_All 0x0004Byte
+line num is 5680	ReadAck 0x00000000
+line num is 5681	Read Gain_All 0x0004Byte
+line num is 5683	ReadAck 0x00000000
+line num is 5684	Read GainAuto_All 0x0004Byte
+line num is 5686	ReadAck 0x00000000
+line num is 5687	Read UnKnown RegAddr 0x0004Byte
+line num is 5689	ReadAck 0x000003e1
+line num is 5690	Read ExposureAuto 0x0004Byte
+line num is 5692	ReadAck 0x00000000
+line num is 5693	Read ExposureAuto 0x0004Byte
+line num is 5695	ReadAck 0x00000000
+line num is 5696	Read ExposureAuto 0x0004Byte
+line num is 5698	ReadAck 0x00000000
+line num is 5699	Read ExposureAuto 0x0004Byte
+line num is 5701	ReadAck 0x00000000
+line num is 5702	Read ExposureTime 0x0004Byte
+line num is 5704	ReadAck 0x00002710
+line num is 5705	Read ExposureAuto 0x0004Byte
+line num is 5707	ReadAck 0x00000000
+line num is 5708	Read GainAuto_All 0x0004Byte
+line num is 5710	ReadAck 0x00000000
+line num is 5711	Read BalanceWhiteAuto 0x0004Byte
+line num is 5713	ReadAck 0x00000000
+line num is 5714	Read BalanceWhiteAuto 0x0004Byte
+line num is 5716	ReadAck 0x00000000
+line num is 5717	Read BalanceWhiteAuto 0x0004Byte
+line num is 5719	ReadAck 0x00000000
+line num is 5720	Read BalanceWhiteAuto 0x0004Byte
+line num is 5722	ReadAck 0x00000000
+line num is 5723	Read BalanceRatio_Red 0x0004Byte
+line num is 5725	ReadAck 0x00000100
+line num is 5726	Read BalanceWhiteAuto 0x0004Byte
+line num is 5728	ReadAck 0x00000000
+line num is 5729	Read DeviceLinkCurrentThroughput_Link0 0x0004Byte
+line num is 5731	ReadAck 0x0006566d
+line num is 5732	Read LineStatus_Line0 0x0004Byte
+line num is 5734	ReadAck 0x00000000
+line num is 5735	Read LineStatusAll 0x0004Byte
+line num is 5737	ReadAck 0x0000000e
+line num is 5738	Read BalanceWhiteAuto 0x0004Byte
+line num is 5740	ReadAck 0x00000000
+line num is 5741	Read ExposureAuto 0x0004Byte
+line num is 5743	ReadAck 0x00000000
+line num is 5744	Read GainAuto_All 0x0004Byte
+line num is 5746	ReadAck 0x00000000
+line num is 5747	Read GainAuto_All 0x0004Byte
+line num is 5749	ReadAck 0x00000000
+line num is 5750	Read GainAuto_All 0x0004Byte
+line num is 5752	ReadAck 0x00000000
+line num is 5753	Read GainAuto_All 0x0004Byte
+line num is 5755	ReadAck 0x00000000
+line num is 5756	Read Gain_All 0x0004Byte
+line num is 5758	ReadAck 0x00000000
+line num is 5759	Read GainAuto_All 0x0004Byte
+line num is 5761	ReadAck 0x00000000
+line num is 5762	Read UnKnown RegAddr 0x0004Byte
+line num is 5764	ReadAck 0x000003e1
+line num is 5765	Read ExposureAuto 0x0004Byte
+line num is 5767	ReadAck 0x00000000
+line num is 5768	Read ExposureAuto 0x0004Byte
+line num is 5770	ReadAck 0x00000000
+line num is 5771	Read ExposureAuto 0x0004Byte
+line num is 5773	ReadAck 0x00000000
+line num is 5774	Read ExposureAuto 0x0004Byte
+line num is 5776	ReadAck 0x00000000
+line num is 5777	Read ExposureTime 0x0004Byte
+line num is 5779	ReadAck 0x00002710
+line num is 5780	Read ExposureAuto 0x0004Byte
+line num is 5782	ReadAck 0x00000000
+line num is 5783	Read GainAuto_All 0x0004Byte
+line num is 5785	ReadAck 0x00000000
+line num is 5786	Read BalanceWhiteAuto 0x0004Byte
+line num is 5788	ReadAck 0x00000000
+line num is 5789	Read BalanceWhiteAuto 0x0004Byte
+line num is 5791	ReadAck 0x00000000
+line num is 5792	Read BalanceWhiteAuto 0x0004Byte
+line num is 5794	ReadAck 0x00000000
+line num is 5795	Read BalanceWhiteAuto 0x0004Byte
+line num is 5797	ReadAck 0x00000000
+line num is 5798	Read BalanceRatio_Red 0x0004Byte
+line num is 5800	ReadAck 0x00000100
+line num is 5801	Read BalanceWhiteAuto 0x0004Byte
+line num is 5803	ReadAck 0x00000000
+line num is 5804	Read DeviceLinkCurrentThroughput_Link0 0x0004Byte
+line num is 5806	ReadAck 0x0006566d
+line num is 5807	Read LineStatus_Line0 0x0004Byte
+line num is 5809	ReadAck 0x00000000
+line num is 5810	Read LineStatusAll 0x0004Byte
+line num is 5812	ReadAck 0x0000000e
+line num is 5813	Read BalanceWhiteAuto 0x0004Byte
+line num is 5815	ReadAck 0x00000000
+line num is 5816	Read ExposureAuto 0x0004Byte
+line num is 5818	ReadAck 0x00000000
+line num is 5819	Read GainAuto_All 0x0004Byte
+line num is 5821	ReadAck 0x00000000
+line num is 5822	Read GainAuto_All 0x0004Byte
+line num is 5824	ReadAck 0x00000000
+line num is 5825	Read GainAuto_All 0x0004Byte
+line num is 5827	ReadAck 0x00000000
+line num is 5828	Read GainAuto_All 0x0004Byte
+line num is 5830	ReadAck 0x00000000
+line num is 5831	Read Gain_All 0x0004Byte
+line num is 5833	ReadAck 0x00000000
+line num is 5834	Read GainAuto_All 0x0004Byte
+line num is 5836	ReadAck 0x00000000
+line num is 5837	Read UnKnown RegAddr 0x0004Byte
+line num is 5839	ReadAck 0x000003e1
+line num is 5840	Read ExposureAuto 0x0004Byte
+line num is 5842	ReadAck 0x00000000
+line num is 5843	Read ExposureAuto 0x0004Byte
+line num is 5845	ReadAck 0x00000000
+line num is 5846	Read ExposureAuto 0x0004Byte
+line num is 5848	ReadAck 0x00000000
+line num is 5849	Read ExposureAuto 0x0004Byte
+line num is 5851	ReadAck 0x00000000
+line num is 5852	Read ExposureTime 0x0004Byte
+line num is 5854	ReadAck 0x00002710
+line num is 5855	Read ExposureAuto 0x0004Byte
+line num is 5857	ReadAck 0x00000000
+line num is 5858	Read GainAuto_All 0x0004Byte
+line num is 5860	ReadAck 0x00000000
+line num is 5861	Read BalanceWhiteAuto 0x0004Byte
+line num is 5863	ReadAck 0x00000000
+line num is 5864	Read BalanceWhiteAuto 0x0004Byte
+line num is 5866	ReadAck 0x00000000
+line num is 5867	Read BalanceWhiteAuto 0x0004Byte
+line num is 5869	ReadAck 0x00000000
+line num is 5870	Read BalanceWhiteAuto 0x0004Byte
+line num is 5872	ReadAck 0x00000000
+line num is 5873	Read BalanceRatio_Red 0x0004Byte
+line num is 5875	ReadAck 0x00000100
+line num is 5876	Read BalanceWhiteAuto 0x0004Byte
+line num is 5878	ReadAck 0x00000000
+line num is 5879	Read DeviceLinkCurrentThroughput_Link0 0x0004Byte
+line num is 5881	ReadAck 0x0006566d
+line num is 5882	Read LineStatus_Line0 0x0004Byte
+line num is 5884	ReadAck 0x00000000
+line num is 5885	Read LineStatusAll 0x0004Byte
+line num is 5887	ReadAck 0x0000000e
+line num is 5888	Read BalanceWhiteAuto 0x0004Byte
+line num is 5890	ReadAck 0x00000000
+line num is 5891	Read ExposureAuto 0x0004Byte
+line num is 5893	ReadAck 0x00000000
+line num is 5894	Read GainAuto_All 0x0004Byte
+line num is 5896	ReadAck 0x00000000
+line num is 5897	Read GainAuto_All 0x0004Byte
+line num is 5899	ReadAck 0x00000000
+line num is 5900	Read GainAuto_All 0x0004Byte
+line num is 5902	ReadAck 0x00000000
+line num is 5903	Read GainAuto_All 0x0004Byte
+line num is 5905	ReadAck 0x00000000
+line num is 5906	Read Gain_All 0x0004Byte
+line num is 5908	ReadAck 0x00000000
+line num is 5909	Read GainAuto_All 0x0004Byte
+line num is 5911	ReadAck 0x00000000
+line num is 5912	Read UnKnown RegAddr 0x0004Byte
+line num is 5914	ReadAck 0x000003e1
+line num is 5915	Read ExposureAuto 0x0004Byte
+line num is 5917	ReadAck 0x00000000
+line num is 5918	Read ExposureAuto 0x0004Byte
+line num is 5920	ReadAck 0x00000000
+line num is 5921	Read ExposureAuto 0x0004Byte
+line num is 5923	ReadAck 0x00000000
+line num is 5924	Read ExposureAuto 0x0004Byte
+line num is 5926	ReadAck 0x00000000
+line num is 5927	Read ExposureTime 0x0004Byte
+line num is 5929	ReadAck 0x00002710
+line num is 5930	Read ExposureAuto 0x0004Byte
+line num is 5932	ReadAck 0x00000000
+line num is 5933	Read GainAuto_All 0x0004Byte
+line num is 5935	ReadAck 0x00000000
+line num is 5936	Read BalanceWhiteAuto 0x0004Byte
+line num is 5938	ReadAck 0x00000000
+line num is 5939	Read BalanceWhiteAuto 0x0004Byte
+line num is 5941	ReadAck 0x00000000
+line num is 5942	Read BalanceWhiteAuto 0x0004Byte
+line num is 5944	ReadAck 0x00000000
+line num is 5945	Read BalanceWhiteAuto 0x0004Byte
+line num is 5947	ReadAck 0x00000000
+line num is 5948	Read BalanceRatio_Red 0x0004Byte
+line num is 5950	ReadAck 0x00000100
+line num is 5951	Read BalanceWhiteAuto 0x0004Byte
+line num is 5953	ReadAck 0x00000000
+line num is 5954	Read DeviceLinkCurrentThroughput_Link0 0x0004Byte
+line num is 5956	ReadAck 0x0006566d
+line num is 5957	Read LineStatus_Line0 0x0004Byte
+line num is 5959	ReadAck 0x00000000
+line num is 5960	Read LineStatusAll 0x0004Byte
+line num is 5962	ReadAck 0x0000000e
+line num is 5963	Read BalanceWhiteAuto 0x0004Byte
+line num is 5965	ReadAck 0x00000000
+line num is 5966	Read ExposureAuto 0x0004Byte
+line num is 5968	ReadAck 0x00000000
+line num is 5969	Read GainAuto_All 0x0004Byte
+line num is 5971	ReadAck 0x00000000
+line num is 5972	Read GainAuto_All 0x0004Byte
+line num is 5974	ReadAck 0x00000000
+line num is 5975	Read GainAuto_All 0x0004Byte
+line num is 5977	ReadAck 0x00000000
+line num is 5978	Read GainAuto_All 0x0004Byte
+line num is 5980	ReadAck 0x00000000
+line num is 5981	Read Gain_All 0x0004Byte
+line num is 5983	ReadAck 0x00000000
+line num is 5984	Read GainAuto_All 0x0004Byte
+line num is 5986	ReadAck 0x00000000
+line num is 5987	Read UnKnown RegAddr 0x0004Byte
+line num is 5989	ReadAck 0x000003e1
+line num is 5990	Read ExposureAuto 0x0004Byte
+line num is 5992	ReadAck 0x00000000
+line num is 5993	Read ExposureAuto 0x0004Byte
+line num is 5995	ReadAck 0x00000000
+line num is 5996	Read ExposureAuto 0x0004Byte
+line num is 5998	ReadAck 0x00000000
+line num is 5999	Read ExposureAuto 0x0004Byte
+line num is 6001	ReadAck 0x00000000
+line num is 6002	Read ExposureTime 0x0004Byte
+line num is 6004	ReadAck 0x00002710
+line num is 6005	Read ExposureAuto 0x0004Byte
+line num is 6007	ReadAck 0x00000000
+line num is 6008	Read GainAuto_All 0x0004Byte
+line num is 6010	ReadAck 0x00000000
+line num is 6011	Read BalanceWhiteAuto 0x0004Byte
+line num is 6013	ReadAck 0x00000000
+line num is 6014	Read BalanceWhiteAuto 0x0004Byte
+line num is 6016	ReadAck 0x00000000
+line num is 6017	Read BalanceWhiteAuto 0x0004Byte
+line num is 6019	ReadAck 0x00000000
+line num is 6020	Read BalanceWhiteAuto 0x0004Byte
+line num is 6022	ReadAck 0x00000000
+line num is 6023	Read BalanceRatio_Red 0x0004Byte
+line num is 6025	ReadAck 0x00000100
+line num is 6026	Read BalanceWhiteAuto 0x0004Byte
+line num is 6028	ReadAck 0x00000000
+line num is 6029	Read DeviceLinkCurrentThroughput_Link0 0x0004Byte
+line num is 6031	ReadAck 0x0006566d
+line num is 6032	Read LineStatus_Line0 0x0004Byte
+line num is 6034	ReadAck 0x00000000
+line num is 6035	Read LineStatusAll 0x0004Byte
+line num is 6037	ReadAck 0x0000000e
+line num is 6038	Read BalanceWhiteAuto 0x0004Byte
+line num is 6040	ReadAck 0x00000000
+line num is 6041	Read ExposureAuto 0x0004Byte
+line num is 6043	ReadAck 0x00000000
+line num is 6044	Read GainAuto_All 0x0004Byte
+line num is 6046	ReadAck 0x00000000
+line num is 6047	Read GainAuto_All 0x0004Byte
+line num is 6049	ReadAck 0x00000000
+line num is 6050	Read GainAuto_All 0x0004Byte
+line num is 6052	ReadAck 0x00000000
+line num is 6053	Read GainAuto_All 0x0004Byte
+line num is 6055	ReadAck 0x00000000
+line num is 6056	Read Gain_All 0x0004Byte
+line num is 6058	ReadAck 0x00000000
+line num is 6059	Read GainAuto_All 0x0004Byte
+line num is 6061	ReadAck 0x00000000
+line num is 6062	Read UnKnown RegAddr 0x0004Byte
+line num is 6064	ReadAck 0x000003e1
+line num is 6065	Read ExposureAuto 0x0004Byte
+line num is 6067	ReadAck 0x00000000
+line num is 6068	Read ExposureAuto 0x0004Byte
+line num is 6070	ReadAck 0x00000000
+line num is 6071	Read ExposureAuto 0x0004Byte
+line num is 6073	ReadAck 0x00000000
+line num is 6074	Read ExposureAuto 0x0004Byte
+line num is 6076	ReadAck 0x00000000
+line num is 6077	Read ExposureTime 0x0004Byte
+line num is 6079	ReadAck 0x00002710
+line num is 6080	Read ExposureAuto 0x0004Byte
+line num is 6082	ReadAck 0x00000000
+line num is 6083	Read GainAuto_All 0x0004Byte
+line num is 6085	ReadAck 0x00000000
+line num is 6086	Read BalanceWhiteAuto 0x0004Byte
+line num is 6088	ReadAck 0x00000000
+line num is 6089	Read BalanceWhiteAuto 0x0004Byte
+line num is 6091	ReadAck 0x00000000
+line num is 6092	Read BalanceWhiteAuto 0x0004Byte
+line num is 6094	ReadAck 0x00000000
+line num is 6095	Read BalanceWhiteAuto 0x0004Byte
+line num is 6097	ReadAck 0x00000000
+line num is 6098	Read BalanceRatio_Red 0x0004Byte
+line num is 6100	ReadAck 0x00000100
+line num is 6101	Read BalanceWhiteAuto 0x0004Byte
+line num is 6103	ReadAck 0x00000000
