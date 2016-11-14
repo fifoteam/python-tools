@@ -180,11 +180,11 @@ def u3vc_proc(*params) :
 		elif(addr[2:4]=="02"):
 			if(addr[4:8]=="0000"):			reg_name	= "SI Info"                        ;
 			elif(addr[4:8]=="0004"):		reg_name	= "SI Control"                     ;
-			elif(addr[4:8]=="0008"):		reg_name	= "SI Required Payload Size"       ;
+			elif(addr[4:8]=="0008"):		reg_name	= "SI Required Payload Size";
 			elif(addr[4:8]=="0010"):		reg_name	= "SI Required Leader Size"        ;
-			elif(addr[4:8]=="0014"):		reg_name	= "SI Required Trailer Size"       ;
+			elif(addr[4:8]=="0014"):		reg_name	= "SI Required Trailer Size";
 			elif(addr[4:8]=="0018"):		reg_name	= "SI Maximum Leader Size"         ;
-			elif(addr[4:8]=="001C"):		reg_name	= "SI Payload Transfer Size"       ;
+			elif(addr[4:8]=="001C"):		reg_name	= "SI Payload Transfer Size";
 			elif(addr[4:8]=="0020"):		reg_name	= "SI Payload Transfer Count"      ;
 			elif(addr[4:8]=="0024"):		reg_name	= "SI Payload Final Transfer1 Size";
 			elif(addr[4:8]=="0028"):		reg_name	= "SI Payload Final Transfer2 Size";
@@ -206,7 +206,7 @@ def u3vc_proc(*params) :
 			elif(addr[4:8]=="001C"):		reg_name	= "OffsetXImplemented_Region0"                    ;
 			elif(addr[4:8]=="0020"):		reg_name	= "OffsetYImplemented_Region0"                    ;
 			elif(addr[4:8]=="0024"):		reg_name	= "PixelFormatImplemented"                        ;
-			elif(addr[4:8]=="0028"):		reg_name	= "TestPatternGeneratorSelectorImplemented"       ;
+			elif(addr[4:8]=="0028"):		reg_name	= "TestPatternGeneratorSelectorImplemented";
 			elif(addr[4:8]=="002C"):		reg_name	= "TestPatternImplemented_Region0"                ;
 			elif(addr[4:8]=="0030"):		reg_name	= "AcquisitionModeImplemented"                    ;
 			elif(addr[4:8]=="0034"):		reg_name	= "AcquisitionStartImplemented"                   ;
@@ -215,7 +215,7 @@ def u3vc_proc(*params) :
 			elif(addr[4:8]=="0040"):		reg_name	= "TriggerModeImplemented_FrameStart"             ;
 			elif(addr[4:8]=="0044"):		reg_name	= "TriggerSoftwareImplemented_FrameStart"         ;
 			elif(addr[4:8]=="0048"):		reg_name	= "TriggerSourceImplemented_FrameStart"           ;
-			elif(addr[4:8]=="004C"):		reg_name	= "TriggerActivationImplemented_FrameStart"       ;
+			elif(addr[4:8]=="004C"):		reg_name	= "TriggerActivationImplemented_FrameStart";
 			elif(addr[4:8]=="0050"):		reg_name	= "TriggerDelayImplemented_FrameStart"            ;
 			elif(addr[4:8]=="0054"):		reg_name	= "TriggerFilterRisingEdgeImplemented_FrameStart" ;
 			elif(addr[4:8]=="0058"):		reg_name	= "TriggerFilterFallingEdgeImplemented_FrameStart";
@@ -295,19 +295,154 @@ def u3vc_proc(*params) :
 			elif(addr[4:8]=="0180"):		reg_name	= "TestPendingAckImplemented"                     ;
 			elif(addr[4:8]=="0184"):		reg_name	= "GammaParamImplemented"                         ;
 			elif(addr[4:8]=="0188"):		reg_name	= "ContrastParamImplemented"                      ;
+			elif(addr[4:8]=="018C"):		reg_name	= "ExposureDelay"                      				;
+
+			elif(addr[4:8]=="0190"):		reg_name	= "AcquisitionFrameRateModeImplemented";
+			elif(addr[4:8]=="0194"):		reg_name	= "AcquisitionFrameRateImplemented";
+			elif(addr[4:8]=="0198"):		reg_name	= "MutilRoiModeImplemented";
+			elif(addr[4:8]=="019C"):		reg_name	= "MutilRoiModeImplemented";
+			elif(addr[4:8]=="01A0"):		reg_name	= "WidthMutilRoiImplemented_Region0";
+			elif(addr[4:8]=="01A4"):		reg_name	= "HeightMutilRoiImplemented_Region0";
+			elif(addr[4:8]=="01A8"):		reg_name	= "OffsetXMutilRoiImplemented_Region0";
+			elif(addr[4:8]=="01AC"):		reg_name	= "OffsetYMutilRoiImplemented_Region0";
+			elif(addr[4:8]=="01B0"):		reg_name	= "WidthMutilRoiImplemented_Region1";
+			elif(addr[4:8]=="01B4"):		reg_name	= "HeightMutilRoiImplemented_Region1";
+			elif(addr[4:8]=="01B8"):		reg_name	= "OffsetXMutilRoiImplemented_Region1";
+			elif(addr[4:8]=="01BC"):		reg_name	= "OffsetYMutilRoiImplemented_Region1";
+			elif(addr[4:8]=="01C0"):		reg_name	= "WidthMutilRoiImplemented_Region2";
+			elif(addr[4:8]=="01C4"):		reg_name	= "HeightMutilRoiImplemented_Region2";
+			elif(addr[4:8]=="01C8"):		reg_name	= "OffsetXMutilRoiImplemented_Region2";
+			elif(addr[4:8]=="01CC"):		reg_name	= "OffsetYMutilRoiImplemented_Region2";
+			elif(addr[4:8]=="01D0"):		reg_name	= "WidthMutilRoiImplemented_Region3";
+			elif(addr[4:8]=="01D4"):		reg_name	= "HeightMutilRoiImplemented_Region3";
+			elif(addr[4:8]=="01D8"):		reg_name	= "OffsetXMutilRoiImplemented_Region3";
+			elif(addr[4:8]=="01DC"):		reg_name	= "OffsetYMutilRoiImplemented_Region3";
+			elif(addr[4:8]=="01E0"):		reg_name	= "WidthMutilRoiImplemented_Region4";
+			elif(addr[4:8]=="01E4"):		reg_name	= "HeightMutilRoiImplemented_Region4";
+			elif(addr[4:8]=="01E8"):		reg_name	= "OffsetXMutilRoiImplemented_Region4";
+			elif(addr[4:8]=="01EC"):		reg_name	= "OffsetYMutilRoiImplemented_Region4";
+			elif(addr[4:8]=="01F0"):		reg_name	= "WidthMutilRoiImplemented_Region5";
+			elif(addr[4:8]=="01F4"):		reg_name	= "HeightMutilRoiImplemented_Region5";
+			elif(addr[4:8]=="01F8"):		reg_name	= "OffsetXMutilRoiImplemented_Region5";
+			elif(addr[4:8]=="01FC"):		reg_name	= "OffsetYMutilRoiImplemented_Region5";
+			elif(addr[4:8]=="0200"):		reg_name	= "WidthMutilRoiImplemented_Region6";
+			elif(addr[4:8]=="0204"):		reg_name	= "HeightMutilRoiImplemented_Region6";
+			elif(addr[4:8]=="0208"):		reg_name	= "OffsetXMutilRoiImplemented_Region6";
+			elif(addr[4:8]=="020C"):		reg_name	= "OffsetYMutilRoiImplemented_Region6";
+			elif(addr[4:8]=="0210"):		reg_name	= "WidthMutilRoiImplemented_Region7";
+			elif(addr[4:8]=="0214"):		reg_name	= "HeightMutilRoiImplemented_Region7";
+			elif(addr[4:8]=="0218"):		reg_name	= "OffsetXMutilRoiImplemented_Region7";
+			elif(addr[4:8]=="021C"):		reg_name	= "OffsetYMutilRoiImplemented_Region7";
+			elif(addr[4:8]=="0220"):		reg_name	= "WidthMutilRoiImplemented_Region8";
+			elif(addr[4:8]=="0224"):		reg_name	= "HeightMutilRoiImplemented_Region8";
+			elif(addr[4:8]=="0228"):		reg_name	= "OffsetXMutilRoiImplemented_Region8";
+			elif(addr[4:8]=="022C"):		reg_name	= "OffsetYMutilRoiImplemented_Region8";
+			elif(addr[4:8]=="0230"):		reg_name	= "WidthMutilRoiImplemented_Region9";
+			elif(addr[4:8]=="0234"):		reg_name	= "HeightMutilRoiImplemented_Region9";
+			elif(addr[4:8]=="0238"):		reg_name	= "OffsetXMutilRoiImplemented_Region9";
+			elif(addr[4:8]=="023C"):		reg_name	= "OffsetYMutilRoiImplemented_Region9";
+			elif(addr[4:8]=="0240"):		reg_name	= "WidthMutilRoiImplemented_Region10";
+			elif(addr[4:8]=="0244"):		reg_name	= "HeightMutilRoiImplemented_Region10";
+			elif(addr[4:8]=="0248"):		reg_name	= "OffsetXMutilRoiImplemented_Region10";
+			elif(addr[4:8]=="024C"):		reg_name	= "OffsetYMutilRoiImplemented_Region10";
+			elif(addr[4:8]=="0250"):		reg_name	= "WidthMutilRoiImplemented_Region11";
+			elif(addr[4:8]=="0254"):		reg_name	= "HeightMutilRoiImplemented_Region11";
+			elif(addr[4:8]=="0258"):		reg_name	= "OffsetXMutilRoiImplemented_Region11";
+			elif(addr[4:8]=="025C"):		reg_name	= "OffsetYMutilRoiImplemented_Region11";
+			elif(addr[4:8]=="0260"):		reg_name	= "WidthMutilRoiImplemented_Region12";
+			elif(addr[4:8]=="0264"):		reg_name	= "HeightMutilRoiImplemented_Region12";
+			elif(addr[4:8]=="0268"):		reg_name	= "OffsetXMutilRoiImplemented_Region12";
+			elif(addr[4:8]=="026C"):		reg_name	= "OffsetYMutilRoiImplemented_Region12";
+			elif(addr[4:8]=="0270"):		reg_name	= "WidthMutilRoiImplemented_Region13";
+			elif(addr[4:8]=="0274"):		reg_name	= "HeightMutilRoiImplemented_Region13";
+			elif(addr[4:8]=="0278"):		reg_name	= "OffsetXMutilRoiImplemented_Region13";
+			elif(addr[4:8]=="027C"):		reg_name	= "OffsetYMutilRoiImplemented_Region13";
+			elif(addr[4:8]=="0280"):		reg_name	= "WidthMutilRoiImplemented_Region14";
+			elif(addr[4:8]=="0284"):		reg_name	= "HeightMutilRoiImplemented_Region14";
+			elif(addr[4:8]=="0288"):		reg_name	= "OffsetXMutilRoiImplemented_Region14";
+			elif(addr[4:8]=="028C"):		reg_name	= "OffsetYMutilRoiImplemented_Region14";
+			elif(addr[4:8]=="0290"):		reg_name	= "WidthMutilRoiImplemented_Region15";
+			elif(addr[4:8]=="0294"):		reg_name	= "HeightMutilRoiImplemented_Region15";
+			elif(addr[4:8]=="0298"):		reg_name	= "OffsetXMutilRoiImplemented_Region15";
+			elif(addr[4:8]=="029C"):		reg_name	= "OffsetYMutilRoiImplemented_Region15";
+			elif(addr[4:8]=="02A0"):		reg_name	= "WidthMutilRoiImplemented_Region16";
+			elif(addr[4:8]=="02A4"):		reg_name	= "HeightMutilRoiImplemented_Region16";
+			elif(addr[4:8]=="02A8"):		reg_name	= "OffsetXMutilRoiImplemented_Region16";
+			elif(addr[4:8]=="02AC"):		reg_name	= "OffsetYMutilRoiImplemented_Region16";
+			elif(addr[4:8]=="02B0"):		reg_name	= "WidthMutilRoiImplemented_Region17";
+			elif(addr[4:8]=="02B4"):		reg_name	= "HeightMutilRoiImplemented_Region17";
+			elif(addr[4:8]=="02B8"):		reg_name	= "OffsetXMutilRoiImplemented_Region17";
+			elif(addr[4:8]=="02BC"):		reg_name	= "OffsetYMutilRoiImplemented_Region17";
+			elif(addr[4:8]=="02C0"):		reg_name	= "WidthMutilRoiImplemented_Region18";
+			elif(addr[4:8]=="02C4"):		reg_name	= "HeightMutilRoiImplemented_Region18";
+			elif(addr[4:8]=="02C8"):		reg_name	= "OffsetXMutilRoiImplemented_Region18";
+			elif(addr[4:8]=="02CC"):		reg_name	= "OffsetYMutilRoiImplemented_Region18";
+			elif(addr[4:8]=="02D0"):		reg_name	= "WidthMutilRoiImplemented_Region19";
+			elif(addr[4:8]=="02D4"):		reg_name	= "HeightMutilRoiImplemented_Region19";
+			elif(addr[4:8]=="02D8"):		reg_name	= "OffsetXMutilRoiImplemented_Region19";
+			elif(addr[4:8]=="02DC"):		reg_name	= "OffsetYMutilRoiImplemented_Region19";
+			elif(addr[4:8]=="02E0"):		reg_name	= "WidthMutilRoiImplemented_Region20";
+			elif(addr[4:8]=="02E4"):		reg_name	= "HeightMutilRoiImplemented_Region20";
+			elif(addr[4:8]=="02E8"):		reg_name	= "OffsetXMutilRoiImplemented_Region20";
+			elif(addr[4:8]=="02EC"):		reg_name	= "OffsetYMutilRoiImplemented_Region20";
+			elif(addr[4:8]=="02F0"):		reg_name	= "WidthMutilRoiImplemented_Region21";
+			elif(addr[4:8]=="02F4"):		reg_name	= "HeightMutilRoiImplemented_Region21";
+			elif(addr[4:8]=="02F8"):		reg_name	= "OffsetXMutilRoiImplemented_Region21";
+			elif(addr[4:8]=="02FC"):		reg_name	= "OffsetYMutilRoiImplemented_Region21";
+			elif(addr[4:8]=="0300"):		reg_name	= "WidthMutilRoiImplemented_Region22";
+			elif(addr[4:8]=="0304"):		reg_name	= "HeightMutilRoiImplemented_Region22";
+			elif(addr[4:8]=="0308"):		reg_name	= "OffsetXMutilRoiImplemented_Region22";
+			elif(addr[4:8]=="030C"):		reg_name	= "OffsetYMutilRoiImplemented_Region22";
+			elif(addr[4:8]=="0310"):		reg_name	= "WidthMutilRoiImplemented_Region23";
+			elif(addr[4:8]=="0314"):		reg_name	= "HeightMutilRoiImplemented_Region23";
+			elif(addr[4:8]=="0318"):		reg_name	= "OffsetXMutilRoiImplemented_Region23";
+			elif(addr[4:8]=="031C"):		reg_name	= "OffsetYMutilRoiImplemented_Region23";
+			elif(addr[4:8]=="0320"):		reg_name	= "WidthMutilRoiImplemented_Region24";
+			elif(addr[4:8]=="0324"):		reg_name	= "HeightMutilRoiImplemented_Region24";
+			elif(addr[4:8]=="0328"):		reg_name	= "OffsetXMutilRoiImplemented_Region24";
+			elif(addr[4:8]=="032C"):		reg_name	= "OffsetYMutilRoiImplemented_Region24";
+			elif(addr[4:8]=="0330"):		reg_name	= "WidthMutilRoiImplemented_Region25";
+			elif(addr[4:8]=="0334"):		reg_name	= "HeightMutilRoiImplemented_Region25";
+			elif(addr[4:8]=="0338"):		reg_name	= "OffsetXMutilRoiImplemented_Region25";
+			elif(addr[4:8]=="033C"):		reg_name	= "OffsetYMutilRoiImplemented_Region25";
+			elif(addr[4:8]=="0340"):		reg_name	= "WidthMutilRoiImplemented_Region26";
+			elif(addr[4:8]=="0344"):		reg_name	= "HeightMutilRoiImplemented_Region26";
+			elif(addr[4:8]=="0348"):		reg_name	= "OffsetXMutilRoiImplemented_Region26";
+			elif(addr[4:8]=="034C"):		reg_name	= "OffsetYMutilRoiImplemented_Region26";
+			elif(addr[4:8]=="0350"):		reg_name	= "WidthMutilRoiImplemented_Region27";
+			elif(addr[4:8]=="0354"):		reg_name	= "HeightMutilRoiImplemented_Region27";
+			elif(addr[4:8]=="0358"):		reg_name	= "OffsetXMutilRoiImplemented_Region27";
+			elif(addr[4:8]=="035C"):		reg_name	= "OffsetYMutilRoiImplemented_Region27";
+			elif(addr[4:8]=="0360"):		reg_name	= "WidthMutilRoiImplemented_Region28";
+			elif(addr[4:8]=="0364"):		reg_name	= "HeightMutilRoiImplemented_Region28";
+			elif(addr[4:8]=="0368"):		reg_name	= "OffsetXMutilRoiImplemented_Region28";
+			elif(addr[4:8]=="036C"):		reg_name	= "OffsetYMutilRoiImplemented_Region28";
+			elif(addr[4:8]=="0370"):		reg_name	= "WidthMutilRoiImplemented_Region29";
+			elif(addr[4:8]=="0374"):		reg_name	= "HeightMutilRoiImplemented_Region29";
+			elif(addr[4:8]=="0378"):		reg_name	= "OffsetXMutilRoiImplemented_Region29";
+			elif(addr[4:8]=="037C"):		reg_name	= "OffsetYMutilRoiImplemented_Region29";
+			elif(addr[4:8]=="0380"):		reg_name	= "WidthMutilRoiImplemented_Region30";
+			elif(addr[4:8]=="0384"):		reg_name	= "HeightMutilRoiImplemented_Region30";
+			elif(addr[4:8]=="0388"):		reg_name	= "OffsetXMutilRoiImplemented_Region30";
+			elif(addr[4:8]=="038C"):		reg_name	= "OffsetYMutilRoiImplemented_Region30";
+			elif(addr[4:8]=="0390"):		reg_name	= "WidthMutilRoiImplemented_Region31";
+			elif(addr[4:8]=="0394"):		reg_name	= "HeightMutilRoiImplemented_Region31";
+			elif(addr[4:8]=="0398"):		reg_name	= "OffsetXMutilRoiImplemented_Region31";
+			elif(addr[4:8]=="039C"):		reg_name	= "OffsetYMutilRoiImplemented_Region31";
+			elif(addr[4:8]=="03A0"):		reg_name	= "CurrentFrameRateImplemented";
 			else: 							reg_name	= "UnKnown RegAddr"	;
 
 		elif(addr[2:4]=="50"):
 			if(addr[4:8]=="0000"):			reg_name	= "RegionSelectorInfo"                     ;
 			elif(addr[4:8]=="0004"):		reg_name	= "PixelFormatInfo_High"                   ;
 			elif(addr[4:8]=="0008"):		reg_name	= "PixelFormatInfo_Low"                    ;
-			elif(addr[4:8]=="000C"):		reg_name	= "TestPatternGeneratorSelectorInfo"       ;
+			elif(addr[4:8]=="000C"):		reg_name	= "TestPatternGeneratorSelectorInfo";
 			elif(addr[4:8]=="0010"):		reg_name	= "TestPatternInfo_Region0"                ;
 			elif(addr[4:8]=="0014"):		reg_name	= "AcquisitionModeInfo"                    ;
 			elif(addr[4:8]=="0018"):		reg_name	= "TriggerSelectorInfo"                    ;
 			elif(addr[4:8]=="001C"):		reg_name	= "TriggerModeInfo_FrameStart"             ;
 			elif(addr[4:8]=="0020"):		reg_name	= "TriggerSourceInfo_FrameStart"           ;
-			elif(addr[4:8]=="0024"):		reg_name	= "TriggerActivationInfo_FrameStart"       ;
+			elif(addr[4:8]=="0024"):		reg_name	= "TriggerActivationInfo_FrameStart";
 			elif(addr[4:8]=="0028"):		reg_name	= "ExposureModeInfo"                       ;
 			elif(addr[4:8]=="002C"):		reg_name	= "ExposureAutoInfo"                       ;
 			elif(addr[4:8]=="0030"):		reg_name	= "LineSelectorInfo"                       ;
@@ -332,6 +467,10 @@ def u3vc_proc(*params) :
 			elif(addr[4:8]=="007C"):		reg_name	= "UserSetSelectorInfo"                    ;
 			elif(addr[4:8]=="0080"):		reg_name	= "UserSetDefaultInfo"                     ;
 			elif(addr[4:8]=="0084"):		reg_name	= "ChunkSelectorInfo"                      ;
+			elif(addr[4:8]=="0088"):		reg_name	= "AcquisitionFrameRateModeInfo"	;
+			elif(addr[4:8]=="008C"):		reg_name	= "MutilRoiModeInfo"    	 		;
+			elif(addr[4:8]=="0090"):		reg_name	= "MutilRoiModeInfo_On"     		;
+			elif(addr[4:8]=="0094"):		reg_name	= "MutilRoiModeInfo_Off"     		;
 			else: 							reg_name	= "UnKnown RegAddr"	;
 
 		elif(addr[2:4]=="60"):
@@ -383,6 +522,204 @@ def u3vc_proc(*params) :
 			elif(addr[4:8]=="00B4"):		reg_name	= "DeviceLinkThroughputLimitMin_Link0"    ;
 			elif(addr[4:8]=="00B8"):		reg_name	= "TestPendingAck_Max"                    ;
 			elif(addr[4:8]=="00BC"):		reg_name	= "TestPendingAck_Min"                    ;
+
+			elif(addr[4:8]=="00C0"):		reg_name	= "ExposureDelayMax";
+			elif(addr[4:8]=="00C4"):		reg_name	= "ExposureDelayMin";
+			elif(addr[4:8]=="00C8"):		reg_name	= "AcquisitionFrameRateMax";
+			elif(addr[4:8]=="00CC"):		reg_name	= "AcquisitionFrameRateMin";
+			elif(addr[4:8]=="00D0"):		reg_name	= "WidthMutilRoiMax_Region0";
+			elif(addr[4:8]=="00D4"):		reg_name	= "WidthMutilRoiMin_Region0";
+			elif(addr[4:8]=="00D8"):		reg_name	= "HeightMutilRoiMax_Region0";
+			elif(addr[4:8]=="00DC"):		reg_name	= "HeightMutilRoiMin_Region0";
+			elif(addr[4:8]=="00E0"):		reg_name	= "OffsetXMutilRoiMin_Region0";
+			elif(addr[4:8]=="00E4"):		reg_name	= "OffsetYMutilRoiMin_Region0";
+			elif(addr[4:8]=="00E8"):		reg_name	= "WidthMutilRoiMax_Region0";
+			elif(addr[4:8]=="00EC"):		reg_name	= "WidthMutilRoiMin_Region0";
+			elif(addr[4:8]=="00F0"):		reg_name	= "HeightMutilRoiMax_Region0";
+			elif(addr[4:8]=="00F4"):		reg_name	= "HeightMutilRoiMin_Region0";
+			elif(addr[4:8]=="00F8"):		reg_name	= "OffsetXMutilRoiMin_Region0";
+			elif(addr[4:8]=="00FC"):		reg_name	= "OffsetYMutilRoiMin_Region0";
+			elif(addr[4:8]=="0100"):		reg_name	= "WidthMutilRoiMax_Region0";
+			elif(addr[4:8]=="0104"):		reg_name	= "WidthMutilRoiMin_Region0";
+			elif(addr[4:8]=="0108"):		reg_name	= "HeightMutilRoiMax_Region0";
+			elif(addr[4:8]=="010C"):		reg_name	= "HeightMutilRoiMin_Region0";
+			elif(addr[4:8]=="0110"):		reg_name	= "OffsetXMutilRoiMin_Region0";
+			elif(addr[4:8]=="0114"):		reg_name	= "OffsetYMutilRoiMin_Region0";
+			elif(addr[4:8]=="0118"):		reg_name	= "WidthMutilRoiMax_Region0";
+			elif(addr[4:8]=="011C"):		reg_name	= "WidthMutilRoiMin_Region0";
+			elif(addr[4:8]=="0120"):		reg_name	= "HeightMutilRoiMax_Region0";
+			elif(addr[4:8]=="0124"):		reg_name	= "HeightMutilRoiMin_Region0";
+			elif(addr[4:8]=="0128"):		reg_name	= "OffsetXMutilRoiMin_Region0";
+			elif(addr[4:8]=="012C"):		reg_name	= "OffsetYMutilRoiMin_Region0";
+			elif(addr[4:8]=="0130"):		reg_name	= "WidthMutilRoiMax_Region0";
+			elif(addr[4:8]=="0134"):		reg_name	= "WidthMutilRoiMin_Region0";
+			elif(addr[4:8]=="0138"):		reg_name	= "HeightMutilRoiMax_Region0";
+			elif(addr[4:8]=="013C"):		reg_name	= "HeightMutilRoiMin_Region0";
+			elif(addr[4:8]=="0140"):		reg_name	= "OffsetXMutilRoiMin_Region0";
+			elif(addr[4:8]=="0144"):		reg_name	= "OffsetYMutilRoiMin_Region0";
+			elif(addr[4:8]=="0148"):		reg_name	= "WidthMutilRoiMax_Region0";
+			elif(addr[4:8]=="014C"):		reg_name	= "WidthMutilRoiMin_Region0";
+			elif(addr[4:8]=="0150"):		reg_name	= "HeightMutilRoiMax_Region0";
+			elif(addr[4:8]=="0154"):		reg_name	= "HeightMutilRoiMin_Region0";
+			elif(addr[4:8]=="0158"):		reg_name	= "OffsetXMutilRoiMin_Region0";
+			elif(addr[4:8]=="015C"):		reg_name	= "OffsetYMutilRoiMin_Region0";
+			elif(addr[4:8]=="0160"):		reg_name	= "WidthMutilRoiMax_Region0";
+			elif(addr[4:8]=="0164"):		reg_name	= "WidthMutilRoiMin_Region0";
+			elif(addr[4:8]=="0168"):		reg_name	= "HeightMutilRoiMax_Region0";
+			elif(addr[4:8]=="016C"):		reg_name	= "HeightMutilRoiMin_Region0";
+			elif(addr[4:8]=="0170"):		reg_name	= "OffsetXMutilRoiMin_Region0";
+			elif(addr[4:8]=="0174"):		reg_name	= "OffsetYMutilRoiMin_Region0";
+			elif(addr[4:8]=="0178"):		reg_name	= "WidthMutilRoiMax_Region0";
+			elif(addr[4:8]=="017C"):		reg_name	= "WidthMutilRoiMin_Region0";
+			elif(addr[4:8]=="0180"):		reg_name	= "HeightMutilRoiMax_Region0";
+			elif(addr[4:8]=="0184"):		reg_name	= "HeightMutilRoiMin_Region0";
+			elif(addr[4:8]=="0188"):		reg_name	= "OffsetXMutilRoiMin_Region0";
+			elif(addr[4:8]=="018C"):		reg_name	= "OffsetYMutilRoiMin_Region0";
+			elif(addr[4:8]=="0190"):		reg_name	= "WidthMutilRoiMax_Region0";
+			elif(addr[4:8]=="0194"):		reg_name	= "WidthMutilRoiMin_Region0";
+			elif(addr[4:8]=="0198"):		reg_name	= "HeightMutilRoiMax_Region0";
+			elif(addr[4:8]=="019C"):		reg_name	= "HeightMutilRoiMin_Region0";
+			elif(addr[4:8]=="01A0"):		reg_name	= "OffsetXMutilRoiMin_Region0";
+			elif(addr[4:8]=="01A4"):		reg_name	= "OffsetYMutilRoiMin_Region0";
+			elif(addr[4:8]=="01A8"):		reg_name	= "WidthMutilRoiMax_Region0";
+			elif(addr[4:8]=="01AC"):		reg_name	= "WidthMutilRoiMin_Region0";
+			elif(addr[4:8]=="01B0"):		reg_name	= "HeightMutilRoiMax_Region0";
+			elif(addr[4:8]=="01B4"):		reg_name	= "HeightMutilRoiMin_Region0";
+			elif(addr[4:8]=="01B8"):		reg_name	= "OffsetXMutilRoiMin_Region0";
+			elif(addr[4:8]=="01BC"):		reg_name	= "OffsetYMutilRoiMin_Region0";
+			elif(addr[4:8]=="01C0"):		reg_name	= "WidthMutilRoiMax_Region0";
+			elif(addr[4:8]=="01C4"):		reg_name	= "WidthMutilRoiMin_Region0";
+			elif(addr[4:8]=="01C8"):		reg_name	= "HeightMutilRoiMax_Region0";
+			elif(addr[4:8]=="01CC"):		reg_name	= "HeightMutilRoiMin_Region0";
+			elif(addr[4:8]=="01D0"):		reg_name	= "OffsetXMutilRoiMin_Region0";
+			elif(addr[4:8]=="01D4"):		reg_name	= "OffsetYMutilRoiMin_Region0";
+			elif(addr[4:8]=="01D8"):		reg_name	= "WidthMutilRoiMax_Region0";
+			elif(addr[4:8]=="01DC"):		reg_name	= "WidthMutilRoiMin_Region0";
+			elif(addr[4:8]=="01E0"):		reg_name	= "HeightMutilRoiMax_Region0";
+			elif(addr[4:8]=="01E4"):		reg_name	= "HeightMutilRoiMin_Region0";
+			elif(addr[4:8]=="01E8"):		reg_name	= "OffsetXMutilRoiMin_Region0";
+			elif(addr[4:8]=="01EC"):		reg_name	= "OffsetYMutilRoiMin_Region0";
+			elif(addr[4:8]=="01F0"):		reg_name	= "WidthMutilRoiMax_Region0";
+			elif(addr[4:8]=="01F4"):		reg_name	= "WidthMutilRoiMin_Region0";
+			elif(addr[4:8]=="01F8"):		reg_name	= "HeightMutilRoiMax_Region0";
+			elif(addr[4:8]=="01FC"):		reg_name	= "HeightMutilRoiMin_Region0";
+			elif(addr[4:8]=="0200"):		reg_name	= "OffsetXMutilRoiMin_Region0";
+			elif(addr[4:8]=="0204"):		reg_name	= "OffsetYMutilRoiMin_Region0";
+			elif(addr[4:8]=="0208"):		reg_name	= "WidthMutilRoiMax_Region0";
+			elif(addr[4:8]=="020C"):		reg_name	= "WidthMutilRoiMin_Region0";
+			elif(addr[4:8]=="0210"):		reg_name	= "HeightMutilRoiMax_Region0";
+			elif(addr[4:8]=="0214"):		reg_name	= "HeightMutilRoiMin_Region0";
+			elif(addr[4:8]=="0218"):		reg_name	= "OffsetXMutilRoiMin_Region0";
+			elif(addr[4:8]=="021C"):		reg_name	= "OffsetYMutilRoiMin_Region0";
+			elif(addr[4:8]=="0220"):		reg_name	= "WidthMutilRoiMax_Region0";
+			elif(addr[4:8]=="0224"):		reg_name	= "WidthMutilRoiMin_Region0";
+			elif(addr[4:8]=="0228"):		reg_name	= "HeightMutilRoiMax_Region0";
+			elif(addr[4:8]=="022C"):		reg_name	= "HeightMutilRoiMin_Region0";
+			elif(addr[4:8]=="0230"):		reg_name	= "OffsetXMutilRoiMin_Region0";
+			elif(addr[4:8]=="0234"):		reg_name	= "OffsetYMutilRoiMin_Region0";
+			elif(addr[4:8]=="0238"):		reg_name	= "WidthMutilRoiMax_Region0";
+			elif(addr[4:8]=="023C"):		reg_name	= "WidthMutilRoiMin_Region0";
+			elif(addr[4:8]=="0240"):		reg_name	= "HeightMutilRoiMax_Region0";
+			elif(addr[4:8]=="0244"):		reg_name	= "HeightMutilRoiMin_Region0";
+			elif(addr[4:8]=="0248"):		reg_name	= "OffsetXMutilRoiMin_Region0";
+			elif(addr[4:8]=="024C"):		reg_name	= "OffsetYMutilRoiMin_Region0";
+			elif(addr[4:8]=="0250"):		reg_name	= "WidthMutilRoiMax_Region0";
+			elif(addr[4:8]=="0254"):		reg_name	= "WidthMutilRoiMin_Region0";
+			elif(addr[4:8]=="0258"):		reg_name	= "HeightMutilRoiMax_Region0";
+			elif(addr[4:8]=="025C"):		reg_name	= "HeightMutilRoiMin_Region0";
+			elif(addr[4:8]=="0260"):		reg_name	= "OffsetXMutilRoiMin_Region0";
+			elif(addr[4:8]=="0264"):		reg_name	= "OffsetYMutilRoiMin_Region0";
+			elif(addr[4:8]=="0268"):		reg_name	= "WidthMutilRoiMax_Region0";
+			elif(addr[4:8]=="026C"):		reg_name	= "WidthMutilRoiMin_Region0";
+			elif(addr[4:8]=="0270"):		reg_name	= "HeightMutilRoiMax_Region0";
+			elif(addr[4:8]=="0274"):		reg_name	= "HeightMutilRoiMin_Region0";
+			elif(addr[4:8]=="0278"):		reg_name	= "OffsetXMutilRoiMin_Region0";
+			elif(addr[4:8]=="027C"):		reg_name	= "OffsetYMutilRoiMin_Region0";
+			elif(addr[4:8]=="0280"):		reg_name	= "WidthMutilRoiMax_Region0";
+			elif(addr[4:8]=="0284"):		reg_name	= "WidthMutilRoiMin_Region0";
+			elif(addr[4:8]=="0288"):		reg_name	= "HeightMutilRoiMax_Region0";
+			elif(addr[4:8]=="028C"):		reg_name	= "HeightMutilRoiMin_Region0";
+			elif(addr[4:8]=="0290"):		reg_name	= "OffsetXMutilRoiMin_Region0";
+			elif(addr[4:8]=="0294"):		reg_name	= "OffsetYMutilRoiMin_Region0";
+			elif(addr[4:8]=="0298"):		reg_name	= "WidthMutilRoiMax_Region0";
+			elif(addr[4:8]=="029C"):		reg_name	= "WidthMutilRoiMin_Region0";
+			elif(addr[4:8]=="02A0"):		reg_name	= "HeightMutilRoiMax_Region0";
+			elif(addr[4:8]=="02A4"):		reg_name	= "HeightMutilRoiMin_Region0";
+			elif(addr[4:8]=="02A8"):		reg_name	= "OffsetXMutilRoiMin_Region0";
+			elif(addr[4:8]=="02AC"):		reg_name	= "OffsetYMutilRoiMin_Region0";
+			elif(addr[4:8]=="02B0"):		reg_name	= "WidthMutilRoiMax_Region0";
+			elif(addr[4:8]=="02B4"):		reg_name	= "WidthMutilRoiMin_Region0";
+			elif(addr[4:8]=="02B8"):		reg_name	= "HeightMutilRoiMax_Region0";
+			elif(addr[4:8]=="02BC"):		reg_name	= "HeightMutilRoiMin_Region0";
+			elif(addr[4:8]=="02C0"):		reg_name	= "OffsetXMutilRoiMin_Region0";
+			elif(addr[4:8]=="02C4"):		reg_name	= "OffsetYMutilRoiMin_Region0";
+			elif(addr[4:8]=="02C8"):		reg_name	= "WidthMutilRoiMax_Region0";
+			elif(addr[4:8]=="02CC"):		reg_name	= "WidthMutilRoiMin_Region0";
+			elif(addr[4:8]=="02D0"):		reg_name	= "HeightMutilRoiMax_Region0";
+			elif(addr[4:8]=="02D4"):		reg_name	= "HeightMutilRoiMin_Region0";
+			elif(addr[4:8]=="02D8"):		reg_name	= "OffsetXMutilRoiMin_Region0";
+			elif(addr[4:8]=="02DC"):		reg_name	= "OffsetYMutilRoiMin_Region0";
+			elif(addr[4:8]=="02E0"):		reg_name	= "WidthMutilRoiMax_Region0";
+			elif(addr[4:8]=="02E4"):		reg_name	= "WidthMutilRoiMin_Region0";
+			elif(addr[4:8]=="02E8"):		reg_name	= "HeightMutilRoiMax_Region0";
+			elif(addr[4:8]=="02EC"):		reg_name	= "HeightMutilRoiMin_Region0";
+			elif(addr[4:8]=="02F0"):		reg_name	= "OffsetXMutilRoiMin_Region0";
+			elif(addr[4:8]=="02F4"):		reg_name	= "OffsetYMutilRoiMin_Region0";
+			elif(addr[4:8]=="02F8"):		reg_name	= "WidthMutilRoiMax_Region0";
+			elif(addr[4:8]=="02FC"):		reg_name	= "WidthMutilRoiMin_Region0";
+			elif(addr[4:8]=="0300"):		reg_name	= "HeightMutilRoiMax_Region0";
+			elif(addr[4:8]=="0304"):		reg_name	= "HeightMutilRoiMin_Region0";
+			elif(addr[4:8]=="0308"):		reg_name	= "OffsetXMutilRoiMin_Region0";
+			elif(addr[4:8]=="030C"):		reg_name	= "OffsetYMutilRoiMin_Region0";
+			elif(addr[4:8]=="0310"):		reg_name	= "WidthMutilRoiMax_Region0";
+			elif(addr[4:8]=="0314"):		reg_name	= "WidthMutilRoiMin_Region0";
+			elif(addr[4:8]=="0318"):		reg_name	= "HeightMutilRoiMax_Region0";
+			elif(addr[4:8]=="031C"):		reg_name	= "HeightMutilRoiMin_Region0";
+			elif(addr[4:8]=="0320"):		reg_name	= "OffsetXMutilRoiMin_Region0";
+			elif(addr[4:8]=="0324"):		reg_name	= "OffsetYMutilRoiMin_Region0";
+			elif(addr[4:8]=="0328"):		reg_name	= "WidthMutilRoiMax_Region0";
+			elif(addr[4:8]=="032C"):		reg_name	= "WidthMutilRoiMin_Region0";
+			elif(addr[4:8]=="0330"):		reg_name	= "HeightMutilRoiMax_Region0";
+			elif(addr[4:8]=="0334"):		reg_name	= "HeightMutilRoiMin_Region0";
+			elif(addr[4:8]=="0338"):		reg_name	= "OffsetXMutilRoiMin_Region0";
+			elif(addr[4:8]=="033C"):		reg_name	= "OffsetYMutilRoiMin_Region0";
+			elif(addr[4:8]=="0340"):		reg_name	= "WidthMutilRoiMax_Region0";
+			elif(addr[4:8]=="0344"):		reg_name	= "WidthMutilRoiMin_Region0";
+			elif(addr[4:8]=="0348"):		reg_name	= "HeightMutilRoiMax_Region0";
+			elif(addr[4:8]=="034C"):		reg_name	= "HeightMutilRoiMin_Region0";
+			elif(addr[4:8]=="0350"):		reg_name	= "OffsetXMutilRoiMin_Region0";
+			elif(addr[4:8]=="0354"):		reg_name	= "OffsetYMutilRoiMin_Region0";
+			elif(addr[4:8]=="0358"):		reg_name	= "WidthMutilRoiMax_Region0";
+			elif(addr[4:8]=="035C"):		reg_name	= "WidthMutilRoiMin_Region0";
+			elif(addr[4:8]=="0360"):		reg_name	= "HeightMutilRoiMax_Region0";
+			elif(addr[4:8]=="0364"):		reg_name	= "HeightMutilRoiMin_Region0";
+			elif(addr[4:8]=="0368"):		reg_name	= "OffsetXMutilRoiMin_Region0";
+			elif(addr[4:8]=="036C"):		reg_name	= "OffsetYMutilRoiMin_Region0";
+			elif(addr[4:8]=="0370"):		reg_name	= "WidthMutilRoiMax_Region0";
+			elif(addr[4:8]=="0374"):		reg_name	= "WidthMutilRoiMin_Region0";
+			elif(addr[4:8]=="0378"):		reg_name	= "HeightMutilRoiMax_Region0";
+			elif(addr[4:8]=="037C"):		reg_name	= "HeightMutilRoiMin_Region0";
+			elif(addr[4:8]=="0380"):		reg_name	= "OffsetXMutilRoiMin_Region0";
+			elif(addr[4:8]=="0384"):		reg_name	= "OffsetYMutilRoiMin_Region0";
+			elif(addr[4:8]=="0388"):		reg_name	= "WidthMutilRoiMax_Region0";
+			elif(addr[4:8]=="038C"):		reg_name	= "WidthMutilRoiMin_Region0";
+			elif(addr[4:8]=="0390"):		reg_name	= "HeightMutilRoiMax_Region0";
+			elif(addr[4:8]=="0394"):		reg_name	= "HeightMutilRoiMin_Region0";
+			elif(addr[4:8]=="0398"):		reg_name	= "OffsetXMutilRoiMin_Region0";
+			elif(addr[4:8]=="039C"):		reg_name	= "OffsetYMutilRoiMin_Region0";
+			elif(addr[4:8]=="03A0"):		reg_name	= "WidthMutilRoiMax_Region0";
+			elif(addr[4:8]=="03A4"):		reg_name	= "WidthMutilRoiMin_Region0";
+			elif(addr[4:8]=="03A8"):		reg_name	= "HeightMutilRoiMax_Region0";
+			elif(addr[4:8]=="03AC"):		reg_name	= "HeightMutilRoiMin_Region0";
+			elif(addr[4:8]=="03B0"):		reg_name	= "OffsetXMutilRoiMin_Region0";
+			elif(addr[4:8]=="03B4"):		reg_name	= "OffsetYMutilRoiMin_Region0";
+			elif(addr[4:8]=="03B8"):		reg_name	= "WidthMutilRoiMax_Region0";
+			elif(addr[4:8]=="03BC"):		reg_name	= "WidthMutilRoiMin_Region0";
+			elif(addr[4:8]=="03C0"):		reg_name	= "HeightMutilRoiMax_Region0";
+			elif(addr[4:8]=="03C4"):		reg_name	= "HeightMutilRoiMin_Region0";
+			elif(addr[4:8]=="03C8"):		reg_name	= "OffsetXMutilRoiMin_Region0";
+			elif(addr[4:8]=="03CC"):		reg_name	= "OffsetYMutilRoiMin_Region0";
+
 			else: 							reg_name	= "UnKnown RegAddr"	;
 
 		elif(addr[2:4]=="70"):
@@ -413,12 +750,143 @@ def u3vc_proc(*params) :
 			elif(addr[4:8]=="0060"):		reg_name	= "DeviceLinkSelector_Step"                     ;
 			elif(addr[4:8]=="0064"):		reg_name	= "DeviceLinkThroughputLimitStep_Link0"         ;
 			elif(addr[4:8]=="0068"):		reg_name	= "TestPendingAck_Step"                         ;
+
+			elif(addr[4:8]=="006C"):		reg_name	= "ExposureDelayPrecision";
+			elif(addr[4:8]=="0070"):		reg_name	= "AcquisitionFrameRateStep";
+			elif(addr[4:8]=="0074"):		reg_name	= "WidthMutilRoiStep_Region0";
+			elif(addr[4:8]=="0078"):		reg_name	= "HeightMutilRoiStep_Region0";
+			elif(addr[4:8]=="007C"):		reg_name	= "OffsetXMutilRoiStep_Region0";
+			elif(addr[4:8]=="0080"):		reg_name	= "OffsetYMutilRoiStep_Region0";
+			elif(addr[4:8]=="0084"):		reg_name	= "WidthMutilRoiStep_Region0";
+			elif(addr[4:8]=="0088"):		reg_name	= "HeightMutilRoiStep_Region0";
+			elif(addr[4:8]=="008C"):		reg_name	= "OffsetXMutilRoiStep_Region0";
+			elif(addr[4:8]=="0090"):		reg_name	= "OffsetYMutilRoiStep_Region0";
+			elif(addr[4:8]=="0094"):		reg_name	= "WidthMutilRoiStep_Region0";
+			elif(addr[4:8]=="0098"):		reg_name	= "HeightMutilRoiStep_Region0";
+			elif(addr[4:8]=="009C"):		reg_name	= "OffsetXMutilRoiStep_Region0";
+			elif(addr[4:8]=="00A0"):		reg_name	= "OffsetYMutilRoiStep_Region0";
+			elif(addr[4:8]=="00A4"):		reg_name	= "WidthMutilRoiStep_Region0";
+			elif(addr[4:8]=="00A8"):		reg_name	= "HeightMutilRoiStep_Region0";
+			elif(addr[4:8]=="00AC"):		reg_name	= "OffsetXMutilRoiStep_Region0";
+			elif(addr[4:8]=="00B0"):		reg_name	= "OffsetYMutilRoiStep_Region0";
+			elif(addr[4:8]=="00B4"):		reg_name	= "WidthMutilRoiStep_Region0";
+			elif(addr[4:8]=="00B8"):		reg_name	= "HeightMutilRoiStep_Region0";
+			elif(addr[4:8]=="00BC"):		reg_name	= "OffsetXMutilRoiStep_Region0";
+			elif(addr[4:8]=="00C0"):		reg_name	= "OffsetYMutilRoiStep_Region0";
+			elif(addr[4:8]=="00C4"):		reg_name	= "WidthMutilRoiStep_Region0";
+			elif(addr[4:8]=="00C8"):		reg_name	= "HeightMutilRoiStep_Region0";
+			elif(addr[4:8]=="00CC"):		reg_name	= "OffsetXMutilRoiStep_Region0";
+			elif(addr[4:8]=="00D0"):		reg_name	= "OffsetYMutilRoiStep_Region0";
+			elif(addr[4:8]=="00D4"):		reg_name	= "WidthMutilRoiStep_Region0";
+			elif(addr[4:8]=="00D8"):		reg_name	= "HeightMutilRoiStep_Region0";
+			elif(addr[4:8]=="00DC"):		reg_name	= "OffsetXMutilRoiStep_Region0";
+			elif(addr[4:8]=="00E0"):		reg_name	= "OffsetYMutilRoiStep_Region0";
+			elif(addr[4:8]=="00E4"):		reg_name	= "WidthMutilRoiStep_Region0";
+			elif(addr[4:8]=="00E8"):		reg_name	= "HeightMutilRoiStep_Region0";
+			elif(addr[4:8]=="00EC"):		reg_name	= "OffsetXMutilRoiStep_Region0";
+			elif(addr[4:8]=="00F0"):		reg_name	= "OffsetYMutilRoiStep_Region0";
+			elif(addr[4:8]=="00F4"):		reg_name	= "WidthMutilRoiStep_Region0";
+			elif(addr[4:8]=="00F8"):		reg_name	= "HeightMutilRoiStep_Region0";
+			elif(addr[4:8]=="00FC"):		reg_name	= "OffsetXMutilRoiStep_Region0";
+			elif(addr[4:8]=="0100"):		reg_name	= "OffsetYMutilRoiStep_Region0";
+			elif(addr[4:8]=="0104"):		reg_name	= "WidthMutilRoiStep_Region0";
+			elif(addr[4:8]=="0108"):		reg_name	= "HeightMutilRoiStep_Region0";
+			elif(addr[4:8]=="010C"):		reg_name	= "OffsetXMutilRoiStep_Region0";
+			elif(addr[4:8]=="0110"):		reg_name	= "OffsetYMutilRoiStep_Region0";
+			elif(addr[4:8]=="0114"):		reg_name	= "WidthMutilRoiStep_Region0";
+			elif(addr[4:8]=="0118"):		reg_name	= "HeightMutilRoiStep_Region0";
+			elif(addr[4:8]=="011C"):		reg_name	= "OffsetXMutilRoiStep_Region0";
+			elif(addr[4:8]=="0120"):		reg_name	= "OffsetYMutilRoiStep_Region0";
+			elif(addr[4:8]=="0124"):		reg_name	= "WidthMutilRoiStep_Region0";
+			elif(addr[4:8]=="0128"):		reg_name	= "HeightMutilRoiStep_Region0";
+			elif(addr[4:8]=="012C"):		reg_name	= "OffsetXMutilRoiStep_Region0";
+			elif(addr[4:8]=="0130"):		reg_name	= "OffsetYMutilRoiStep_Region0";
+			elif(addr[4:8]=="0134"):		reg_name	= "WidthMutilRoiStep_Region0";
+			elif(addr[4:8]=="0138"):		reg_name	= "HeightMutilRoiStep_Region0";
+			elif(addr[4:8]=="013C"):		reg_name	= "OffsetXMutilRoiStep_Region0";
+			elif(addr[4:8]=="0140"):		reg_name	= "OffsetYMutilRoiStep_Region0";
+			elif(addr[4:8]=="0144"):		reg_name	= "WidthMutilRoiStep_Region0";
+			elif(addr[4:8]=="0148"):		reg_name	= "HeightMutilRoiStep_Region0";
+			elif(addr[4:8]=="014C"):		reg_name	= "OffsetXMutilRoiStep_Region0";
+			elif(addr[4:8]=="0150"):		reg_name	= "OffsetYMutilRoiStep_Region0";
+			elif(addr[4:8]=="0154"):		reg_name	= "WidthMutilRoiStep_Region0";
+			elif(addr[4:8]=="0158"):		reg_name	= "HeightMutilRoiStep_Region0";
+			elif(addr[4:8]=="015C"):		reg_name	= "OffsetXMutilRoiStep_Region0";
+			elif(addr[4:8]=="0160"):		reg_name	= "OffsetYMutilRoiStep_Region0";
+			elif(addr[4:8]=="0164"):		reg_name	= "WidthMutilRoiStep_Region0";
+			elif(addr[4:8]=="0168"):		reg_name	= "HeightMutilRoiStep_Region0";
+			elif(addr[4:8]=="016C"):		reg_name	= "OffsetXMutilRoiStep_Region0";
+			elif(addr[4:8]=="0170"):		reg_name	= "OffsetYMutilRoiStep_Region0";
+			elif(addr[4:8]=="0174"):		reg_name	= "WidthMutilRoiStep_Region0";
+			elif(addr[4:8]=="0178"):		reg_name	= "HeightMutilRoiStep_Region0";
+			elif(addr[4:8]=="017C"):		reg_name	= "OffsetXMutilRoiStep_Region0";
+			elif(addr[4:8]=="0180"):		reg_name	= "OffsetYMutilRoiStep_Region0";
+			elif(addr[4:8]=="0184"):		reg_name	= "WidthMutilRoiStep_Region0";
+			elif(addr[4:8]=="0188"):		reg_name	= "HeightMutilRoiStep_Region0";
+			elif(addr[4:8]=="018C"):		reg_name	= "OffsetXMutilRoiStep_Region0";
+			elif(addr[4:8]=="0190"):		reg_name	= "OffsetYMutilRoiStep_Region0";
+			elif(addr[4:8]=="0194"):		reg_name	= "WidthMutilRoiStep_Region0";
+			elif(addr[4:8]=="0198"):		reg_name	= "HeightMutilRoiStep_Region0";
+			elif(addr[4:8]=="019C"):		reg_name	= "OffsetXMutilRoiStep_Region0";
+			elif(addr[4:8]=="01A0"):		reg_name	= "OffsetYMutilRoiStep_Region0";
+			elif(addr[4:8]=="01A4"):		reg_name	= "WidthMutilRoiStep_Region0";
+			elif(addr[4:8]=="01A8"):		reg_name	= "HeightMutilRoiStep_Region0";
+			elif(addr[4:8]=="01AC"):		reg_name	= "OffsetXMutilRoiStep_Region0";
+			elif(addr[4:8]=="01B0"):		reg_name	= "OffsetYMutilRoiStep_Region0";
+			elif(addr[4:8]=="01B4"):		reg_name	= "WidthMutilRoiStep_Region0";
+			elif(addr[4:8]=="01B8"):		reg_name	= "HeightMutilRoiStep_Region0";
+			elif(addr[4:8]=="01BC"):		reg_name	= "OffsetXMutilRoiStep_Region0";
+			elif(addr[4:8]=="01C0"):		reg_name	= "OffsetYMutilRoiStep_Region0";
+			elif(addr[4:8]=="01C4"):		reg_name	= "WidthMutilRoiStep_Region0";
+			elif(addr[4:8]=="01C8"):		reg_name	= "HeightMutilRoiStep_Region0";
+			elif(addr[4:8]=="01CC"):		reg_name	= "OffsetXMutilRoiStep_Region0";
+			elif(addr[4:8]=="01D0"):		reg_name	= "OffsetYMutilRoiStep_Region0";
+			elif(addr[4:8]=="01D4"):		reg_name	= "WidthMutilRoiStep_Region0";
+			elif(addr[4:8]=="01D8"):		reg_name	= "HeightMutilRoiStep_Region0";
+			elif(addr[4:8]=="01DC"):		reg_name	= "OffsetXMutilRoiStep_Region0";
+			elif(addr[4:8]=="01E0"):		reg_name	= "OffsetYMutilRoiStep_Region0";
+			elif(addr[4:8]=="01E4"):		reg_name	= "WidthMutilRoiStep_Region0";
+			elif(addr[4:8]=="01E8"):		reg_name	= "HeightMutilRoiStep_Region0";
+			elif(addr[4:8]=="01EC"):		reg_name	= "OffsetXMutilRoiStep_Region0";
+			elif(addr[4:8]=="01F0"):		reg_name	= "OffsetYMutilRoiStep_Region0";
+			elif(addr[4:8]=="01F4"):		reg_name	= "WidthMutilRoiStep_Region0";
+			elif(addr[4:8]=="01F8"):		reg_name	= "HeightMutilRoiStep_Region0";
+			elif(addr[4:8]=="01FC"):		reg_name	= "OffsetXMutilRoiStep_Region0";
+			elif(addr[4:8]=="0200"):		reg_name	= "OffsetYMutilRoiStep_Region0";
+			elif(addr[4:8]=="0204"):		reg_name	= "WidthMutilRoiStep_Region0";
+			elif(addr[4:8]=="0208"):		reg_name	= "HeightMutilRoiStep_Region0";
+			elif(addr[4:8]=="020C"):		reg_name	= "OffsetXMutilRoiStep_Region0";
+			elif(addr[4:8]=="0210"):		reg_name	= "OffsetYMutilRoiStep_Region0";
+			elif(addr[4:8]=="0214"):		reg_name	= "WidthMutilRoiStep_Region0";
+			elif(addr[4:8]=="0218"):		reg_name	= "HeightMutilRoiStep_Region0";
+			elif(addr[4:8]=="021C"):		reg_name	= "OffsetXMutilRoiStep_Region0";
+			elif(addr[4:8]=="0220"):		reg_name	= "OffsetYMutilRoiStep_Region0";
+			elif(addr[4:8]=="0224"):		reg_name	= "WidthMutilRoiStep_Region0";
+			elif(addr[4:8]=="0228"):		reg_name	= "HeightMutilRoiStep_Region0";
+			elif(addr[4:8]=="022C"):		reg_name	= "OffsetXMutilRoiStep_Region0";
+			elif(addr[4:8]=="0230"):		reg_name	= "OffsetYMutilRoiStep_Region0";
+			elif(addr[4:8]=="0234"):		reg_name	= "WidthMutilRoiStep_Region0";
+			elif(addr[4:8]=="0238"):		reg_name	= "HeightMutilRoiStep_Region0";
+			elif(addr[4:8]=="023C"):		reg_name	= "OffsetXMutilRoiStep_Region0";
+			elif(addr[4:8]=="0240"):		reg_name	= "OffsetYMutilRoiStep_Region0";
+			elif(addr[4:8]=="0244"):		reg_name	= "WidthMutilRoiStep_Region0";
+			elif(addr[4:8]=="0248"):		reg_name	= "HeightMutilRoiStep_Region0";
+			elif(addr[4:8]=="024C"):		reg_name	= "OffsetXMutilRoiStep_Region0";
+			elif(addr[4:8]=="0250"):		reg_name	= "OffsetYMutilRoiStep_Region0";
+			elif(addr[4:8]=="0254"):		reg_name	= "WidthMutilRoiStep_Region0";
+			elif(addr[4:8]=="0258"):		reg_name	= "HeightMutilRoiStep_Region0";
+			elif(addr[4:8]=="025C"):		reg_name	= "OffsetXMutilRoiStep_Region0";
+			elif(addr[4:8]=="0260"):		reg_name	= "OffsetYMutilRoiStep_Region0";
+			elif(addr[4:8]=="0264"):		reg_name	= "WidthMutilRoiStep_Region0";
+			elif(addr[4:8]=="0268"):		reg_name	= "HeightMutilRoiStep_Region0";
+			elif(addr[4:8]=="026C"):		reg_name	= "OffsetXMutilRoiStep_Region0";
+			elif(addr[4:8]=="0270"):		reg_name	= "OffsetYMutilRoiStep_Region0";
 			else: 							reg_name	= "UnKnown RegAddr"	;
 
 		elif(addr[2:4]=="80"):
 			if(addr[4:8]=="0000"):			reg_name	= "AcquisitionMode"                  ;
 			elif(addr[4:8]=="0004"):		reg_name	= "AcquisitionStart"                 ;
-			elif(addr[4:8]=="0008"):		reg_name	= "TriggerSoftware_FrameStart"       ;
+			elif(addr[4:8]=="0008"):		reg_name	= "TriggerSoftware_FrameStart";
 			elif(addr[4:8]=="000C"):		reg_name	= "ExposureMode"                     ;
 			elif(addr[4:8]=="0010"):		reg_name	= "LineStatus_Line0"                 ;
 			elif(addr[4:8]=="0014"):		reg_name	= "LineStatus_Line1"                 ;
@@ -463,6 +931,8 @@ def u3vc_proc(*params) :
 			elif(addr[4:8]=="00EC"):		reg_name	= "BlueAdjustMinValueU30"         ;
 			elif(addr[4:8]=="00F0"):		reg_name	= "RedAdjustMaxValueIncandescent" ;
 			elif(addr[4:8]=="00F4"):		reg_name	= "BlueAdjustMinValueIncandescent";
+			elif(addr[4:8]=="00F8"):		reg_name	= "StripeFlag";
+			elif(addr[4:8]=="00FC"):		reg_name	= "CurrentFrameRate";
 			else: 							reg_name	= "UnKnown RegAddr"	;
 
 		elif(addr[2:4]=="90"):
@@ -476,7 +946,7 @@ def u3vc_proc(*params) :
 			elif(addr[4:8]=="001C"):		reg_name	= "TestPattern_Region0"                ;
 			elif(addr[4:8]=="0020"):		reg_name	= "TriggerMode_FrameStart"             ;
 			elif(addr[4:8]=="0024"):		reg_name	= "TriggerSource_FrameStart"           ;
-			elif(addr[4:8]=="0028"):		reg_name	= "TriggerActivation_FrameStart"       ;
+			elif(addr[4:8]=="0028"):		reg_name	= "TriggerActivation_FrameStart";
 			elif(addr[4:8]=="002C"):		reg_name	= "TriggerDelay_FrameStart"            ;
 			elif(addr[4:8]=="0030"):		reg_name	= "TriggerFilterRisingEdge_FrameStart" ;
 			elif(addr[4:8]=="0034"):		reg_name	= "TriggerFilterFallingEdge_FrameStart";
@@ -523,6 +993,140 @@ def u3vc_proc(*params) :
 			elif(addr[4:8]=="00D8"):		reg_name	= "ChunkModeActive"                    ;
 			elif(addr[4:8]=="00DC"):		reg_name	= "ChunkEnable_FrameID"                ;
 			elif(addr[4:8]=="00E0"):		reg_name	= "ChunkEnable_Timestamp"              ;
+
+			elif(addr[4:8]=="00E4"):		reg_name	= "ExposureDelay";
+			elif(addr[4:8]=="00E8"):		reg_name	= "AcquisitionFrameRateModeValue";
+			elif(addr[4:8]=="00EC"):		reg_name	= "AcquisitionFrameRateValue";
+			elif(addr[4:8]=="00F0"):		reg_name	= "MutilRoiModeValue";
+			elif(addr[4:8]=="00F4"):		reg_name	= "MutilRoiMode_Value";
+			elif(addr[4:8]=="00F8"):		reg_name	= "WidthMutilRoi_Region0";
+			elif(addr[4:8]=="00FC"):		reg_name	= "HeightMutilRoi_Region0";
+			elif(addr[4:8]=="0100"):		reg_name	= "OffsetXMutilRoi_Region0";
+			elif(addr[4:8]=="0104"):		reg_name	= "OffsetYMutilRoi_Region0";
+			elif(addr[4:8]=="0108"):		reg_name	= "WidthMutilRoi_Region0";
+			elif(addr[4:8]=="010C"):		reg_name	= "HeightMutilRoi_Region0";
+			elif(addr[4:8]=="0110"):		reg_name	= "OffsetXMutilRoi_Region0";
+			elif(addr[4:8]=="0114"):		reg_name	= "OffsetYMutilRoi_Region0";
+			elif(addr[4:8]=="0118"):		reg_name	= "WidthMutilRoi_Region0";
+			elif(addr[4:8]=="011C"):		reg_name	= "HeightMutilRoi_Region0";
+			elif(addr[4:8]=="0120"):		reg_name	= "OffsetXMutilRoi_Region0";
+			elif(addr[4:8]=="0124"):		reg_name	= "OffsetYMutilRoi_Region0";
+			elif(addr[4:8]=="0128"):		reg_name	= "WidthMutilRoi_Region0";
+			elif(addr[4:8]=="012C"):		reg_name	= "HeightMutilRoi_Region0";
+			elif(addr[4:8]=="0130"):		reg_name	= "OffsetXMutilRoi_Region0";
+			elif(addr[4:8]=="0134"):		reg_name	= "OffsetYMutilRoi_Region0";
+			elif(addr[4:8]=="0138"):		reg_name	= "WidthMutilRoi_Region0";
+			elif(addr[4:8]=="013C"):		reg_name	= "HeightMutilRoi_Region0";
+			elif(addr[4:8]=="0140"):		reg_name	= "OffsetXMutilRoi_Region0";
+			elif(addr[4:8]=="0144"):		reg_name	= "OffsetYMutilRoi_Region0";
+			elif(addr[4:8]=="0148"):		reg_name	= "WidthMutilRoi_Region0";
+			elif(addr[4:8]=="014C"):		reg_name	= "HeightMutilRoi_Region0";
+			elif(addr[4:8]=="0150"):		reg_name	= "OffsetXMutilRoi_Region0";
+			elif(addr[4:8]=="0154"):		reg_name	= "OffsetYMutilRoi_Region0";
+			elif(addr[4:8]=="0158"):		reg_name	= "WidthMutilRoi_Region0";
+			elif(addr[4:8]=="015C"):		reg_name	= "HeightMutilRoi_Region0";
+			elif(addr[4:8]=="0160"):		reg_name	= "OffsetXMutilRoi_Region0";
+			elif(addr[4:8]=="0164"):		reg_name	= "OffsetYMutilRoi_Region0";
+			elif(addr[4:8]=="0168"):		reg_name	= "WidthMutilRoi_Region0";
+			elif(addr[4:8]=="016C"):		reg_name	= "HeightMutilRoi_Region0";
+			elif(addr[4:8]=="0170"):		reg_name	= "OffsetXMutilRoi_Region0";
+			elif(addr[4:8]=="0174"):		reg_name	= "OffsetYMutilRoi_Region0";
+			elif(addr[4:8]=="0178"):		reg_name	= "WidthMutilRoi_Region0";
+			elif(addr[4:8]=="017C"):		reg_name	= "HeightMutilRoi_Region0";
+			elif(addr[4:8]=="0180"):		reg_name	= "OffsetXMutilRoi_Region0";
+			elif(addr[4:8]=="0184"):		reg_name	= "OffsetYMutilRoi_Region0";
+			elif(addr[4:8]=="0188"):		reg_name	= "WidthMutilRoi_Region0";
+			elif(addr[4:8]=="018C"):		reg_name	= "HeightMutilRoi_Region0";
+			elif(addr[4:8]=="0190"):		reg_name	= "OffsetXMutilRoi_Region0";
+			elif(addr[4:8]=="0194"):		reg_name	= "OffsetYMutilRoi_Region0";
+			elif(addr[4:8]=="0198"):		reg_name	= "WidthMutilRoi_Region0";
+			elif(addr[4:8]=="019C"):		reg_name	= "HeightMutilRoi_Region0";
+			elif(addr[4:8]=="01A0"):		reg_name	= "OffsetXMutilRoi_Region0";
+			elif(addr[4:8]=="01A4"):		reg_name	= "OffsetYMutilRoi_Region0";
+			elif(addr[4:8]=="01A8"):		reg_name	= "WidthMutilRoi_Region0";
+			elif(addr[4:8]=="01AC"):		reg_name	= "HeightMutilRoi_Region0";
+			elif(addr[4:8]=="01B0"):		reg_name	= "OffsetXMutilRoi_Region0";
+			elif(addr[4:8]=="01B4"):		reg_name	= "OffsetYMutilRoi_Region0";
+			elif(addr[4:8]=="01B8"):		reg_name	= "WidthMutilRoi_Region0";
+			elif(addr[4:8]=="01BC"):		reg_name	= "HeightMutilRoi_Region0";
+			elif(addr[4:8]=="01C0"):		reg_name	= "OffsetXMutilRoi_Region0";
+			elif(addr[4:8]=="01C4"):		reg_name	= "OffsetYMutilRoi_Region0";
+			elif(addr[4:8]=="01C8"):		reg_name	= "WidthMutilRoi_Region0";
+			elif(addr[4:8]=="01CC"):		reg_name	= "HeightMutilRoi_Region0";
+			elif(addr[4:8]=="01D0"):		reg_name	= "OffsetXMutilRoi_Region0";
+			elif(addr[4:8]=="01D4"):		reg_name	= "OffsetYMutilRoi_Region0";
+			elif(addr[4:8]=="01D8"):		reg_name	= "WidthMutilRoi_Region0";
+			elif(addr[4:8]=="01DC"):		reg_name	= "HeightMutilRoi_Region0";
+			elif(addr[4:8]=="01E0"):		reg_name	= "OffsetXMutilRoi_Region0";
+			elif(addr[4:8]=="01E4"):		reg_name	= "OffsetYMutilRoi_Region0";
+			elif(addr[4:8]=="01E8"):		reg_name	= "WidthMutilRoi_Region0";
+			elif(addr[4:8]=="01EC"):		reg_name	= "HeightMutilRoi_Region0";
+			elif(addr[4:8]=="01F0"):		reg_name	= "OffsetXMutilRoi_Region0";
+			elif(addr[4:8]=="01F4"):		reg_name	= "OffsetYMutilRoi_Region0";
+			elif(addr[4:8]=="01F8"):		reg_name	= "WidthMutilRoi_Region0";
+			elif(addr[4:8]=="01FC"):		reg_name	= "HeightMutilRoi_Region0";
+			elif(addr[4:8]=="0200"):		reg_name	= "OffsetXMutilRoi_Region0";
+			elif(addr[4:8]=="0204"):		reg_name	= "OffsetYMutilRoi_Region0";
+			elif(addr[4:8]=="0208"):		reg_name	= "WidthMutilRoi_Region0";
+			elif(addr[4:8]=="020C"):		reg_name	= "HeightMutilRoi_Region0";
+			elif(addr[4:8]=="0210"):		reg_name	= "OffsetXMutilRoi_Region0";
+			elif(addr[4:8]=="0214"):		reg_name	= "OffsetYMutilRoi_Region0";
+			elif(addr[4:8]=="0218"):		reg_name	= "WidthMutilRoi_Region0";
+			elif(addr[4:8]=="021C"):		reg_name	= "HeightMutilRoi_Region0";
+			elif(addr[4:8]=="0220"):		reg_name	= "OffsetXMutilRoi_Region0";
+			elif(addr[4:8]=="0224"):		reg_name	= "OffsetYMutilRoi_Region0";
+			elif(addr[4:8]=="0228"):		reg_name	= "WidthMutilRoi_Region0";
+			elif(addr[4:8]=="022C"):		reg_name	= "HeightMutilRoi_Region0";
+			elif(addr[4:8]=="0230"):		reg_name	= "OffsetXMutilRoi_Region0";
+			elif(addr[4:8]=="0234"):		reg_name	= "OffsetYMutilRoi_Region0";
+			elif(addr[4:8]=="0238"):		reg_name	= "WidthMutilRoi_Region0";
+			elif(addr[4:8]=="023C"):		reg_name	= "HeightMutilRoi_Region0";
+			elif(addr[4:8]=="0240"):		reg_name	= "OffsetXMutilRoi_Region0";
+			elif(addr[4:8]=="0244"):		reg_name	= "OffsetYMutilRoi_Region0";
+			elif(addr[4:8]=="0248"):		reg_name	= "WidthMutilRoi_Region0";
+			elif(addr[4:8]=="024C"):		reg_name	= "HeightMutilRoi_Region0";
+			elif(addr[4:8]=="0250"):		reg_name	= "OffsetXMutilRoi_Region0";
+			elif(addr[4:8]=="0254"):		reg_name	= "OffsetYMutilRoi_Region0";
+			elif(addr[4:8]=="0258"):		reg_name	= "WidthMutilRoi_Region0";
+			elif(addr[4:8]=="025C"):		reg_name	= "HeightMutilRoi_Region0";
+			elif(addr[4:8]=="0260"):		reg_name	= "OffsetXMutilRoi_Region0";
+			elif(addr[4:8]=="0264"):		reg_name	= "OffsetYMutilRoi_Region0";
+			elif(addr[4:8]=="0268"):		reg_name	= "WidthMutilRoi_Region0";
+			elif(addr[4:8]=="026C"):		reg_name	= "HeightMutilRoi_Region0";
+			elif(addr[4:8]=="0270"):		reg_name	= "OffsetXMutilRoi_Region0";
+			elif(addr[4:8]=="0274"):		reg_name	= "OffsetYMutilRoi_Region0";
+			elif(addr[4:8]=="0278"):		reg_name	= "WidthMutilRoi_Region0";
+			elif(addr[4:8]=="027C"):		reg_name	= "HeightMutilRoi_Region0";
+			elif(addr[4:8]=="0280"):		reg_name	= "OffsetXMutilRoi_Region0";
+			elif(addr[4:8]=="0284"):		reg_name	= "OffsetYMutilRoi_Region0";
+			elif(addr[4:8]=="0288"):		reg_name	= "WidthMutilRoi_Region0";
+			elif(addr[4:8]=="028C"):		reg_name	= "HeightMutilRoi_Region0";
+			elif(addr[4:8]=="0290"):		reg_name	= "OffsetXMutilRoi_Region0";
+			elif(addr[4:8]=="0294"):		reg_name	= "OffsetYMutilRoi_Region0";
+			elif(addr[4:8]=="0298"):		reg_name	= "WidthMutilRoi_Region0";
+			elif(addr[4:8]=="029C"):		reg_name	= "HeightMutilRoi_Region0";
+			elif(addr[4:8]=="02A0"):		reg_name	= "OffsetXMutilRoi_Region0";
+			elif(addr[4:8]=="02A4"):		reg_name	= "OffsetYMutilRoi_Region0";
+			elif(addr[4:8]=="02A8"):		reg_name	= "WidthMutilRoi_Region0";
+			elif(addr[4:8]=="02AC"):		reg_name	= "HeightMutilRoi_Region0";
+			elif(addr[4:8]=="02B0"):		reg_name	= "OffsetXMutilRoi_Region0";
+			elif(addr[4:8]=="02B4"):		reg_name	= "OffsetYMutilRoi_Region0";
+			elif(addr[4:8]=="02B8"):		reg_name	= "WidthMutilRoi_Region0";
+			elif(addr[4:8]=="02BC"):		reg_name	= "HeightMutilRoi_Region0";
+			elif(addr[4:8]=="02C0"):		reg_name	= "OffsetXMutilRoi_Region0";
+			elif(addr[4:8]=="02C4"):		reg_name	= "OffsetYMutilRoi_Region0";
+			elif(addr[4:8]=="02C8"):		reg_name	= "WidthMutilRoi_Region0";
+			elif(addr[4:8]=="02CC"):		reg_name	= "HeightMutilRoi_Region0";
+			elif(addr[4:8]=="02D0"):		reg_name	= "OffsetXMutilRoi_Region0";
+			elif(addr[4:8]=="02D4"):		reg_name	= "OffsetYMutilRoi_Region0";
+			elif(addr[4:8]=="02D8"):		reg_name	= "WidthMutilRoi_Region0";
+			elif(addr[4:8]=="02DC"):		reg_name	= "HeightMutilRoi_Region0";
+			elif(addr[4:8]=="02E0"):		reg_name	= "OffsetXMutilRoi_Region0";
+			elif(addr[4:8]=="02E4"):		reg_name	= "OffsetYMutilRoi_Region0";
+			elif(addr[4:8]=="02E8"):		reg_name	= "WidthMutilRoi_Region0";
+			elif(addr[4:8]=="02EC"):		reg_name	= "HeightMutilRoi_Region0";
+			elif(addr[4:8]=="02F0"):		reg_name	= "OffsetXMutilRoi_Region0";
+			elif(addr[4:8]=="02F4"):		reg_name	= "OffsetYMutilRoi_Region0";
 			else: 							reg_name	= "UnKnown RegAddr"	;
 
 		else:
@@ -664,7 +1268,7 @@ def u3vl_proc(*params) :
 	##	获得blockid
 	##	-------------------------------------------------------------------------------------
 	blockid	= line_content[48:50]+line_content[45:47]+line_content[42:44]+line_content[39:41]+line_content[35:37]+line_content[32:34]+line_content[29:31]+line_content[26:28];
-	if(blockid=="                "):
+	if(blockid=="             "):
 		blockid	= "NA"
 	else:
 		blockid	= int(blockid,16);
@@ -697,7 +1301,7 @@ def u3vl_proc(*params) :
 	##	获得timestamp
 	##	-------------------------------------------------------------------------------------
 	timestamp	= line_content[35:37]+line_content[32:34]+line_content[29:31]+line_content[26:28]+line_content[22:24]+line_content[19:21]+line_content[16:18]+line_content[13:15];
-	if(timestamp=="                "):
+	if(timestamp=="             "):
 		timestamp	= "NA"
 	else:
 		timestamp	= int(timestamp,16);
@@ -730,7 +1334,7 @@ def u3vl_proc(*params) :
 	##	获得 size_x
 	##	-------------------------------------------------------------------------------------
 	size_x		= line_content[3:5]+line_content[0:2];
-	if(size_x=="    "):
+	if(size_x==" "):
 		size_x_dec	= "NA"
 	else:
 		size_x_dec	= int(size_x,16);
@@ -742,7 +1346,7 @@ def u3vl_proc(*params) :
 	##	获得 size_y
 	##	-------------------------------------------------------------------------------------
 	size_y		= line_content[16:18]+line_content[13:15];
-	if(size_y=="    "):
+	if(size_y==" "):
 		size_y_dec	= "NA"
 	else:
 		size_y_dec	= int(size_y,16);
@@ -754,7 +1358,7 @@ def u3vl_proc(*params) :
 	##	获得 offset_x
 	##	-------------------------------------------------------------------------------------
 	offset_x		= line_content[29:31]+line_content[26:28];
-	if(offset_x=="    "):
+	if(offset_x==" "):
 		offset_x_dec	= "NA"
 	else:
 		offset_x_dec	= int(offset_x,16);
@@ -766,7 +1370,7 @@ def u3vl_proc(*params) :
 	##	获得 size_y
 	##	-------------------------------------------------------------------------------------
 	offset_y		= line_content[42:44]+line_content[39:41];
-	if(offset_y=="    "):
+	if(offset_y==" "):
 		offset_y_dec	= "NA"
 	else:
 		offset_y_dec	= int(offset_y,16);
@@ -825,7 +1429,7 @@ def u3vt_proc(*params) :
 	##	获得blockid
 	##	-------------------------------------------------------------------------------------
 	blockid	= line_content[48:50]+line_content[45:47]+line_content[42:44]+line_content[39:41]+line_content[35:37]+line_content[32:34]+line_content[29:31]+line_content[26:28];
-	if(blockid=="                "):
+	if(blockid=="             "):
 		blockid	= "NA"
 	else:
 		blockid	= int(blockid,16);
@@ -856,7 +1460,7 @@ def u3vt_proc(*params) :
 	##	获得 valid_payload_size
 	##	-------------------------------------------------------------------------------------
 	valid_payload_size	= line_content[22:24]+line_content[19:21]+line_content[16:18]+line_content[13:15];
-	if(valid_payload_size=="        "):
+	if(valid_payload_size=="     "):
 		valid_payload_size_dec	= "NA"
 	else:
 		valid_payload_size_dec	= int(valid_payload_size,16);
@@ -868,7 +1472,7 @@ def u3vt_proc(*params) :
 	##	获得 trailer_size_y
 	##	-------------------------------------------------------------------------------------
 	trailer_size_y		= line_content[42:44]+line_content[39:41];
-	if(trailer_size_y=="    "):
+	if(trailer_size_y==" "):
 		trailer_size_y_dec	= "NA"
 	else:
 		trailer_size_y_dec	= int(trailer_size_y,16);
