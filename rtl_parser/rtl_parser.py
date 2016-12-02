@@ -172,7 +172,7 @@ def rtl_parser() :
 	##	-------------------------------------------------------------------------------------
 	##	ͷ
 	##	-------------------------------------------------------------------------------------
-	print("https://github.com/fifoteam/python-tools/tree/master/rtl_parser v1.2 2016.10.31");
+	print("https://github.com/fifoteam/python-tools/rtl_parser v1.2 2016.10.31");
 	print("src file is : ",src_path);
 	print("selected word is \""+word_sel+"\"");
 	print("find num :",len(all_list));
