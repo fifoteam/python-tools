@@ -11,14 +11,32 @@ def select_line() :
 	##	-------------------------------------------------------------------------------------
 	##	调试开关
 	##	-------------------------------------------------------------------------------------
-	debug = 0;
+	debug		= 0;
+	src_path	= 0;
+	save_option	= 0;
+	save_list	= [];
+	del_option	= 0;
+	del_list	= [];
 
 	for i in range(0,len(sys.argv)):
 		if(sys.argv[i]=="-d"):
-			debug = 1;
-			break;
-#	debug = 1;
-	print("debug is ",debug);
+			debug		= 1;
+		if(sys.argv[i]=="-f"):
+			src_path	= sys.argv[i+1];
+		if(sys.argv[i]=="-s"):
+			save_option	= 1;
+			for j in range(1,len(sys.argv)-i):
+				if(sys.argv[i+j][0]=="-"):
+					break;
+				else:
+					save_list.append(sys.argv[i+j]);
+		if(sys.argv[i]=="-e"):
+			del_option	= 1;
+			for j in range(1,len(sys.argv)-i):
+				if(sys.argv[i+j][0]=="-"):
+					break;
+				else:
+					del_list.append(sys.argv[i+j]);
 
 	##	===============================================================================================
 	##	ref ***源文件操作***
@@ -26,7 +44,6 @@ def select_line() :
 	##	-------------------------------------------------------------------------------------
 	##	获取输入文件
 	##	-------------------------------------------------------------------------------------
-	src_path = sys.argv[1];
 	if(debug==1):	print("src_path is",src_path);
 
 	##	-------------------------------------------------------------------------------------
@@ -48,8 +65,13 @@ def select_line() :
 	##	===============================================================================================
 	##	ref ***找到pattern***
 	##	===============================================================================================
-	pattern1 = sys.argv[2];
-	pattern2 = sys.argv[3];
+	if(debug==1):
+		print("save_list is");
+		for eachline in save_list:
+			print(eachline);
+		print("del_list is");
+		for eachline in del_list:
+			print(eachline);
 
 	##	===============================================================================================
 	##	ref ***读文件 找关键字***
@@ -60,16 +82,26 @@ def select_line() :
 	list_parser = [];
 	for i in range(0,line_num):
 		line_content	= file_content[i];
-		##	-------------------------------------------------------------------------------------
-		##	在每一行中找 pattern1
-		##	-------------------------------------------------------------------------------------
-		if(line_content.find(pattern1)>=0):
-			if(debug==1):	print("******find pattern1 line num is ",i);
-			##	-------------------------------------------------------------------------------------
-			##	在每一行中找 pattern2，如果不包含pattern2，那么就可以添加
-			##	-------------------------------------------------------------------------------------
-			if (line_content.find(pattern2)<0):
-				list_parser.append(line_content);
+		if(save_option==1):
+			for j in range(0,len(save_list)):
+				pattern	= save_list[j];
+				if(line_content.find(pattern)>=0):
+					if(debug==1):	print("******find save pattern line num is ",i);
+					list_parser.append(line_content);
+					break;
+		else:
+			list_parser.append(line_content);
+
+	list_length	= len(list_parser);
+	for i in range(0,list_length):
+		line_content	= list_parser[list_length-i-1];
+		if(del_option==1):
+			for j in range(0,len(del_list)):
+				pattern	= del_list[j];
+				if(line_content.find(pattern)>=0):
+					if(debug==1):	print("******find del pattern line num is ",i);
+					del list_parser[list_length-i-1];
+					break;
 
 	##	===============================================================================================
 	##	ref ***输出文件***
