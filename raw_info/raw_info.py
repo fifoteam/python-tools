@@ -19,6 +19,7 @@ def raw_info() :
 	##	all_features	所有功能，默认关闭，打开之后会增加时间
 	##	-------------------------------------------------------------------------------------
 	debug 			= 0;
+	src_path		= 0;
 	pix_format		= 8;
 	pix_th			= 0;
 	all_features	= 0;
@@ -28,8 +29,10 @@ def raw_info() :
 	##	-------------------------------------------------------------------------------------
 	for i in range(0,len(sys.argv)):
 		if(sys.argv[i]=="-d"):
-			debug = 1;
+			debug		= 1;
 		if(sys.argv[i]=="-f"):
+			src_path	= sys.argv[i+1];
+		if(sys.argv[i]=="-p"):
 			pix_format	= int(sys.argv[i+1]);
 		if(sys.argv[i]=="-t"):
 			pix_th		= int(sys.argv[i+1]);

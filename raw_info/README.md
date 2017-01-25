@@ -11,7 +11,7 @@ raw_info 是一个命令行工具，可以从raw图分析出数据信息
 
 ### step 3
 打开 命令控制台，输入如下信息
-raw_info f:\test\1280x1024.raw
+raw_info -f f:\test\1280x1024.raw
 在文件同级目录下面会生成 xxx_info.txt 的文本，内容如下
 
 ```
@@ -29,7 +29,7 @@ pixel_aver is 72.52644119262695
 在命令行中添加-f参数，可以改变位宽信息
 -f [8-32] 指定像素位宽
 我们重新存了一张10bit位宽的图像，输入如下命令行
-raw_info f:\test\1280x1024_10.raw -f 10
+raw_info -f f:\test\1280x1024_10.raw -p 10
 得到的信息如下
 
 ```
@@ -47,7 +47,7 @@ pixel_aver is 284.21031188964844
 -t [数值] 指定像素阈值
 
 命令行改为：
-raw_info f:\test\1280x1024.raw -a
+raw_info -f f:\test\1280x1024.raw -a
 在文件同级目录下面会生成 xxx_info.txt 的文本，内容如下
 
 ```
