@@ -16,8 +16,13 @@ raw_roi -f f:\test\2x2_8.raw -i 2 2 -r 0 0 1 1
 
 ### step 5
 选项信息
+
 -d 打印调试信息
+
 -f 输入文件的路径
--p 像素格式
+
+-p 像素格式 默认8bit
+
 -i [width height] 原始图像宽高
+
 -r [offset_x offset_y roi_width roi_height] roi的起始点和宽高
