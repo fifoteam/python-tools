@@ -4,7 +4,7 @@ raw_roi 是一个命令行工具，完成roi图像裁剪的功能
 
 ##使用方法
 ### step 1
-在环境变量 path 中添加 raw_info 的路径
+在环境变量 path 中添加 raw_roi 的路径
 
 ### step 2
 保存图像到某一个路径，比如 f:\test\2x2_8.raw
