@@ -88,8 +88,8 @@ def raw_sub_bin() :
 	##	===============================================================================================
 	##	判断skip是否符合分辨率的要求
 	##	===============================================================================================
-	skip_x	= 1;
-	skip_y	= 1;
+	skip_x	= 2;
+	skip_y	= 2;
 
 	##	-------------------------------------------------------------------------------------
 	##	分别提取xy方向的skip的参数
@@ -105,14 +105,16 @@ def raw_sub_bin() :
 		if(width%skip_x!=0):
 			print("skip_x is not valid");
 			return 0;
+		if(height%skip_y!=0):
+			print("skip_y is not valid");
+			return 0;
 	else:
 		if(width%(skip_x*2)!=0):
 			print("skip_x is not valid");
 			return 0;
-
-	if(height%skip_y!=0):
-		print("skip_y is not valid");
-		return 0;
+		if(height%(skip_y*2)!=0):
+			print("skip_y is not valid");
+			return 0;
 
 	##	===============================================================================================
 	##	ref ***file operation***

@@ -7,5 +7,7 @@
 
 4.raw_roi:the script can resize raw image file.
 
-5.rtl_parser:anaylze verilog syntax and output the declaration driver and reference of selected word.this script can be used in some editor such as UE.
+5.raw_sub_bin:the script can do subsample or binning to the raw image file.
+
+6.rtl_parser:anaylze verilog syntax and output the declaration driver and reference of selected word.this script can be used in some editor such as UE.
 
