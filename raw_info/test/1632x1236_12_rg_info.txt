@@ -1,0 +1,5 @@
+src file is f:\FifoTeam\python-tools\raw_info\test\1632x1236_12_rg.raw
+pixel_num is 2017152
+pixel_min is 0
+pixel_max is 4095
+pixel_aver is 1210.617722908338
