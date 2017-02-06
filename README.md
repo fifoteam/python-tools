@@ -15,7 +15,7 @@
 
 8.raw_get_thresh:the script can analyze raw image file and output the threshold value with otsu method.
 
-9.raw_get_thresh:the script can do thresholding to the raw image file.
+9.raw_thresh:the script can do thresholding to the raw image file.
 
 
 
