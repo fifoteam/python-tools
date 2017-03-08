@@ -80,7 +80,7 @@ def u3vc_proc(*params) :
 	##	-------------------------------------------------------------------------------------
 	##	如果反馈有错误，说明上一条操作失败，立即返回
 	#	-------------------------------------------------------------------------------------
-	if(command=="ReadAck" or command=="WriteAck"):
+	if(command=="ReadAck" or command=="WriteAck" or command=="PendingAck" or command=="EventAck"):
 		if(status_ascii=="FAIL"):
 			ret	= [line_cnt,command+" "+status_ascii];
 			return ret;
@@ -143,6 +143,14 @@ def u3vc_proc(*params) :
 		write_ack_length	= line_content[48:50]+line_content[45:47];
 #		write_ack_length	= int(write_ack_length);
 		if(debug==1):	print("here is u3vc proc,write_ack_length is",write_ack_length);
+
+	elif(command_ascii=="PendingAck"):
+		##	-------------------------------------------------------------------------------------
+		##	读反馈只读一行数据，因此只会返回2byte寄存器数据
+		##	-------------------------------------------------------------------------------------
+		pending_ack_length	= line_content[48:50]+line_content[45:47];
+		if(debug==1):	print("here is u3vc proc,pending_ack_length is",pending_ack_length);
+
 
 	##	===============================================================================================
 	##	ref ***search regs corresponding to addr***
@@ -1147,7 +1155,15 @@ def u3vc_proc(*params) :
 	elif(command_ascii=="WriteAck"):
 		ret	= [line_cnt,command_ascii+" 0x"+write_ack_length+"Byte"];
 		if(debug==1):	print("here is u3vc proc,ret is",ret[1]);
-
+	elif(command_ascii=="PendingAck"):
+		ret	= [line_cnt,command_ascii+" 0x"+pending_ack_length+" ms"];
+		if(debug==1):	print("here is u3vc proc,ret is",ret[1]);
+	elif(command_ascii=="Event"):
+		ret	= [line_cnt,command_ascii];
+		if(debug==1):	print("here is u3vc proc,ret is",ret[1]);
+	elif(command_ascii=="EventAck"):
+		ret	= [line_cnt,command_ascii];
+		if(debug==1):	print("here is u3vc proc,ret is",ret[1]);
 	return	ret;
 
 
