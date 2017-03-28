@@ -5,24 +5,24 @@
 55 33 56 43  00 40 00 08  0c 00 eb 15  14 00 02 00	#Read SI Required Trailer Size 0x0004Byte
 00 00 00 00  00 00 04 00
 55 33 56 43  00 00 01 08  04 00 eb 15  24 00 00 00	#ReadAck 0x00000024
-55 33 56 43  00 40 02 08  0c 00 ec 15  18 00 02 00	#Write SI Maximum Leader Size 0x0000
+55 33 56 43  00 40 02 08  0c 00 ec 15  18 00 02 00	#Write SI Maximum Leader Size 0x00000400
 00 00 00 00  00 04 00 00
 55 33 56 43  00 00 03 08  04 00 ec 15  00 00 04 00	#WriteAck 0x0004Byte
-55 33 56 43  00 40 02 08  0c 00 ed 15  1c 00 02 00	#Write SI Payload Transfer Size 0x0000
+55 33 56 43  00 40 02 08  0c 00 ed 15  1c 00 02 00	#Write SI Payload Transfer Size 0x00005000
 00 00 00 00  00 50 00 00
 55 33 56 43  00 00 03 08  04 00 ed 15  00 00 04 00	#WriteAck 0x0004Byte
-55 33 56 43  00 40 02 08  0c 00 ee 15  20 00 02 00	#Write SI Payload Transfer Count 0x0000
+55 33 56 43  00 40 02 08  0c 00 ee 15  20 00 02 00	#Write SI Payload Transfer Count 0x0000000c
 00 00 00 00  0c 00 00 00
 55 33 56 43  00 00 03 08  04 00 ee 15  00 00 04 00	#WriteAck 0x0004Byte
-55 33 56 43  00 40 02 08  0c 00 ef 15  24 00 02 00	#Write SI Payload Final Transfer1 Size 0x0000
+55 33 56 43  00 40 02 08  0c 00 ef 15  24 00 02 00	#Write SI Payload Final Transfer1 Size 0x00001c00
 00 00 00 00  00 1c 00 00
 55 33 56 43  00 00 03 08  04 00 ef 15  00 00 04 00	#WriteAck 0x0004Byte
-55 33 56 43  00 40 02 08  0c 00 f0 15  28 00 02 00	#Write SI Payload Final Transfer2 Size 0x0000
+55 33 56 43  00 40 02 08  0c 00 f0 15  28 00 02 00	#Write SI Payload Final Transfer2 Size 0x00000400
 00 00 00 00  00 04 00 00
 55 33 56 43  00 00 03 08  04 00 f0 15  00 00 04 00	#WriteAck 0x0004Byte
-55 33 56 43  00 40 02 08  0c 00 f1 15  2c 00 02 00	#Write SI Maximum Trailer Size 0x0000
+55 33 56 43  00 40 02 08  0c 00 f1 15  2c 00 02 00	#Write SI Maximum Trailer Size 0x00000400
 00 00 00 00  00 04 00 00
-55 33 56 4c  00 00 34 00  04 00 00 00  00 00 00 00	# block is 0x4. chunk_mode_active is 1. timestamp is 0x8a852b6e1. pixel_format is 0x01080009(BayerRG8). size_x is 0x0170(368). size_y is 0x033c(828). offset_x is 0x0000(0). offset_y is 0x0000(0).
+55 33 56 4c  00 00 34 00  04 00 00 00  00 00 00 00	# block is 0x4(4) chunk_mode_active is 1. timestamp is 0x8a852b6e1(37183731425) pixel_format is 0x01080009(BayerRG8). size_x is 0x170(368). size_y is 0x33c(828). offset_x is 0x0(0). offset_y is 0x0(0).
 00 00 01 40  e1 b6 52 a8  08 00 00 00  09 00 08 01
 70 01 00 00  3c 03 00 00  00 00 00 00  00 00 00 00
 00 00 00 00                                       
@@ -38,6 +38,6 @@
 00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00
 00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00
 00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00
-55 33 56 54  00 00 24 00  04 00 00 00  00 00 00 00	# trailer_size is 36. block is 0x4. status is 0x0000. valid_payload_size is 0x0004a668(304744). trailer_size_y is 0x033c(828). chunk_layout_id is 0x09(9).
+55 33 56 54  00 00 24 00  04 00 00 00  00 00 00 00	# trailer_size is 0x24(36). block is 0x4(4). status is 0x0000. valid_payload_size is 0x4a668(304744). trailer_size_y is 0x33c(828).
 00 00 00 00  68 a6 04 00  00 00 00 00  3c 03 00 00
 09 00 00 00                                       

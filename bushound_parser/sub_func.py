@@ -1284,12 +1284,15 @@ def u3vl_proc(*params) :
 	##	获得blockid
 	##	-------------------------------------------------------------------------------------
 	blockid	= line_content[48:50]+line_content[45:47]+line_content[42:44]+line_content[39:41]+line_content[35:37]+line_content[32:34]+line_content[29:31]+line_content[26:28];
-	if(blockid=="             "):
-		blockid	= "NA"
-	else:
-		blockid	= int(blockid,16);
-		blockid	= hex(blockid);
-	blockid	= " block is "+blockid+'.';
+	if(debug==1):	print("here is u3vl proc,blockid is ",blockid);
+	try:
+		blockid_dec	= int(blockid,16);
+		blockid_hex	= hex(blockid_dec);
+		blockid_dec	= str(blockid_dec);
+	except ValueError:
+		blockid_dec	= "NA";
+		blockid_hex	= blockid;
+	blockid	= " block is "+blockid_hex+'('+blockid_dec+')';
 	if(debug==1):	print("here is u3vl proc,blockid is ",blockid);
 
 	##	-------------------------------------------------------------------------------------
@@ -1303,6 +1306,7 @@ def u3vl_proc(*params) :
 		return	ret;
 	line_content	= file_content[line_cnt+1];
 	line_content	= line_content[first_byte_pos:first_byte_pos+13*4];
+	if(debug==1):	print("here is u3vl proc,line_content is",line_content);
 
 	##	-------------------------------------------------------------------------------------
 	##	获得chunk_mode_active
@@ -1317,12 +1321,14 @@ def u3vl_proc(*params) :
 	##	获得timestamp
 	##	-------------------------------------------------------------------------------------
 	timestamp	= line_content[35:37]+line_content[32:34]+line_content[29:31]+line_content[26:28]+line_content[22:24]+line_content[19:21]+line_content[16:18]+line_content[13:15];
-	if(timestamp=="             "):
-		timestamp	= "NA"
-	else:
-		timestamp	= int(timestamp,16);
-		timestamp	= hex(timestamp);
-	timestamp	= " timestamp is "+timestamp+'.';
+	try:
+		timestamp_dec	= int(timestamp,16);
+		timestamp_hex	= hex(timestamp_dec);
+		timestamp_dec	= str(timestamp_dec);
+	except ValueError:
+		timestamp_dec	= "NA";
+		timestamp_hex	= timestamp;
+	timestamp	= " timestamp is "+timestamp_hex+'('+timestamp_dec+')';
 	if(debug==1):	print("here is u3vl proc,timestamp is ",timestamp);
 
 	##	-------------------------------------------------------------------------------------
@@ -1345,53 +1351,63 @@ def u3vl_proc(*params) :
 		return	ret;
 	line_content	= file_content[line_cnt+2];
 	line_content	= line_content[first_byte_pos:first_byte_pos+13*4];
+	if(debug==1):	print("here is u3vl proc,line_content is",line_content);
 
 	##	-------------------------------------------------------------------------------------
 	##	获得 size_x
 	##	-------------------------------------------------------------------------------------
 	size_x		= line_content[3:5]+line_content[0:2];
-	if(size_x==" "):
-		size_x_dec	= "NA"
-	else:
+	try:
 		size_x_dec	= int(size_x,16);
+		size_x_hex	= hex(size_x_dec);
 		size_x_dec	= str(size_x_dec);
-	size_x		= " size_x is 0x"+size_x+'('+size_x_dec+').';
+	except ValueError:
+		size_x_dec	= "NA";
+		size_x_hex	= size_x;
+	size_x		= " size_x is "+size_x_hex+'('+size_x_dec+').';
 	if(debug==1):	print("here is u3vl proc,size_x is ",size_x);
+
 
 	##	-------------------------------------------------------------------------------------
 	##	获得 size_y
 	##	-------------------------------------------------------------------------------------
 	size_y		= line_content[16:18]+line_content[13:15];
-	if(size_y==" "):
-		size_y_dec	= "NA"
-	else:
+	try:
 		size_y_dec	= int(size_y,16);
+		size_y_hex	= hex(size_y_dec);
 		size_y_dec	= str(size_y_dec);
-	size_y		= " size_y is 0x"+size_y+'('+size_y_dec+').';
+	except ValueError:
+		size_y_dec	= "NA";
+		size_y_hex	= size_y;
+	size_y		= " size_y is "+size_y_hex+'('+size_y_dec+').';
 	if(debug==1):	print("here is u3vl proc,size_y is ",size_y);
 
 	##	-------------------------------------------------------------------------------------
 	##	获得 offset_x
 	##	-------------------------------------------------------------------------------------
 	offset_x		= line_content[29:31]+line_content[26:28];
-	if(offset_x==" "):
-		offset_x_dec	= "NA"
-	else:
+	try:
 		offset_x_dec	= int(offset_x,16);
+		offset_x_hex	= hex(offset_x_dec);
 		offset_x_dec	= str(offset_x_dec);
-	offset_x		= " offset_x is 0x"+offset_x+'('+offset_x_dec+').';
+	except ValueError:
+		offset_x_dec	= "NA";
+		offset_x_hex	= offset_x;
+	offset_x		= " offset_x is "+offset_x_hex+'('+offset_x_dec+').';
 	if(debug==1):	print("here is u3vl proc,offset_x is ",offset_x);
 
 	##	-------------------------------------------------------------------------------------
 	##	获得 size_y
 	##	-------------------------------------------------------------------------------------
 	offset_y		= line_content[42:44]+line_content[39:41];
-	if(offset_y==" "):
-		offset_y_dec	= "NA"
-	else:
+	try:
 		offset_y_dec	= int(offset_y,16);
+		offset_y_hex	= hex(offset_y_dec);
 		offset_y_dec	= str(offset_y_dec);
-	offset_y		= " offset_y is 0x"+offset_y+'('+offset_y_dec+').';
+	except ValueError:
+		offset_y_dec	= "NA";
+		offset_y_hex	= offset_y;
+	offset_y		= " offset_y is "+offset_y_hex+'('+offset_y_dec+').';
 	if(debug==1):	print("here is u3vl proc,offset_y is ",offset_y);
 
 	##	===============================================================================================
@@ -1433,24 +1449,28 @@ def u3vt_proc(*params) :
 	##	获得 trailer_size
 	##	-------------------------------------------------------------------------------------
 	trailer_size	= line_content[19:21];
-	if(trailer_size=="  "):
-		trailer_size	= "NA"
-	else:
-		trailer_size	= int(trailer_size,16);
-		trailer_size	= str(trailer_size);
-	trailer_size	= " trailer_size is "+trailer_size+'.';
+	try:
+		trailer_size_dec	= int(trailer_size,16);
+		trailer_size_hex	= hex(trailer_size_dec);
+		trailer_size_dec	= str(trailer_size_dec);
+	except ValueError:
+		trailer_size_dec	= "NA";
+		trailer_size_hex	= trailer_size;
+	trailer_size	= " trailer_size is "+trailer_size_hex+'('+trailer_size_dec+').';
 	if(debug==1):	print("here is u3vt proc,trailer_size is ",trailer_size);
 
 	##	-------------------------------------------------------------------------------------
 	##	获得blockid
 	##	-------------------------------------------------------------------------------------
 	blockid	= line_content[48:50]+line_content[45:47]+line_content[42:44]+line_content[39:41]+line_content[35:37]+line_content[32:34]+line_content[29:31]+line_content[26:28];
-	if(blockid=="             "):
-		blockid	= "NA"
-	else:
-		blockid	= int(blockid,16);
-		blockid	= hex(blockid);
-	blockid	= " block is "+blockid+'.';
+	try:
+		blockid_dec	= int(blockid,16);
+		blockid_hex	= hex(blockid_dec);
+		blockid_dec	= str(blockid_dec);
+	except ValueError:
+		blockid_dec	= "NA";
+		blockid_hex	= blockid;
+	blockid		= " block is "+blockid_hex+'('+blockid_dec+').';
 	if(debug==1):	print("here is u3vt proc,blockid is ",blockid);
 
 	##	-------------------------------------------------------------------------------------
@@ -1464,6 +1484,7 @@ def u3vt_proc(*params) :
 		return	ret;
 	line_content	= file_content[line_cnt+1];
 	line_content	= line_content[first_byte_pos:first_byte_pos+13*4];
+	if(debug==1):	print("here is u3vt proc,line_content is",line_content);
 
 	##	-------------------------------------------------------------------------------------
 	##	获得 status
@@ -1476,24 +1497,28 @@ def u3vt_proc(*params) :
 	##	获得 valid_payload_size
 	##	-------------------------------------------------------------------------------------
 	valid_payload_size	= line_content[22:24]+line_content[19:21]+line_content[16:18]+line_content[13:15];
-	if(valid_payload_size=="     "):
-		valid_payload_size_dec	= "NA"
-	else:
+	try:
 		valid_payload_size_dec	= int(valid_payload_size,16);
+		valid_payload_size_hex	= hex(valid_payload_size_dec);
 		valid_payload_size_dec	= str(valid_payload_size_dec);
-	valid_payload_size		= " valid_payload_size is 0x"+valid_payload_size+'('+valid_payload_size_dec+').';
+	except ValueError:
+		valid_payload_size_dec	= "NA";
+		valid_payload_size_hex	= valid_payload_size;
+	valid_payload_size		= " valid_payload_size is "+valid_payload_size_hex+'('+valid_payload_size_dec+').';
 	if(debug==1):	print("here is u3vt proc,valid_payload_size is ",valid_payload_size);
 
 	##	-------------------------------------------------------------------------------------
 	##	获得 trailer_size_y
 	##	-------------------------------------------------------------------------------------
 	trailer_size_y		= line_content[42:44]+line_content[39:41];
-	if(trailer_size_y==" "):
-		trailer_size_y_dec	= "NA"
-	else:
+	try:
 		trailer_size_y_dec	= int(trailer_size_y,16);
+		trailer_size_y_hex	= hex(trailer_size_y_dec);
 		trailer_size_y_dec	= str(trailer_size_y_dec);
-	trailer_size_y		= " trailer_size_y is 0x"+trailer_size_y+'('+trailer_size_y_dec+').';
+	except ValueError:
+		trailer_size_y_dec	= "NA";
+		trailer_size_y_hex	= trailer_size_y;
+	trailer_size_y		= " trailer_size_y is "+trailer_size_y_hex+'('+trailer_size_y_dec+').';
 	if(debug==1):	print("here is u3vt proc,trailer_size_y is ",trailer_size_y);
 
 #	##	-------------------------------------------------------------------------------------
