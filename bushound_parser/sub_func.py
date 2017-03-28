@@ -1143,6 +1143,9 @@ def u3vc_proc(*params) :
 	##	===============================================================================================
 	##	ref ***return result***
 	##	===============================================================================================
+	##	-------------------------------------------------------------------------------------
+	##	根据命令，返回数据
+	##	-------------------------------------------------------------------------------------
 	if(command_ascii=="Read"):
 		ret	= [line_cnt,command_ascii+" "+reg_name+" 0x"+read_length+"Byte"];
 		if(debug==1):	print("here is u3vc proc,ret is",ret[1]);
@@ -1150,7 +1153,17 @@ def u3vc_proc(*params) :
 		ret	= [line_cnt,command_ascii+" 0x"+read_ack_data];
 		if(debug==1):	print("here is u3vc proc,ret is",ret[1]);
 	elif(command_ascii=="Write"):
-		ret	= [line_cnt,command_ascii+" "+reg_name+" 0x"+write_data];
+		##	-------------------------------------------------------------------------------------
+		##	先把数据转换一下
+		##	-------------------------------------------------------------------------------------
+		try:
+			write_data_dec	= int(write_data,16);
+			write_data_hex	= hex(write_data_dec);
+			write_data_dec	= str(write_data_dec);
+		except ValueError:
+			write_data_dec	= "NA";
+			write_data_hex	= write_data;
+		ret	= [line_cnt,command_ascii+" "+reg_name+" "+write_data_hex+'('+write_data_dec+')'];
 		if(debug==1):	print("here is u3vc proc,ret is",ret[1]);
 	elif(command_ascii=="WriteAck"):
 		ret	= [line_cnt,command_ascii+" 0x"+write_ack_length+"Byte"];
@@ -1165,8 +1178,6 @@ def u3vc_proc(*params) :
 		ret	= [line_cnt,command_ascii];
 		if(debug==1):	print("here is u3vc proc,ret is",ret[1]);
 	return	ret;
-
-
 
 ##	-------------------------------------------------------------------------------------
 ##  Table 7 – Status Codes
