@@ -57,14 +57,14 @@ def bushound_parser() :
 		##	如果一行的开头是 "------"，那么就认为下面就是数据开始
 		##	-------------------------------------------------------------------------------------
 		if(line_content.find("55 33 56 ")>=0):
-			if(debug==1):	print("******find pattern line num is ",i);
+			if(debug==1):	print("******find U3V pattern line num is ",i);
 			line_start=i;
 			break
 		##	-------------------------------------------------------------------------------------
 		##	如果最后一行都没有找到，那么就是没有pattern，就会退出
 		##	-------------------------------------------------------------------------------------
 		if(i==line_num-1):
-			if(debug==1):	print("******not found pattern");
+			if(debug==1):	print("******not found U3V pattern");
 			return -1
 
 	##	-------------------------------------------------------------------------------------
@@ -91,6 +91,17 @@ def bushound_parser() :
 		elif(line_content[first_byte_pos:first_byte_pos+11]=="55 33 56 54"):
 			if(debug==1):	print("find U3VT");
 			list_parser.append(u3vt_proc(debug,first_byte_pos,i,file_content));
+
+		if(i==int(line_num*0.1)):	print(".",end="");
+		if(i==int(line_num*0.2)):	print(".",end="");
+		if(i==int(line_num*0.3)):	print(".",end="");
+		if(i==int(line_num*0.4)):	print(".",end="");
+		if(i==int(line_num*0.5)):	print(".",end="");
+		if(i==int(line_num*0.6)):	print(".",end="");
+		if(i==int(line_num*0.7)):	print(".",end="");
+		if(i==int(line_num*0.8)):	print(".",end="");
+		if(i==int(line_num*0.9)):	print(".",end="");
+		if(i==int(line_num-1)):		print("!",end="");
 
 	##	===============================================================================================
 	##	ref ***output result***
