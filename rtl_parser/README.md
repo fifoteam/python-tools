@@ -13,7 +13,7 @@ rtl_parser 有两个参数，第一个参数是文件全路径的名字，第二个是所选信号的名字
 
 ### step 2
 在控制台输入如下信息
-rtl_parser f:\fpga\src\data_channel\interrupt.v fval_fall
+rtl_parser -f f:\fpga\src\data_channel\interrupt.v -s fval_fall
 
 ### step 3
 控制台会返回如下信息：
@@ -42,7 +42,7 @@ F:\DAHENG\hw_mer\branches\xinghaotao\u3v\mer-1810-21u3x\fpga\src\data_channel\in
 
 ###step 2
 菜单项名称改为：rtl_parser
-命令行为：f:\Michael\script\python\main\rtl_parser\dist\rtl_parser.exe %f %sel%。根据自己的路径修改
+命令行为：f:\Michael\script\python\main\rtl_parser\dist\rtl_parser.exe -f %f -s %sel%。根据自己的路径修改
 输出选项卡，修改： a.输出到列表框 b.捕获输出
 
 ###step 3
