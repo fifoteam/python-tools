@@ -1,0 +1,8 @@
+module dd # (
+	parameter	DATA_WIDTH	= 8,
+	parameter	TIME_DOMAIN	= "ASYNC"
+)
+(
+	input			clk		,
+	input			reset	,
+);
