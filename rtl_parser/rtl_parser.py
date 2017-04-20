@@ -138,23 +138,7 @@ def rtl_parser() :
 				##	-------------------------------------------------------------------------------------
 				##	判断是不是声明语句
 				##	-------------------------------------------------------------------------------------
-				if(line_content.split(' ')[0]=="parameter"):
-					declare_list.append(all_list[i]);
-				elif(line_content.split(' ')[0]=="localparam"):
-					declare_list.append(all_list[i]);
-				elif(line_content.split(' ')[0]=="function"):
-					declare_list.append(all_list[i]);
-				elif(line_content.split(' ')[0]=="task"):
-					declare_list.append(all_list[i]);
-				elif(line_content.split(' ')[0]=="input"):
-					declare_list.append(all_list[i]);
-				elif(line_content.split(' ')[0]=="output"):
-					declare_list.append(all_list[i]);
-				elif(line_content.split(' ')[0]=="inout"):
-					declare_list.append(all_list[i]);
-				elif(line_content.split(' ')[0]=="wire"):
-					declare_list.append(all_list[i]);
-				elif(line_content.split(' ')[0]=="reg"):
+				if(find_declare(line_content)==word_sel):
 					declare_list.append(all_list[i]);
 				else:
 					reference_list.append(all_list[i]);
