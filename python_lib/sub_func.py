@@ -62,36 +62,14 @@ def copy_clip():
 	return c
 
 ##	-------------------------------------------------------------------------------------
-##	判断字符串是否是声明语句
-##	-------------------------------------------------------------------------------------
-def find_declare(line_content):
-	word	= "";
-	if(line_content.split(' ')[0]=="parameter"):
-		word	= line_content.split(' ')[1];
-	elif(line_content.split(' ')[0]=="localparam"):
-		word	= line_content.split(' ')[1];
-	elif(line_content.split(' ')[0]=="function"):
-		word	= line_content.split(' ')[1];
-	elif(line_content.split(' ')[0]=="task"):
-		word	= line_content.split(' ')[1];
-	elif(line_content.split(' ')[0]=="input"):
-		word	= line_content.split(' ')[1];
-	elif(line_content.split(' ')[0]=="output"):
-		word	= line_content.split(' ')[1];
-	elif(line_content.split(' ')[0]=="inout"):
-		word	= line_content.split(' ')[1];
-	elif(line_content.split(' ')[0]=="wire"):
-		word	= line_content.split(' ')[1];
-	elif(line_content.split(' ')[0]=="reg"):
-		word	= line_content.split(' ')[1];
-
-	return	word
-
-##	-------------------------------------------------------------------------------------
 ##	判断字符串是否是赋值语句
 ##	-------------------------------------------------------------------------------------
 def judge_driver(line_content):
 	line_value	= "";
+
+	##	-------------------------------------------------------------------------------------
+	##	检查是否包含赋值符号
+	##	-------------------------------------------------------------------------------------
 	try:
 	    index_value = line_content.index("=")
 	except ValueError:
@@ -100,6 +78,19 @@ def judge_driver(line_content):
 		line_value	= line_content[0:index_value];
 	else:
 		line_value	= "";
+		return	line_value
+
+	##	-------------------------------------------------------------------------------------
+	##	如果是case赋值，那么会有冒号
+	##	-------------------------------------------------------------------------------------
+	try:
+	    index_value = line_content.index(":")
+	except ValueError:
+	    index_value = -1
+	if(index_value!=-1):
+		line_value	= line_content[index_value:len(line_value)];
+		line_value	= line_value.replace("\t"," ");
+		line_value	= line_value.strip();
 
 	if(line_value.split(' ')[0]=="assign"):
 		judge	= 1;
