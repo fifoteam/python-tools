@@ -14,6 +14,7 @@ rtl_parser 有两个参数，第一个参数是文件全路径的名字，第二个是所选信号的名字
 在控制台输入如下信息
 rtl_parser -f f:\fpga\src\data_channel\interrupt.v -s fval_fall
 
+
 ### step 3
 控制台会返回如下信息：
 
