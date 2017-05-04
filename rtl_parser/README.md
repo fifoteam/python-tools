@@ -2,7 +2,6 @@
 ##功能介绍
 rtl_parser 是一个命令行工具，用来解析rtl文件的语法。方便代码调试。
 
-
 ##使用须知
 目前只支持verilog语法文件，只具备文件内部跳转的功能。
 
@@ -20,21 +19,20 @@ rtl_parser -f f:\fpga\src\data_channel\interrupt.v -s fval_fall
 
 ```
 rtl_parser v1.0 2016.09.01
-src file is  F:\DAHENG\hw_mer\branches\xinghaotao\u3v\mer-1810-21u3x\fpga\src\data_channel\interrupt.v
+src file is  F:\fpga\src\data_channel\interrupt.v
 selected word is  fval_fall
 find times : 10
 ***declaration***
-F:\DAHENG\hw_mer\branches\xinghaotao\u3v\mer-1810-21u3x\fpga\src\data_channel\interrupt.v(66):wire      fval_fall    ;
+F:\fpga\src\data_channel\interrupt.v(66):wire      fval_fall    ;
 ***driver***
-F:\DAHENG\hw_mer\branches\xinghaotao\u3v\mer-1810-21u3x\fpga\src\data_channel\interrupt.v(91):assign fval_fall = (fval_shift[1:0]==2'b10) ? 1'b1 : 1'b0;
+F:\fpga\src\data_channel\interrupt.v(91):assign fval_fall = (fval_shift[1:0]==2'b10) ? 1'b1 : 1'b0;
 ***reference***
-F:\DAHENG\hw_mer\branches\xinghaotao\u3v\mer-1810-21u3x\fpga\src\data_channel\interrupt.v(135):if(fval_fall) begin
+F:\fpga\src\data_channel\interrupt.v(135):if(fval_fall) begin
 ```
 
 ### step 4
 所输出的信息包括三部分，第一部分是信号在那里声明，第二部分是信号在哪里被赋值，第三部分是信号在哪里被引用。
 点击相应的信息，会跳转到文件的响应行
-
 
 ##与UE结合
 ###step 1
