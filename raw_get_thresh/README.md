@@ -1,8 +1,8 @@
 
-##功能介绍
+## 功能介绍
 raw_get_thresh 是一个命令行工具，完成otsu算法提取阈值的功能
 
-##使用方法
+## 使用方法
 ### step 1
 在环境变量 path 中添加 raw_get_thresh 的路径
 
