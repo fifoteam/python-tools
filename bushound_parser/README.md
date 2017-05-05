@@ -45,7 +45,7 @@ bushound_parser f:\test\1.txt
 ### step 5
 文件分析
 
-*** 1_parser.txt ***
+***1_parser.txt***
 在原始文档的某些行的末尾添加了解析后的内容
 
 ```
@@ -67,7 +67,7 @@ bushound_parser f:\test\1.txt
                                               00 00 00 00                                         ....                        86421.1.48
 ```
 
-*** 1_summary.txt ***
+***1_summary.txt***
 只保留解析后的信息和对应的原始文档的行号
 
 ```

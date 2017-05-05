@@ -33,7 +33,7 @@ select_line -f f:\test\1.txt -s line -e block
 ### step 5
 文件分析
 
-*** 1.txt ***
+***1.txt***
 日志中包含如下信息
 ```
 line num is 21	 block is 0x1cfc. chunk_mode_active is 1. timestamp is 0x10c68de0775c. pixel_format is 0x01080008(BayerGR8). size_x is 0x1200(4608). size_y is 0x0cd8(3288). offset_x is 0x0000(0). offset_y is 0x0000(0).
@@ -49,7 +49,7 @@ line num is 399	 trailer_size is 36. block is 0x1d03. status is 0x0000. valid_pa
 line num is 402	 block is 0x1d04. chunk_mode_active is 1. timestamp is 0x10c6c2dcdce8. pixel_format is 0x01080008(BayerGR8). size_x is 0x1200(4608). size_y is 0x0cd8(3288). offset_x is 0x0000(0). offset_y is 0x0000(0).
 ```
 
-*** select_line.txt ***
+***select_line.txt***
 解析之后的文本
 
 ```
