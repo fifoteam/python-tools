@@ -111,7 +111,7 @@ def rtl_parser() :
 	##	-------------------------------------------------------------------------------------
 	##	头
 	##	-------------------------------------------------------------------------------------
-	print("https://github.com/fifoteam/python-tools/rtl_parser v1.2 2016.10.31");
+	print("https://github.com/fifoteam/python-tools/rtl_parser v1.3 2017.5.9");
 	print("src file is : ",src_path);
 	print("selected word is \""+word_sel+"\"");
 	print("find num :",len(all_list));
@@ -144,37 +144,5 @@ def rtl_parser() :
 		print(""+src_path+"("+str(map_list[i][1])+"):"+map_list[i][0]+"");
 
 	infile.close()
-
-
-
-#	path = "f:/test/UE_TMP.v"
-#	infile = open(path,"r")
-#	outfile = open("f:/test/UE_TMP1.v","w")
-#	outfile.write("hello")
-#
-#
-#	temp = os.path.split(src_path);
-#	print('temp[1] is :',temp[1]);
-#	print(os.path.basename(src_path));
-#	u = os.path.basename(src_path);
-#	v = u.split('.');
-#	#	print(u.split(.));
-#	print(v[0]);
-#	#	print(os.path.split(path));
-#
-#	outfile.close()
-#	infile.close()
-##
-###!/usr/bin/python
-### -*- coding: UTF-8 -*-
-##
-##for letter in 'Python':     # 第一个实例
-##   print '当前字母 :', letter
-##
-##fruits = ['banana', 'apple',  'mango']
-##for fruit in fruits:        # 第二个实例
-##   print '当前字母 :', fruit
-##
-##print "Good bye!"
 
 rtl_parser()
