@@ -10,13 +10,18 @@ def rtl_parser() :
 	##	ref ***commond line parameter***
 	##	===============================================================================================
 	##	-------------------------------------------------------------------------------------
+	##	版本信息，在后面会打印
+	##	-------------------------------------------------------------------------------------
+	version_message	= "https://github.com/fifoteam/python-tools/rtl_parser v1.3 2017.5.11";
+	##	-------------------------------------------------------------------------------------
 	##	debug			调试开关，默认关闭
 	##	src_path		文件路径
 	##	word_sel		选择的单词
 	##	-------------------------------------------------------------------------------------
-	debug		= 0;
-	src_path	= 0;
-	word_sel	= 0;
+	debug			= 0;
+	reverse_message	= 0;
+	src_path		= 0;
+	word_sel		= 0;
 
 	##	-------------------------------------------------------------------------------------
 	##	循环查找参数
@@ -28,6 +33,8 @@ def rtl_parser() :
 			src_path	= sys.argv[i+1];
 		if(sys.argv[i]=="-s"):
 			word_sel	= sys.argv[i+1];
+		if(sys.argv[i]=="-r"):
+			reverse_message	= 1;
 
 	##	-------------------------------------------------------------------------------------
 	##	获取输入文件
@@ -111,37 +118,50 @@ def rtl_parser() :
 	##	-------------------------------------------------------------------------------------
 	##	头
 	##	-------------------------------------------------------------------------------------
-	print("https://github.com/fifoteam/python-tools/rtl_parser v1.3 2017.5.9");
-	print("src file is : ",src_path);
-	print("selected word is \""+word_sel+"\"");
-	print("find num :",len(all_list));
+	print(version_message);
+	src_file_message	= "src file is : "+src_path+"";
+	word_sel_message	= "selected word is \""+word_sel+"\"";
+	find_num_message	= "find num : "+str(len(all_list))+"";
+	print(""+src_file_message+"***"+word_sel_message+"***"+find_num_message+"");
 	##	-------------------------------------------------------------------------------------
 	##	引用部分
 	##	-------------------------------------------------------------------------------------
 	print("***declaration***");
 	for i in range(0,len(declare_list)):
-		print(""+src_path+"("+str(declare_list[i][1])+"):"+declare_list[i][0]+"");
+		if(reverse_message==0):
+			print(""+src_path+"("+str(declare_list[i][1])+"):"+declare_list[i][0]+"");
+		else:
+			print(""+declare_list[i][0]+":"+src_path+"("+str(declare_list[i][1])+")");
 
 	##	-------------------------------------------------------------------------------------
 	##	驱动部分
 	##	-------------------------------------------------------------------------------------
 	print("***driver***");
 	for i in range(0,len(driver_list)):
-		print(""+src_path+"("+str(driver_list[i][1])+"):"+driver_list[i][0]+"");
+		if(reverse_message==0):
+			print(""+src_path+"("+str(driver_list[i][1])+"):"+driver_list[i][0]+"");
+		else:
+			print(""+driver_list[i][0]+":"+src_path+"("+str(driver_list[i][1])+")");
 
 	##	-------------------------------------------------------------------------------------
 	##	引用部分
 	##	-------------------------------------------------------------------------------------
 	print("***reference***");
 	for i in range(0,len(reference_list)):
-		print(""+src_path+"("+str(reference_list[i][1])+"):"+reference_list[i][0]+"");
+		if(reverse_message==0):
+			print(""+src_path+"("+str(reference_list[i][1])+"):"+reference_list[i][0]+"");
+		else:
+			print(""+reference_list[i][0]+":"+src_path+"("+str(reference_list[i][1])+")");
 
 	##	-------------------------------------------------------------------------------------
 	##	映射部分
 	##	-------------------------------------------------------------------------------------
 	print("***map***");
 	for i in range(0,len(map_list)):
-		print(""+src_path+"("+str(map_list[i][1])+"):"+map_list[i][0]+"");
+		if(reverse_message==0):
+			print(""+src_path+"("+str(map_list[i][1])+"):"+map_list[i][0]+"");
+		else:
+			print(""+map_list[i][0]+":"+src_path+"("+str(map_list[i][1])+")");
 
 	infile.close()
 
