@@ -35,7 +35,7 @@ Bushound的窗口中的数据必须是4列的模式，即每行的空间是16个字节。示例如下：
 
 ### step 3
 打开 命令控制台，输入如下信息
-bushound_parser f:\test\1.txt
+bushound_parser -f f:\test\1.txt
 
 ### step 4
 程序会在 f:\test\ 目录下输出2个解析文件
@@ -43,6 +43,11 @@ bushound_parser f:\test\1.txt
 1_summary.txt
 
 ### step 5
+命令行信息
+-d 打印调试信息
+-f 文件路径
+
+### step 6
 文件分析
 
 ***1_parser.txt***
