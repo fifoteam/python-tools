@@ -220,8 +220,8 @@ def rtl_parser() :
 			line_content	= trim_eol(line_content);
 			line_content	= trim_comment(line_content);
 
-			if(find_index(line_content"\r\n")!=-1):	line_content = line_content[0,line_content.index("\r\n")];
-			if(find_index(line_content"\n")!=-1):	line_content = line_content[0,line_content.index("\n")];
+			if(find_index(line_content,"\r\n")!=-1):	line_content = line_content[0,line_content.index("\r\n")];
+			if(find_index(line_content,"\n")!=-1):	line_content = line_content[0,line_content.index("\n")];
 			if(find_index(line_content,"(")!=-1):	line_content = line_content[line_content.index("(")+1:len(line_content)];
 			if(find_index(line_content,")")!=-1):	line_content = line_content[0,line_content.index(")")];
 			if(line_content==""):
@@ -272,7 +272,7 @@ def rtl_parser() :
 					else:
 						para_value[j]	= 0;
 
-					j++;
+					j=j+1;
 
 	##+test+
 	if(para_find==1 and debug==1):
@@ -361,7 +361,7 @@ def rtl_parser() :
 				line_space_split	= line_content.split(' ');
 				if(line_space_split[0]!=""):
 					signal_name[j]	= line_space_split[0];
-					j++
+					j=j+1;
 
 			else:
 				##	-------------------------------------------------------------------------------------
@@ -429,7 +429,7 @@ def rtl_parser() :
 					##	-------------------------------------------------------------------------------------
 					else:
 						port_declare=2;
-					j++;
+					j=j+1;
 
 
 	if(debug==1):
@@ -551,11 +551,11 @@ def rtl_parser() :
 	sig_max_tab		= 0;
 	for i in range(0,len(para_name)):
 		if(sig_max_length < len(para_name[i])):
-			sig_max_length	= len(para_name[i];
+			sig_max_length	= len(para_name[i]);
 
 	for i in range(0,len(signal_name)):
 		if(sig_max_length < len(signal_name[i])):
-			sig_max_length	= len(signal_name[i];
+			sig_max_length	= len(signal_name[i]);
 	if(debug==1):	print("sig_max_length is "+sig_max_length+"");
 
 	##	-------------------------------------------------------------------------------------
@@ -579,7 +579,7 @@ def rtl_parser() :
 			##	计算出需要补全的tab个数，由于信号名字前面有 . (，因此计算长度的时候要+1
 			##	-------------------------------------------------------------------------------------
 			sig_tab_num	= sig_max_tab-int((len(signalName[i])+1)/4);
-			if (debug==1) print("sig_tab_num is "+sig_tab_num+"");
+			if(debug==1): print("sig_tab_num is "+sig_tab_num+"");
 			for j in range(0,sig_tab_num):
 				signal_name[i]	= signal_name[i] + "\t";
 
@@ -645,7 +645,7 @@ def rtl_parser() :
 			except ValueError:
 				line_temp		= "na";
 
-		if(signal_direc[i]=="output" || signal_direc[i]=="inout"):
+		if(signal_direc[i]=="output" or signal_direc[i]=="inout"):
 			print("wire\t"+line_content+""+signal_name[i]+"	;\r\n");
 		else:
 			if(line_temp=="na"):
@@ -718,9 +718,6 @@ def rtl_parser() :
 			print(""+para_name[i]+"	=> "+para_value[i]+",\r\n");
 		print(""+para_name[i]+"	=> "+para_value[i]+"\r\n");
 		print(")\r\n");
-	}
-
-
 
 	print("port map (\r\n");
 	for i in range(0,len(signal_name)):
