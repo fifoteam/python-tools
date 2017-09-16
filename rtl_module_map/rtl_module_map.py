@@ -5,7 +5,7 @@ import sys
 import ctypes
 from sub_func import *
 
-def rtl_parser() :
+def rtl_module_map() :
 	##	===============================================================================================
 	##	ref ***commond line parameter***
 	##	===============================================================================================
@@ -19,9 +19,7 @@ def rtl_parser() :
 	##	word_sel		选择的单词
 	##	-------------------------------------------------------------------------------------
 	debug			= 0;
-	reverse_message	= 0;
 	src_path		= 0;
-	word_sel		= 0;
 
 	##	-------------------------------------------------------------------------------------
 	##	循环查找参数
@@ -31,10 +29,6 @@ def rtl_parser() :
 			debug		= 1;
 		if(sys.argv[i]=="-f"):
 			src_path	= sys.argv[i+1];
-		if(sys.argv[i]=="-s"):
-			word_sel	= sys.argv[i+1];
-		if(sys.argv[i]=="-r"):
-			reverse_message	= 1;
 
 	##	-------------------------------------------------------------------------------------
 	##	获取输入文件
@@ -63,6 +57,9 @@ def rtl_parser() :
 	file_content 		= infile.readlines();
 	line_num 			= len(file_content);
 	module_start_num	= search_module(debug,line_num,"module",file_content);
+	module_end_num		= line_num;
+	para_start_num		= module_start_num;
+	para_end_num		= line_num;
 
 	##	===============================================================================================
 	##	ref ***search parameter define***
@@ -71,12 +68,14 @@ def rtl_parser() :
 	##	获得被选择的数据
 	##	-------------------------------------------------------------------------------------
 	line_content	= 0;
-	all_list		= [];
-	declare_list	= [];
-	driver_list		= [];
-	reference_list	= [];
-	map_list		= [];
+	line_temp		= 0;
 	index_value		= 0;
+	para_find		= 0;
+	para_name		= [];
+	para_value		= [];
+	signal_direc	= [];
+	signal_type		= [];
+
 
 	##	-------------------------------------------------------------------------------------
 	##	找第一个"("，端口声明开始的一行
@@ -96,10 +95,11 @@ def rtl_parser() :
 			if(debug==1):	print("No ( Keyword!");
 			return;
 
+	if(debug==1):	print("para_start_num is "+str(para_start_num)+"");
 	##	-------------------------------------------------------------------------------------
 	##	在entitystart 与 第一个 ( 之间是否有 #
 	##	-------------------------------------------------------------------------------------
-	for i in range(module_start_num,para_start_num):
+	for i in range(module_start_num,para_start_num+1):
 		line_content	= file_content[i];
 		##	-------------------------------------------------------------------------------------
 		##	去掉注释 回车 字符串两边的空格 tab转换为空格
@@ -114,6 +114,7 @@ def rtl_parser() :
 		if(i==para_start_num):
 			module_start_num	= para_start_num;
 			if(debug==1):	print("No Parameter");
+			if(debug==1):	print("para_start_num is "+str(para_start_num)+"");
 
 
 	##	===============================================================================================
@@ -123,10 +124,11 @@ def rtl_parser() :
 	##	不存在parameter的宏定义
 	##	-------------------------------------------------------------------------------------
 	if(para_find==0):
+		if(debug==1):	print("para not find");
 		##	-------------------------------------------------------------------------------------
 		##	find module_end_num
 		##	-------------------------------------------------------------------------------------
-		for i in range(module_start_num,line_num):
+		for i in range(module_start_num,line_num+1):
 			line_content	= file_content[i];
 			##	-------------------------------------------------------------------------------------
 			##	去掉注释 回车 字符串两边的空格 tab转换为空格
@@ -136,6 +138,7 @@ def rtl_parser() :
 
 			if(find_index(line_content,")")!=-1):
 				module_end_num = i;
+				if(debug==1):	print("module_end_num is "+str(module_end_num)+"");
 				break;
 			if(i==line_num):
 				if(debug==1):	print("No ) Keyword!");
@@ -144,6 +147,7 @@ def rtl_parser() :
 	##	存在parameter的宏定义
 	##	-------------------------------------------------------------------------------------
 	else:
+		if(debug==1):	print("para find");
 		##	-------------------------------------------------------------------------------------
 		##	find para_end_num
 		##	-------------------------------------------------------------------------------------
@@ -206,7 +210,6 @@ def rtl_parser() :
 				if(debug==1):	print("No ) Keyword!");
 				return;
 
-
 	##	===============================================================================================
 	##	ref ***处理parameter信息***
 	##	===============================================================================================
@@ -220,10 +223,8 @@ def rtl_parser() :
 			line_content	= trim_eol(line_content);
 			line_content	= trim_comment(line_content);
 
-			if(find_index(line_content,"\r\n")!=-1):	line_content = line_content[0,line_content.index("\r\n")];
-			if(find_index(line_content,"\n")!=-1):	line_content = line_content[0,line_content.index("\n")];
 			if(find_index(line_content,"(")!=-1):	line_content = line_content[line_content.index("(")+1:len(line_content)];
-			if(find_index(line_content,")")!=-1):	line_content = line_content[0,line_content.index(")")];
+			if(find_index(line_content,")")!=-1):	line_content = line_content[0:line_content.index(")")];
 			if(line_content==""):
 				continue;
 
@@ -247,11 +248,11 @@ def rtl_parser() :
 					##	-------------------------------------------------------------------------------------
 					##	从行头的第一个空格开始截位
 					##	-------------------------------------------------------------------------------------
-					line_content	= line_content[line_content.index(" "),len(line_content)];
+					line_content	= line_content[line_content.index(" "):len(line_content)];
 					##	-------------------------------------------------------------------------------------
 					##	去掉行尾的 =
 					##	-------------------------------------------------------------------------------------
-					if(find_index(line_content,"=")!=-1):	line_content	= line_content[0,line_content.index("=")];
+					if(find_index(line_content,"=")!=-1):	line_content	= line_content[0:line_content.index("=")];
 					line_content	= line_content.strip();
 					para_name[j]	= line_content;
 
@@ -263,7 +264,7 @@ def rtl_parser() :
 					##	parameter 的声明中包含 =
 					##	-------------------------------------------------------------------------------------
 					if(find_index(line_content,"=")!=-1):
-						line_content	= line_content[line_content.index("=")+1,len(line_content)];
+						line_content	= line_content[line_content.index("=")+1:len(line_content)];
 						line_content	= line_content.strip();
 						para_value[j]	= line_content;
 					##	-------------------------------------------------------------------------------------
@@ -285,51 +286,44 @@ def rtl_parser() :
 	##	ref 处理 port 信息
 	##	===============================================================================================
 	j=0;
-	for i in range(module_start_num,module_end_num):
+	for i in range(module_start_num,module_end_num+1):
 		line_content	= file_content[i];
 		##	-------------------------------------------------------------------------------------
 		##	去掉注释 回车 字符串两边的空格 tab转换为空格
 		##	-------------------------------------------------------------------------------------
 		line_content	= trim_eol(line_content);
 		line_content	= trim_comment(line_content);
-		if(debug==1):	print("CurrentLine is "+i+"");
+		if(debug==1):	print("CurrentLine num is "+str(i)+"");
 
-		##	-------------------------------------------------------------------------------------
-		##	去除行尾回车符
-		##	-------------------------------------------------------------------------------------
-		if(find_index(line_content,"\r\n")!=-1):
-			line_content	= line_content[0,line_content.index("\r\n")];
-		##	-------------------------------------------------------------------------------------
-		##	去除行尾回车符
-		##	-------------------------------------------------------------------------------------
-		if(find_index(line_content,"\n")!=-1):
-			line_content	= line_content[0,line_content.index("\n")];
 		##	-------------------------------------------------------------------------------------
 		##
 		##	-------------------------------------------------------------------------------------
 		if(find_index(line_content,"(")!=-1):
-			line_content	= line_content[line_content.index("(")+1,len(line_content)];
+			line_content	= line_content[line_content.index("(")+1:len(line_content)];
 		##	-------------------------------------------------------------------------------------
 		##
 		##	-------------------------------------------------------------------------------------
 		if(find_index(line_content,")")!=-1):
-			line_content	= line_content[0,line_content.index(")")];
+			line_content	= line_content[0:line_content.index(")")];
 		##	-------------------------------------------------------------------------------------
 		##
 		##	-------------------------------------------------------------------------------------
 		if(find_index(line_content,"=")!=-1):
-			line_content	= line_content[0,line_content.index("=")];
+			line_content	= line_content[0:line_content.index("=")];
 
+		line_content	= line_content.strip();
 		if(line_content==""):
-			if(debug==1):	print("str do not have signal info");
+			if(debug==1):	print("line_content do not have signal info");
 			continue;
 
 		##	-------------------------------------------------------------------------------------
 		##	在同一行中可能存在多个信号的声明，用逗号区分
 		##	-------------------------------------------------------------------------------------
 		line_comma_split	= line_content.split(",");
-		for i in range(0,len(line_comma_split)):
-			line_content	= line_comma_split[i];
+		for k in range(0,len(line_comma_split)):
+			if(debug==1):	print("j is "+str(j)+"");
+			if(debug==1):	print("line_content is "+line_content+"");
+			line_content	= line_comma_split[k];
 			##	-------------------------------------------------------------------------------------
 			##	默认：没有定义方向 信号是single bit
 			##	-------------------------------------------------------------------------------------
@@ -373,15 +367,15 @@ def rtl_parser() :
 
 				if(line_space_split[0].lower()=="input"):
 					port_declare=1;
-					line_content	= line_content[5,len(line_content)];
+					line_content	= line_content[5,len(line_content)-1];
 					signal_direc[j]	= line_space_split[0];
 				elif(line_space_split[0].lower()=="output"):
 					port_declare=1;
-					line_content	= line_content[6,len(line_content)];
+					line_content	= line_content[6,len(line_content)-1];
 					signal_direc[j]	= line_space_split[0];
 				elif(line_space_split[0].lower()=="inout"):
 					port_declare=1;
-					line_content	= line_content[5,len(line_content)];
+					line_content	= line_content[5,len(line_content)-1];
 					signal_direc[j]	= line_space_split[0];
 				else:
 					if(port_declare==1):
@@ -392,9 +386,9 @@ def rtl_parser() :
 				line_space_split	= line_content.split(' ');
 
 				if(line_space_split[0].lower()=="wire"):
-					line_content	= line_content[4,len(line_content)];
+					line_content	= line_content[4,len(line_content)-1];
 				elif(line_space_split[0].lower()=="reg"):
-					line_content	= line_content[3,len(line_content)];
+					line_content	= line_content[3,len(line_content)-1];
 
 				##	-------------------------------------------------------------------------------------
 				##	提取vector信息
@@ -411,7 +405,7 @@ def rtl_parser() :
 					else:
 						signal_dimen_high[j]	= line_space_split[1];
 						signal_dimen_low[j]		= line_space_split[0];
-					line_content	= line_content[line_content.index("]")+1,len(line_content)];
+					line_content	= line_content[line_content.index("]")+1,len(line_content)-1];
 
 				##	-------------------------------------------------------------------------------------
 				##	提取信号名
@@ -430,7 +424,6 @@ def rtl_parser() :
 					else:
 						port_declare=2;
 					j=j+1;
-
 
 	if(debug==1):
 		print("TotalLine is "+line_num+"");
