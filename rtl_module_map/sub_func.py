@@ -132,20 +132,47 @@ def trim_eol(line_content):
 ##	-------------------------------------------------------------------------------------
 ##	查找module name
 ##	-------------------------------------------------------------------------------------
-def search_module(DEBUG,endLine,keyword,file_content):
+def search_module(debug,line_num,keyword,file_content):
+	found			= 0;
+	line_content	= 0;
+	module_name		= 0;
 	##	-------------------------------------------------------------------------------------
 	##	在文件中找module名字，如果找到，则退出
 	##	-------------------------------------------------------------------------------------
-	for f_line in range(0,endLine):
-		if(find_word(file_content[f_line],keyword)==1):
-			break
-	##	-------------------------------------------------------------------------------------
-	##	如果是最后一行，认为没有找到mudule
-	##	-------------------------------------------------------------------------------------
-	if(f_line==endLine):
-		if(debug==1):	print("not find mudule");
-	return f_line;
+	for i in range(0,line_num+1):
+		line_content	= file_content[i];
+		##	-------------------------------------------------------------------------------------
+		##	去掉注释 回车 字符串两边的空格 tab转换为空格
+		##	-------------------------------------------------------------------------------------
+		line_content	= trim_eol(line_content);
+		line_content	= trim_comment(line_content);
+		line_content	= line_content.strip();
+		line_content	= line_content.replace("\t"," ");
+		line_space_split	= line_content.split(' ');
 
+		if(line_space_split[0].lower()==keyword):
+			for j in range(1,len(line_space_split)):
+				if(line_space_split[j]!=""):
+					module_name	= line_space_split[j];
+					found		= 1;
+					break;
+		if(found==1):
+			break;
+
+	if(found==1):
+		##	-------------------------------------------------------------------------------------
+		##	去除行尾回车符
+		##	-------------------------------------------------------------------------------------
+		module_name	= trim_eol(module_name);
+		##	-------------------------------------------------------------------------------------
+		##	去除行尾分隔符
+		##	-------------------------------------------------------------------------------------
+		if(find_index(module_name,"(")!=-1):	module_name	= module_name[0:module_name.index("(")];
+		if(debug==1):	print("module line is "+str(i)+",module name is "+module_name+"");
+		return	[i,module_name];
+	else:
+		if(debug==1):	print("not find module!");
+		return	[-1,module_name];
 
 
 ##	-------------------------------------------------------------------------------------

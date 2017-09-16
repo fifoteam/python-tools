@@ -15,10 +15,11 @@ def rtl_module_map() :
 	version_message	= "https://github.com/fifoteam/python-tools/rtl_module_map v1.0 2017.9.14";
 	##	-------------------------------------------------------------------------------------
 	##	debug			调试开关，默认关闭
+	##	vhdl			是否例化vhdl调用的模块，默认关闭
 	##	src_path		文件路径
-	##	word_sel		选择的单词
 	##	-------------------------------------------------------------------------------------
 	debug			= 0;
+	vhdl			= 0;
 	src_path		= 0;
 
 	##	-------------------------------------------------------------------------------------
@@ -27,6 +28,8 @@ def rtl_module_map() :
 	for i in range(0,len(sys.argv)):
 		if(sys.argv[i]=="-d"):
 			debug		= 1;
+		if(sys.argv[i]=="-h"):
+			vhdl		= 1;
 		if(sys.argv[i]=="-f"):
 			src_path	= sys.argv[i+1];
 
@@ -56,7 +59,7 @@ def rtl_module_map() :
 	##	-------------------------------------------------------------------------------------
 	file_content 		= infile.readlines();
 	line_num 			= len(file_content);
-	module_start_num	= search_module(debug,line_num,"module",file_content);
+	[module_start_num,module_name]	= search_module(debug,line_num,"module",file_content);
 	module_end_num		= line_num;
 	para_start_num		= module_start_num;
 	para_end_num		= line_num;
@@ -73,9 +76,11 @@ def rtl_module_map() :
 	para_find		= 0;
 	para_name		= [];
 	para_value		= [];
+	signal_name		= [];
 	signal_direc	= [];
 	signal_type		= [];
-
+	signal_dimen_high	= [];
+	signal_dimen_low	= [];
 
 	##	-------------------------------------------------------------------------------------
 	##	找第一个"("，端口声明开始的一行
@@ -285,7 +290,7 @@ def rtl_module_map() :
 	##	===============================================================================================
 	##	ref 处理 port 信息
 	##	===============================================================================================
-	j=0;
+	port_declare=0;
 	for i in range(module_start_num,module_end_num+1):
 		line_content	= file_content[i];
 		##	-------------------------------------------------------------------------------------
@@ -321,19 +326,25 @@ def rtl_module_map() :
 		##	-------------------------------------------------------------------------------------
 		line_comma_split	= line_content.split(",");
 		for k in range(0,len(line_comma_split)):
-			if(debug==1):	print("j is "+str(j)+"");
-			if(debug==1):	print("line_content is "+line_content+"");
+			if(debug==1):	print("line_comma_split is "+line_comma_split[k]+"");
 			line_content	= line_comma_split[k];
 			##	-------------------------------------------------------------------------------------
-			##	默认：没有定义方向 信号是single bit
+			##	如果逗号分隔符之后是空字符串，不做处理
 			##	-------------------------------------------------------------------------------------
-			signal_direc[j]	= "na";
-			signal_type[j]	= "s";
+			if(line_content.strip()==""):
+				continue;
+#			##	-------------------------------------------------------------------------------------
+#			##	默认：没有定义方向 信号是single bit
+#			##	-------------------------------------------------------------------------------------
+#			signal_direc[j]	= "na";
+#			signal_type[j]	= "s";
 
 			##	-------------------------------------------------------------------------------------
 			##	只在declare=0的时候判断是否处于module name的这一行
+			##	declare=0，说明刚开始搜索。=2说明已经搜索到信号名，但是没有在module中指明方向。=1说明在module中指明了方向。
 			##	-------------------------------------------------------------------------------------
 			if(port_declare==0):
+				if(debug==1):	print("go into port declare==0");
 				line_temp	= line_content.strip();
 				line_temp	= line_temp.replace("\t"," ");
 				line_space_split	= line_temp.split(' ');
@@ -347,6 +358,7 @@ def rtl_module_map() :
 			##	port_declare=2 说明在端口中没有指明port的方向
 			##	-------------------------------------------------------------------------------------
 			if(port_declare==2):
+				if(debug==1):	print("go into port declare==2");
 				##	-------------------------------------------------------------------------------------
 				##	去掉注释 回车 字符串两边的空格 tab转换为空格
 				##	-------------------------------------------------------------------------------------
@@ -354,10 +366,10 @@ def rtl_module_map() :
 				line_content		= line_content.replace("\t"," ");
 				line_space_split	= line_content.split(' ');
 				if(line_space_split[0]!=""):
-					signal_name[j]	= line_space_split[0];
-					j=j+1;
+					signal_name.append(line_space_split[0]);
 
 			else:
+				if(debug==1):	print("go into port declare==1");
 				##	-------------------------------------------------------------------------------------
 				##	去掉注释 回车 字符串两边的空格 tab转换为空格
 				##	-------------------------------------------------------------------------------------
@@ -367,52 +379,62 @@ def rtl_module_map() :
 
 				if(line_space_split[0].lower()=="input"):
 					port_declare=1;
-					line_content	= line_content[5,len(line_content)-1];
-					signal_direc[j]	= line_space_split[0];
+					line_content	= line_content[5:len(line_content)];
+#					signal_direc[j]	= line_space_split[0];
+					signal_direc.append(line_space_split[0]);
 				elif(line_space_split[0].lower()=="output"):
 					port_declare=1;
-					line_content	= line_content[6,len(line_content)-1];
-					signal_direc[j]	= line_space_split[0];
+					line_content	= line_content[6:len(line_content)];
+					signal_direc.append(line_space_split[0]);
 				elif(line_space_split[0].lower()=="inout"):
 					port_declare=1;
-					line_content	= line_content[5,len(line_content)-1];
-					signal_direc[j]	= line_space_split[0];
+					line_content	= line_content[5:len(line_content)];
+					signal_direc.append(line_space_split[0]);
 				else:
 					if(port_declare==1):
-						signal_direc[j]	= signal_direc[j-1];
+#						signal_direc[j]	= signal_direc[j-1];
+						if(debug==1):	print("go into comma line");
+						signal_direc.append(signal_direc[len(signal_direc)-1]);
 
+				##	-------------------------------------------------------------------------------------
+				##	方向后面还有可能有 wire reg 属性信息。要把这些属性信息去掉
+				##	-------------------------------------------------------------------------------------
 				line_content		= line_content.strip();
 				line_content		= line_content.replace("\t"," ");
 				line_space_split	= line_content.split(' ');
 
 				if(line_space_split[0].lower()=="wire"):
-					line_content	= line_content[4,len(line_content)-1];
+					line_content	= line_content[4:len(line_content)];
 				elif(line_space_split[0].lower()=="reg"):
-					line_content	= line_content[3,len(line_content)-1];
+					line_content	= line_content[3:len(line_content)];
 
 				##	-------------------------------------------------------------------------------------
 				##	提取vector信息
 				##	-------------------------------------------------------------------------------------
 				if(find_index(line_content,"]")!=-1):
-					signal_type[j]	= "v";
-					line_temp	= line_content[line_content.index("[")+1,line_content.index("]")];
+#					signal_type[j]	= "v";
+					signal_type.append("v");
+					line_temp			= line_content[line_content.index("[")+1:line_content.index("]")];
 					line_space_split	= line_temp.split(":");
 					line_space_split[0]	= line_space_split[0].strip();
 					line_space_split[1]	= line_space_split[1].strip();
 					if(line_space_split[0]>line_space_split[1]):
-						signal_dimen_high[j]	= line_space_split[0];
-						signal_dimen_low[j]		= line_space_split[1];
+						signal_dimen_high.append(line_space_split[0]);
+						signal_dimen_low.append(line_space_split[1]);
 					else:
-						signal_dimen_high[j]	= line_space_split[1];
-						signal_dimen_low[j]		= line_space_split[0];
-					line_content	= line_content[line_content.index("]")+1,len(line_content)-1];
-
+						signal_dimen_high.append(line_space_split[1]);
+						signal_dimen_low.append(line_space_split[0]);
+					line_content	= line_content[line_content.index("]")+1:len(line_content)];
+				else:
+					signal_type.append("s");
+					signal_dimen_high.append(0);
+					signal_dimen_low.append(0);
 				##	-------------------------------------------------------------------------------------
 				##	提取信号名
 				##	-------------------------------------------------------------------------------------
 				line_content	= line_content.strip();
 				if(line_content!=""):
-					signal_name[j]	= line_content;
+					signal_name.append(line_content);
 					##	-------------------------------------------------------------------------------------
 					##	在port中已经有了方向的声明
 					##	-------------------------------------------------------------------------------------
@@ -423,14 +445,18 @@ def rtl_module_map() :
 					##	-------------------------------------------------------------------------------------
 					else:
 						port_declare=2;
-					j=j+1;
+#					j=j+1;
 
 	if(debug==1):
-		print("TotalLine is "+line_num+"");
-		print("entityEndNum is "+module_end_num+"");
+		print("TotalLine is "+str(line_num)+"");
+		print("entityEndNum is "+str(module_end_num)+"");
 		##++test
 		for i in range(0,len(signal_name)):
-			print("signal_name "+i+" is "+signal_name[i]+"");
+			print("signal_name "+str(i)+" is "+signal_name[i]+"");
+		for i in range(0,len(signal_type)):
+			print("signal_type "+str(i)+" is "+signal_type[i]+"");
+		for i in range(0,len(signal_direc)):
+			print("signal_direc "+str(i)+" is "+signal_direc[i]+"");
 		##--test
 
 	##	===============================================================================================
@@ -442,11 +468,11 @@ def rtl_module_map() :
 		##	找每一个signal的声明
 		##	-------------------------------------------------------------------------------------
 		for j in range(0,len(signal_name)):
-			if(debug==1):	print("signal be serached "+j+" "+signal_name[j]+"");
+			if(debug==1):	print("signal be serached "+str(j)+" "+signal_name[j]+"");
 
-			for i in range(module_end_num+1,line_num):
+			for i in range(module_end_num+1,line_num+1):
 				line_content	= file_content[i];
-				if(debug==1):	print("current line num is "+i+"");
+				if(debug==1):	print("current line num is "+str(i)+"");
 				##	-------------------------------------------------------------------------------------
 				##	去掉注释 回车 字符串两边的空格 tab转换为空格
 				##	-------------------------------------------------------------------------------------
@@ -464,60 +490,64 @@ def rtl_module_map() :
 					for k in range(0,len(line_comma_split)):
 						line_content	= line_comma_split[k];
 						if(find_index(line_content,";")!=-1):
-							line_content	= line_content[0,line_content.index(";")];
-
+							line_content		= line_content[0:line_content.index(";")];
 							line_content		= line_content.replace("\t"," ");
-							line_space_split	= line_content.strip();
+							line_content		= line_content.strip();
+							line_space_split	= line_content.split(" ");
 							##	-------------------------------------------------------------------------------------
 							##	先假设在这一行中没有signal的信号名
 							##	-------------------------------------------------------------------------------------
 							line_index			= 0;
 							for l in range(0,len(line_space_split)):
-								if(debug==1):	print("line_space_split "+l+" is "+line_space_split[l]+"");
+								if(debug==1):	print("line_space_split "+str(l)+" is "+line_space_split[l]+"");
 								##	-------------------------------------------------------------------------------------
 								##	在这一行中有signal的信号名
 								##	-------------------------------------------------------------------------------------
 								if(line_space_split[l]==signal_name[j]):
 									line_index	= 1;
 
-							if(debug==1):	print("line_index is "+line_index+"");
+							if(debug==1):	print("line_index is "+str(line_index)+"");
 							##	-------------------------------------------------------------------------------------
 							##	在这一行中有signal的信号名,在这一行寻找signal的其他属性
 							##	-------------------------------------------------------------------------------------
 							if(line_index==1):
-								signal_direc[j]	= "na";
-								signal_type[j]	= "s";
+#								signal_direc[j]	= "na";
+#								signal_type[j]	= "s";
 
 								##	-------------------------------------------------------------------------------------
 								##	在本行中定义了方向和纬度
 								##	-------------------------------------------------------------------------------------
 								if(k==0):
-									signal_direc[j]	= line_space_split[0];
+									signal_direc.append(line_space_split[0]);
 									##	-------------------------------------------------------------------------------------
 									##	提取vector信息
 									##	-------------------------------------------------------------------------------------
 									if(find_index(line_content,"]")!=-1):
-										signal_type[j]	= "v";
-										line_temp	= line_content[line_content.index("[")+1,line_content.index("]")]
+										signal_type.append("v");
+										line_temp	= line_content[line_content.index("[")+1:line_content.index("]")]
 										line_colon_split	= line_temp.split(":");
-										line_colon_split[0]	= line_colon_split.strip();
-										line_colon_split[1]	= line_colon_split.strip();
+										line_colon_split[0]	= line_colon_split[0].strip();
+										line_colon_split[1]	= line_colon_split[0].strip();
 										if(line_colon_split[0]>line_colon_split[1]):
-											signal_dimen_high[j]	= line_colon_split[0];
-											signal_dimen_low[j]		= line_colon_split[1];
+											signal_dimen_high.append(line_colon_split[0]);
+											signal_dimen_low.append(line_colon_split[1]);
 										else:
-											signal_dimen_high[j]	= line_colon_split[1];
-											signal_dimen_low[j]		= line_colon_split[0];
-										line_content	= line_content[line_content.index("]")+1,len(line_content)];
+											signal_dimen_high.append(line_colon_split[1]);
+											signal_dimen_low.append(line_colon_split[0]);
+										line_content	= line_content[line_content.index("]")+1:len(line_content)];
+									else:
+										signal_type.append("s");
+										signal_dimen_high.append(0);
+										signal_dimen_low.append(0);
 								##	-------------------------------------------------------------------------------------
 								##	没有在本行中定义方向和纬度
 								##	-------------------------------------------------------------------------------------
 								else:
-									signal_direc[j]	= signal_direc[j-1];
-									signal_type[j]	= signal_type[j-1];
-									signal_dimen_high[j]	= signal_dimen_high[j-1];
-									signal_dimen_low[j]		= signal_dimen_low[j-1];
-								if(debug==1):	print("signal "+j+" have been found");
+									signal_direc.append(signal_direc[-1]);
+									signal_type.append(signal_type[-1]);
+									signal_dimen_high.append(signal_dimen_high[-1]);
+									signal_dimen_low.append(signal_dimen_low[-1]);
+								if(debug==1):	print("signal "+str(j)+" have been found");
 								##	-------------------------------------------------------------------------------------
 								##	该信号已经找完，可以寻找下一个信号
 								##	-------------------------------------------------------------------------------------
@@ -530,9 +560,9 @@ def rtl_module_map() :
 
 	if(debug==1):
 		for i in range(0,len(signal_name)):
-			print("signal_name "+i+" is "+signal_name[i]+"");
-			print("signal_direc "+i+" is "+signal_direc[i]+"");
-			print("signal_type "+i+" is "+signal_type[i]+"");
+			print("signal_name "+str(i)+" is "+signal_name[i]+"");
+			print("signal_direc "+str(i)+" is "+signal_direc[i]+"");
+			print("signal_type "+str(i)+" is "+signal_type[i]+"");
 
 	##	===============================================================================================
 	##	ref 字符串扩展到一样的宽度
@@ -549,7 +579,7 @@ def rtl_module_map() :
 	for i in range(0,len(signal_name)):
 		if(sig_max_length < len(signal_name[i])):
 			sig_max_length	= len(signal_name[i]);
-	if(debug==1):	print("sig_max_length is "+sig_max_length+"");
+	if(debug==1):	print("sig_max_length is "+str(sig_max_length)+"");
 
 	##	-------------------------------------------------------------------------------------
 	##	-- ref 如果最大长度不是0，进行下一步操作
@@ -557,13 +587,13 @@ def rtl_module_map() :
 	sig_tab_num	= 0;
 	if(sig_max_length!=0):
 		sig_max_tab	= int(sig_max_length/4)+1;
-		if(debug==1):	print("sig_max_tab is "+sig_max_tab+"");
+		if(debug==1):	print("sig_max_tab is "+str(sig_max_tab)+"");
 		for i in range(0,len(para_name)):
 			##	-------------------------------------------------------------------------------------
 			##	计算出需要补全的tab个数，由于信号名字前面有 . (，因此计算长度的时候要+1
 			##	-------------------------------------------------------------------------------------
 			sig_tab_num	= sig_max_tab-int((len(para_name[i])+1)/4);
-			if(debug==1):	print("sig_tab_num is "+sig_tab_num+"");
+			if(debug==1):	print("sig_tab_num is "+str(sig_tab_num)+"");
 			for j in range(0,sig_tab_num):
 				para_name[i]	= para_name[i] + "\t";
 
@@ -571,15 +601,15 @@ def rtl_module_map() :
 			##	-------------------------------------------------------------------------------------
 			##	计算出需要补全的tab个数，由于信号名字前面有 . (，因此计算长度的时候要+1
 			##	-------------------------------------------------------------------------------------
-			sig_tab_num	= sig_max_tab-int((len(signalName[i])+1)/4);
-			if(debug==1): print("sig_tab_num is "+sig_tab_num+"");
+			sig_tab_num	= sig_max_tab-int((len(signal_name[i])+1)/4);
+			if(debug==1): print("sig_tab_num is "+str(sig_tab_num)+"");
 			for j in range(0,sig_tab_num):
 				signal_name[i]	= signal_name[i] + "\t";
 
-	if (debug==1):
+	if(debug==1):
 		print("after signal length supply");
 		for i in range(0,len(signal_name)):
-			print("signal_name "+i+" is "+signal_name[i]+"");
+			print("signal_name "+str(i)+" is "+signal_name[i]+"");
 
 	##	===============================================================================================
 	##	ref write file
@@ -592,42 +622,47 @@ def rtl_module_map() :
 		##	包含parameter的map
 		##	-------------------------------------------------------------------------------------
 		print(""+module_name+" # (\r\n");
-		for i in range(0,len(para_name)):
-			print("."+para_name[i]+"	("+para_name[i]+"	),\r\n");
-		print("."+para_name[i]+"	("+para_name[i]+"	)\r\n");
-		print(")\r\n");
-		print(""+module_name+"_inst (\r\n");
-		for i in range(0,len(signal_name)):
-			print("."+signal_name[i]+"\t("+signal_name[i]+"	),\r\n");
-		print("."+signal_name[i]+"\t("+signal_name[i]+"	)\r\n");
-		print(");\r\n\r\n");
+		for i in range(0,len(para_name)-1):
+			print("."+para_name[i]+"	("+para_name[i]+"	),");
+		if(len(para_name)>0):
+			print("."+para_name[i]+"	("+para_name[i]+"	)");
+		print(")");
+		print(""+module_name+"_inst (");
+		for i in range(0,len(signal_name)-1):
+			print("."+signal_name[i]+"\t("+signal_name[i]+"	),");
+		if(len(signal_name)>0):
+			i	= i+1;
+			print("."+signal_name[i]+"\t("+signal_name[i]+"	)");
+		print(");\r\n");
 	else:
 		##	-------------------------------------------------------------------------------------
 		##	没有parameter的map
 		##	-------------------------------------------------------------------------------------
-		print(""+module_name+" "+module_name+"_inst (\r\n");
-		for i in range(0,len(signal_name)):
-			print("."+signal_name[i]+"\t("+signal_name[i]+"	),\r\n");
-		print("."+signal_name[i]+"\t("+signal_name[i]+"	)\r\n");
-		print(");\r\n\r\n");
+		print(""+module_name+" "+module_name+"_inst (");
+		for i in range(0,len(signal_name)-1):
+			print("."+signal_name[i]+"\t("+signal_name[i]+"	),");
+		if(len(signal_name)>0):
+			i	= i+1;
+			print("."+signal_name[i]+"\t("+signal_name[i]+"	)");
+		print(");\r\n");
 
 	##	-------------------------------------------------------------------------------------
 	##	写parameter
 	##	-------------------------------------------------------------------------------------
 	if(para_find==1):
 		for i in range(0,len(para_name)):
-			print("parameter	"+para_name[i]+"	= "+para_name[i]+"	;\r\n");
-		print("\r\n\r\n\r\n");
+			print("parameter	"+para_name[i]+"	= "+para_name[i]+"	;");
+		print("\r\n\r\n");
 
 	if(para_find==1):
 		for i in range(0,len(para_name)):
-			print("parameter	"+para_name[i]+"	= "+para_value[i]+"	;\r\n");
-		print("\r\n\r\n\r\n");
+			print("parameter	"+para_name[i]+"	= "+para_value[i]+"	;");
+		print("\r\n\r\n");
 
 	##	-------------------------------------------------------------------------------------
 	##	写signal
 	##	-------------------------------------------------------------------------------------
-	for i in len(signal_name):
+	for i in range(0,len(signal_name)):
 		if(signal_type[i]=="s"):
 			line_content	= "";
 			line_temp		= "1";
@@ -639,100 +674,107 @@ def rtl_module_map() :
 				line_temp		= "na";
 
 		if(signal_direc[i]=="output" or signal_direc[i]=="inout"):
-			print("wire\t"+line_content+""+signal_name[i]+"	;\r\n");
+			print("wire\t"+line_content+""+signal_name[i]+"	;");
 		else:
 			if(line_temp=="na"):
-				print("reg\t\t"+line_content+""+signal_name[i]+"	= 'b0	;\r\n");
+				print("reg\t\t"+line_content+""+signal_name[i]+"	= 'b0	;");
 			else:
-				print("reg\t\t"+line_content+""+signal_name[i]+"	= "+line_temp+"'b0	;\r\n");
+				print("reg\t\t"+line_content+""+signal_name[i]+"	= "+str(line_temp)+"'b0	;");
 
 	##	-------------------------------------------------------------------------------------
 	##	写signal
 	##	-------------------------------------------------------------------------------------
-	print("\r\n\r\n\r\n");
+	print("\r\n\r\n");
 	for i in range(0,len(signal_name)):
 		if(signal_type[i]=="s"):
 			line_content	= "";
 		else:
 			line_content	= "["+signal_dimen_high[i]+":"+signal_dimen_low[i]+"]\t";
-		print("wire\t"+line_content+""+signal_name[i]+"	;\r\n");
+		print("wire\t"+line_content+""+signal_name[i]+"	;");
 
 	##	-------------------------------------------------------------------------------------
 	##	--ref vhdl module map
 	##	-------------------------------------------------------------------------------------
-	print("\r\n\r\n\r\n");
-	##	-------------------------------------------------------------------------------------
-	##	component
-	##	-------------------------------------------------------------------------------------
-	print("component "+module_name+"\r\n");
-	if(para_find == 1):
-		print("	generic (\r\n");
-		for i in range(len(para_name)):
-			print("	"+para_name[i]+" : integer := "+para_value[i]+";\r\n");
-		print("	"+para_name[i]+" : integer := "+para_value[i]+"\r\n");
-		print("	);\r\n");
+	if(vhdl==1):
+		print("\r\n\r\n");
+		##	-------------------------------------------------------------------------------------
+		##	component
+		##	-------------------------------------------------------------------------------------
+		print("component "+module_name+"");
+		if(para_find == 1):
+			print("	generic (");
+			for i in range(0,len(para_name)-1):
+				print("	"+para_name[i]+" : integer := "+str(para_value[i])+";");
+			if(len(para_name)>0):
+				i	= i+1;
+				print("	"+para_name[i]+" : integer := "+str(para_value[i])+"");
+			print("	);");
 
-	print("	port (\r\n");
-	for i in range(0,len(signal_name)):
-		if(signal_type[i]=="s"):
-			line_content	= "std_logic";
-			line_index		= "";
-		else:
-			line_content	= "std_logic_vector";
-			line_index		= "("+signal_dimen_high[i]+" downto "+signal_dimen_low[i]+")";
-		if(signal_direc[i].lower()=="input"):
-			signal_direc[i]="in";
-		elif(signal_direc[i].lower()=="output"):
-			signal_direc[i]="out";
-		print("	"+signal_name[i]+"\t: "+signal_direc[i]+"\t"+line_content+""+line_index+";\r\n");
+		print("	port (");
+		for i in range(0,len(signal_name)-1):
+			if(signal_type[i]=="s"):
+				line_content	= "std_logic";
+				line_index		= "";
+			else:
+				line_content	= "std_logic_vector";
+				line_index		= "("+str(signal_dimen_high[i])+" downto "+str(signal_dimen_low[i])+")";
+			if(signal_direc[i].lower()=="input"):
+				signal_direc[i]="in";
+			elif(signal_direc[i].lower()=="output"):
+				signal_direc[i]="out";
+			print("	"+signal_name[i]+"\t: "+signal_direc[i]+"\t"+line_content+""+str(line_index)+";");
 
-	if(signal_type[i]=="s"):
-		line_content	= "std_logic";
-		line_index		= "";
-	else:
-		line_content	= "std_logic_vector";
-		line_index		= "("+signal_dimen_high[i]+" downto "+signal_dimen_low[i]+")";
+		if(len(signal_name)>0):
+			i	= i+1;
+			if(signal_type[i]=="s"):
+				line_content	= "std_logic";
+				line_index		= "";
+			else:
+				line_content	= "std_logic_vector";
+				line_index		= "("+str(signal_dimen_high[i])+" downto "+str(signal_dimen_low[i])+")";
 
-	if(signal_direc[i].lower()=="input"):
-		signal_direc[i]="in";
-	elif(signal_direc[i].lower()=="output"):
-		signal_direc[i]="out";
-	print("	"+signal_name[i]+"\t: "+signal_direc[i]+"\t"+line_content+""+line_index+"\r\n");
-	print("	);\r\n");
-	print("end component;\r\n\r\n");
+			if(signal_direc[i].lower()=="input"):
+				signal_direc[i]="in";
+			elif(signal_direc[i].lower()=="output"):
+				signal_direc[i]="out";
+			print("	"+signal_name[i]+"\t: "+signal_direc[i]+"\t"+line_content+""+str(line_index)+"");
 
-	##	-------------------------------------------------------------------------------------
-	##	map
-	##	-------------------------------------------------------------------------------------
-	print("inst_"+module_name+" : "+module_name+"\r\n");
-	if(para_find == 1):
-		print("generic map (\r\n");
-		for i in range(0,len(para_name)):
-			print(""+para_name[i]+"	=> "+para_value[i]+",\r\n");
-		print(""+para_name[i]+"	=> "+para_value[i]+"\r\n");
-		print(")\r\n");
+		print("	);");
+		print("end component;\r\n");
 
-	print("port map (\r\n");
-	for i in range(0,len(signal_name)):
-		print(""+signal_name[i]+"\t=> "+signal_name[i]+",\r\n");
-	print(""+signal_name[i]+"\t=> "+signal_name[i]+"\r\n");
-	print(");\r\n\r\n");
+		##	-------------------------------------------------------------------------------------
+		##	map
+		##	-------------------------------------------------------------------------------------
+		print("inst_"+module_name+" : "+module_name+"");
+		if(para_find == 1):
+			print("generic map (");
+			for i in range(0,len(para_name)-1):
+				print(""+para_name[i]+"	=> "+str(para_value[i])+",");
+			if(len(para_name)>0):
+				i	= i+1;
+				print(""+para_name[i]+"	=> "+str(para_value[i])+"");
+			print(")");
 
-	##	-------------------------------------------------------------------------------------
-	##	singal
-	##	-------------------------------------------------------------------------------------
-	for i in range(0,len(signal_name)):
-		if(signal_type[i]=="s"):
-			line_content	= "std_logic";
-			line_index		= "";
-			line_temp		= ":= '0'";
-		else:
-			line_content	= "std_logic_vector";
-			line_index		= "("+signal_dimen_high[i]+" downto "+signal_dimen_low[i]+")";
-			line_temp		= ":= (others => '0')";
-		print("signal "+signal_name[i]+"\t: "+line_content+""+line_index+" "+line_temp+";\r\n");
+		print("port map (");
+		for i in range(0,len(signal_name)-1):
+			print(""+signal_name[i]+"\t=> "+signal_name[i]+",");
+		if(len(signal_name)>0):
+			i	= i+1;
+			print(""+signal_name[i]+"\t=> "+signal_name[i]+"");
+		print(");\r\n");
 
-	UltraEdit.activeDocument.bottom();
-	UltraEdit.save();
+		##	-------------------------------------------------------------------------------------
+		##	singal
+		##	-------------------------------------------------------------------------------------
+		for i in range(0,len(signal_name)):
+			if(signal_type[i]=="s"):
+				line_content	= "std_logic";
+				line_index		= "";
+				line_temp		= ":= '0'";
+			else:
+				line_content	= "std_logic_vector";
+				line_index		= "("+signal_dimen_high[i]+" downto "+signal_dimen_low[i]+")";
+				line_temp		= ":= (others => '0')";
+			print("signal "+signal_name[i]+"\t: "+line_content+""+line_index+" "+line_temp+";");
 
 rtl_module_map()
