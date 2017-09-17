@@ -391,61 +391,62 @@ def rtl_module_map() :
 					line_content	= line_content[5:len(line_content)];
 					signal_direc.append(line_space_split[0]);
 				else:
+					##	-------------------------------------------------------------------------------------
+					##	如果没有方向信息，但是前一个信号已经有了方向信息，那么这个信号的方向和前一个方向是一样的
+					##	-------------------------------------------------------------------------------------
 					if(port_declare==1):
-#						signal_direc[j]	= signal_direc[j-1];
-						if(debug==1):	print("go into comma line");
+						if(debug==1):	print("go into comma line,this line does not have direction,but last line has direction");
 						signal_direc.append(signal_direc[len(signal_direc)-1]);
-
-				##	-------------------------------------------------------------------------------------
-				##	方向后面还有可能有 wire reg 属性信息。要把这些属性信息去掉
-				##	-------------------------------------------------------------------------------------
-				line_content		= line_content.strip();
-				line_content		= line_content.replace("\t"," ");
-				line_space_split	= line_content.split(' ');
-
-				if(line_space_split[0].lower()=="wire"):
-					line_content	= line_content[4:len(line_content)];
-				elif(line_space_split[0].lower()=="reg"):
-					line_content	= line_content[3:len(line_content)];
-
-				##	-------------------------------------------------------------------------------------
-				##	提取vector信息
-				##	-------------------------------------------------------------------------------------
-				if(find_index(line_content,"]")!=-1):
-#					signal_type[j]	= "v";
-					signal_type.append("v");
-					line_temp			= line_content[line_content.index("[")+1:line_content.index("]")];
-					line_space_split	= line_temp.split(":");
-					line_space_split[0]	= line_space_split[0].strip();
-					line_space_split[1]	= line_space_split[1].strip();
-					if(line_space_split[0]>line_space_split[1]):
-						signal_dimen_high.append(line_space_split[0]);
-						signal_dimen_low.append(line_space_split[1]);
+					##	-------------------------------------------------------------------------------------
+					##	如果没有方向信息，且前一个信号也没有方向信息，那么就没有方向
+					##	-------------------------------------------------------------------------------------
 					else:
-						signal_dimen_high.append(line_space_split[1]);
-						signal_dimen_low.append(line_space_split[0]);
-					line_content	= line_content[line_content.index("]")+1:len(line_content)];
-				else:
-					signal_type.append("s");
-					signal_dimen_high.append(0);
-					signal_dimen_low.append(0);
+						if(debug==1):	print("go into comma line,this line does not have direction,but last line has direction");
+						port_declare	= 2;
+
+				##	-------------------------------------------------------------------------------------
+				##	只有在本行有方向信息时，才有可能wire reg 宽度等信息
+				##	-------------------------------------------------------------------------------------
+				if(port_declare==1):
+					##	-------------------------------------------------------------------------------------
+					##	方向后面还有可能有 wire reg 属性信息。要把这些属性信息去掉
+					##	-------------------------------------------------------------------------------------
+					line_content		= line_content.strip();
+					line_content		= line_content.replace("\t"," ");
+					line_space_split	= line_content.split(' ');
+
+					if(line_space_split[0].lower()=="wire"):
+						line_content	= line_content[4:len(line_content)];
+					elif(line_space_split[0].lower()=="reg"):
+						line_content	= line_content[3:len(line_content)];
+
+					##	-------------------------------------------------------------------------------------
+					##	提取vector信息
+					##	-------------------------------------------------------------------------------------
+					if(find_index(line_content,"]")!=-1):
+						signal_type.append("v");
+						line_temp			= line_content[line_content.index("[")+1:line_content.index("]")];
+						line_space_split	= line_temp.split(":");
+						line_space_split[0]	= line_space_split[0].strip();
+						line_space_split[1]	= line_space_split[1].strip();
+						if(line_space_split[0]>line_space_split[1]):
+							signal_dimen_high.append(line_space_split[0]);
+							signal_dimen_low.append(line_space_split[1]);
+						else:
+							signal_dimen_high.append(line_space_split[1]);
+							signal_dimen_low.append(line_space_split[0]);
+						line_content	= line_content[line_content.index("]")+1:len(line_content)];
+					else:
+						signal_type.append("s");
+						signal_dimen_high.append(0);
+						signal_dimen_low.append(0);
 				##	-------------------------------------------------------------------------------------
 				##	提取信号名
 				##	-------------------------------------------------------------------------------------
 				line_content	= line_content.strip();
 				if(line_content!=""):
 					signal_name.append(line_content);
-					##	-------------------------------------------------------------------------------------
-					##	在port中已经有了方向的声明
-					##	-------------------------------------------------------------------------------------
-					if(port_declare==1):
-						port_declare=1;
-					##	-------------------------------------------------------------------------------------
-					##	在port中没有方向声明，但是找到了信号名
-					##	-------------------------------------------------------------------------------------
-					else:
-						port_declare=2;
-#					j=j+1;
+
 
 	if(debug==1):
 		print("TotalLine is "+str(line_num)+"");
@@ -469,7 +470,9 @@ def rtl_module_map() :
 		##	-------------------------------------------------------------------------------------
 		for j in range(0,len(signal_name)):
 			if(debug==1):	print("signal be serached "+str(j)+" "+signal_name[j]+"");
-
+			##	-------------------------------------------------------------------------------------
+			##	某个信号在每一行中寻找
+			##	-------------------------------------------------------------------------------------
 			for i in range(module_end_num+1,line_num+1):
 				line_content	= file_content[i];
 				if(debug==1):	print("current line num is "+str(i)+"");
@@ -491,67 +494,72 @@ def rtl_module_map() :
 						line_content	= line_comma_split[k];
 						if(find_index(line_content,";")!=-1):
 							line_content		= line_content[0:line_content.index(";")];
-							line_content		= line_content.replace("\t"," ");
-							line_content		= line_content.strip();
-							line_space_split	= line_content.split(" ");
+						line_content		= line_content.replace("\t"," ");
+						line_content		= line_content.strip();
+						line_space_split	= line_content.split(" ");
+						##	-------------------------------------------------------------------------------------
+						##	先假设在这一行中没有signal的信号名
+						##	-------------------------------------------------------------------------------------
+						line_index			= 0;
+						for l in range(0,len(line_space_split)):
+							if(debug==1):	print("line_space_split "+str(l)+" is "+line_space_split[l]+"");
 							##	-------------------------------------------------------------------------------------
-							##	先假设在这一行中没有signal的信号名
+							##	在这一行中有signal的信号名
 							##	-------------------------------------------------------------------------------------
-							line_index			= 0;
-							for l in range(0,len(line_space_split)):
-								if(debug==1):	print("line_space_split "+str(l)+" is "+line_space_split[l]+"");
-								##	-------------------------------------------------------------------------------------
-								##	在这一行中有signal的信号名
-								##	-------------------------------------------------------------------------------------
-								if(line_space_split[l]==signal_name[j]):
-									line_index	= 1;
-
-							if(debug==1):	print("line_index is "+str(line_index)+"");
-							##	-------------------------------------------------------------------------------------
-							##	在这一行中有signal的信号名,在这一行寻找signal的其他属性
-							##	-------------------------------------------------------------------------------------
-							if(line_index==1):
-#								signal_direc[j]	= "na";
-#								signal_type[j]	= "s";
-
-								##	-------------------------------------------------------------------------------------
-								##	在本行中定义了方向和纬度
-								##	-------------------------------------------------------------------------------------
-								if(k==0):
-									signal_direc.append(line_space_split[0]);
-									##	-------------------------------------------------------------------------------------
-									##	提取vector信息
-									##	-------------------------------------------------------------------------------------
-									if(find_index(line_content,"]")!=-1):
-										signal_type.append("v");
-										line_temp	= line_content[line_content.index("[")+1:line_content.index("]")]
-										line_colon_split	= line_temp.split(":");
-										line_colon_split[0]	= line_colon_split[0].strip();
-										line_colon_split[1]	= line_colon_split[0].strip();
-										if(line_colon_split[0]>line_colon_split[1]):
-											signal_dimen_high.append(line_colon_split[0]);
-											signal_dimen_low.append(line_colon_split[1]);
-										else:
-											signal_dimen_high.append(line_colon_split[1]);
-											signal_dimen_low.append(line_colon_split[0]);
-										line_content	= line_content[line_content.index("]")+1:len(line_content)];
-									else:
-										signal_type.append("s");
-										signal_dimen_high.append(0);
-										signal_dimen_low.append(0);
-								##	-------------------------------------------------------------------------------------
-								##	没有在本行中定义方向和纬度
-								##	-------------------------------------------------------------------------------------
-								else:
-									signal_direc.append(signal_direc[-1]);
-									signal_type.append(signal_type[-1]);
-									signal_dimen_high.append(signal_dimen_high[-1]);
-									signal_dimen_low.append(signal_dimen_low[-1]);
-								if(debug==1):	print("signal "+str(j)+" have been found");
-								##	-------------------------------------------------------------------------------------
-								##	该信号已经找完，可以寻找下一个信号
-								##	-------------------------------------------------------------------------------------
+							if(line_space_split[l]==signal_name[j]):
+								line_index	= 1;
 								break;
+
+						if(debug==1):	print("line_index is "+str(line_index)+"");
+						##	-------------------------------------------------------------------------------------
+						##	在这一行中有signal的信号名,在这一行寻找signal的其他属性
+						##	-------------------------------------------------------------------------------------
+						if(line_index==1):
+							##	-------------------------------------------------------------------------------------
+							##	在本行中定义了方向和纬度
+							##	k==0表示一行的第一个声明
+							##	-------------------------------------------------------------------------------------
+							if(k==0):
+								if(debug==1):	print("the direction is "+line_space_split[0]+"");
+								signal_direc.append(line_space_split[0]);
+								##	-------------------------------------------------------------------------------------
+								##	提取vector信息
+								##	-------------------------------------------------------------------------------------
+								if(find_index(line_content,"]")!=-1):
+									signal_type.append("v");
+									line_temp	= line_content[line_content.index("[")+1:line_content.index("]")]
+									line_colon_split	= line_temp.split(":");
+									line_colon_split[0]	= line_colon_split[0].strip();
+									line_colon_split[1]	= line_colon_split[1].strip();
+									if(line_colon_split[0]>line_colon_split[1]):
+										signal_dimen_high.append(line_colon_split[0]);
+										signal_dimen_low.append(line_colon_split[1]);
+									else:
+										signal_dimen_high.append(line_colon_split[1]);
+										signal_dimen_low.append(line_colon_split[0]);
+									line_content	= line_content[line_content.index("]")+1:len(line_content)];
+								else:
+									signal_type.append("s");
+									signal_dimen_high.append(0);
+									signal_dimen_low.append(0);
+							##	-------------------------------------------------------------------------------------
+							##	没有在本行中定义方向和纬度
+							##	-------------------------------------------------------------------------------------
+							else:
+								signal_direc.append(signal_direc[-1]);
+								signal_type.append(signal_type[-1]);
+								signal_dimen_high.append(signal_dimen_high[-1]);
+								signal_dimen_low.append(signal_dimen_low[-1]);
+							if(debug==1):	print("signal "+str(j)+" have been found");
+							if(debug==1):	print(""+signal_name[j]+"");
+							if(debug==1):	print("signal_direc is "+signal_direc[-1]+"");
+							if(debug==1):	print("signal_type is "+signal_type[-1]+"");
+							if(debug==1):	print("signal_dimen_high is "+str(signal_dimen_high[-1])+"");
+							if(debug==1):	print("signal_dimen_low is "+str(signal_dimen_low[-1])+"");
+							##	-------------------------------------------------------------------------------------
+							##	该信号已经找完，可以寻找下一个信号
+							##	-------------------------------------------------------------------------------------
+							break;
 
 				##	-------------------------------------------------------------------------------------
 				##	如果在这一行中找到了信号的声明，那么就要退出循环
