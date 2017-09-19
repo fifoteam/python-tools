@@ -147,7 +147,7 @@ def trim_keywords( line_content ):
 		elif(line_content[0]==":"):
 			line_content	= line_content[1:len(line_content)];
 
-		key_word_list	= ["wire","reg","integer","parameter","input","output","inout",
+		key_word_list	= ["wire","reg","integer","parameter","localparam","input","output","inout",
 		"assign","always","task","begin","end"]
 
 		line_content		= line_content.replace("\t"," ");
