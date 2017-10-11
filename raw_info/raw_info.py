@@ -176,7 +176,7 @@ def raw_info() :
 		##	-------------------------------------------------------------------------------------
 		for i in range(0, pixel_num):
 			pixel_variance	= (pixel_variance + math.pow(pixel_list[i]-pixel_aver,2));
-		pixel_variance	= pixel_variance/num;
+		pixel_variance	= pixel_variance/pixel_num;
 		pixel_std_dev	= math.sqrt(pixel_variance);
 
 		##	-------------------------------------------------------------------------------------
