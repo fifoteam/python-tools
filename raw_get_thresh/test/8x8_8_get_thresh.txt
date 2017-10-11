@@ -1,0 +1,2 @@
+src file is F:\FifoTeam\PYTHON~1\RAW_GE~1\test\8x8_8.raw
+otsu thresh is 52

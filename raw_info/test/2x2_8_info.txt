@@ -1,5 +1,10 @@
-src file is f:\FifoTeam\python-tools\raw_info\test\2x2_8.raw
+src file is F:\FifoTeam\python-tools\raw_info\test\2x2_8.raw
 pixel_num is 4
 pixel_min is 102
 pixel_max is 114
 pixel_aver is 109.0
+pixel_max_num is 1
+pixel_min_num is 1
+pixel_variance is 19.5
+pixel_std_dev is 4.415880433163924
+pixel_th_above_num is 4

@@ -23,6 +23,4 @@ raw_thresh -f f:\test\8x8_8.raw -i 2 2
 
 -p 像素格式 默认8bit
 
--i [width height] 原始图像宽高
-
--r [x y xy] x-只做x方向的缩小 y-只做y方向的缩小 xy-xy方向都缩小.默认是xy
+-t 阈值，如果不设置，则使用平均值作为阈值
