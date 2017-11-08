@@ -48,7 +48,7 @@ def rtl_parser() :
 	##	-------------------------------------------------------------------------------------
 	if(os.path.isfile(src_path)==False):	return -1
 	if(debug==1):	print("src_path is really exist");
-	infile	= open(src_path,"r")
+	infile	= open(src_path,"r",encoding='gb18030')
 
 	##	-------------------------------------------------------------------------------------
 	##	记录文件总行数
