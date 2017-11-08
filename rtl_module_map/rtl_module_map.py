@@ -45,7 +45,7 @@ def rtl_module_map() :
 	##	-------------------------------------------------------------------------------------
 	if(os.path.isfile(src_path)==False):	return -1
 	if(debug==1):	print("src_path is really exist");
-	infile	= open(src_path,"r")
+	infile	= open(src_path,"r",encoding='gb18030')
 
 	##	-------------------------------------------------------------------------------------
 	##	判断后缀名是否是 .v
@@ -280,8 +280,8 @@ def rtl_module_map() :
 	##+test+
 	if(para_find==1 and debug==1):
 		for i in range(0,len(para_name)):
-			print("para_name"+i+" is "+para_name[i]+"");
-			print("para_value"+i+" is "+para_value[i]+"");
+			print("para_name"+str(i)+" is "+para_name[i]+"");
+			print("para_value"+str(i)+" is "+para_value[i]+"");
 	##-test-
 
 	##	===============================================================================================
