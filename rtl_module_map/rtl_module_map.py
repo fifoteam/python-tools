@@ -163,8 +163,10 @@ def rtl_module_map() :
 			##	-------------------------------------------------------------------------------------
 			line_content	= trim_eol(line_content);
 			line_content	= trim_comment(line_content);
-
-			if(find_index(line_content,")")!=-1):
+			##	-------------------------------------------------------------------------------------
+			##	一行之中，没有()，只有)，才认为是结束。
+			##	-------------------------------------------------------------------------------------
+			if(find_index(line_content,"(")==-1 and find_index(line_content,")")!=-1):
 				para_end_num = i;
 				break;
 			if(i==line_num):
@@ -208,7 +210,10 @@ def rtl_module_map() :
 			##	-------------------------------------------------------------------------------------
 			if(i==para_start_num):
 				line_content = line_content[line_content.index(")")+1:len(line_content)];
-			if(find_index(line_content,")")!=-1):
+			##	-------------------------------------------------------------------------------------
+			##	一行里面之后 ) ,且没有(，才是结束符
+			##	-------------------------------------------------------------------------------------
+			if(find_index(line_content,"(")==-1 and find_index(line_content,")")!=-1):
 				module_end_num = i;
 				break;
 			if(i==line_num):
@@ -227,8 +232,8 @@ def rtl_module_map() :
 			line_content	= trim_eol(line_content);
 			line_content	= trim_comment(line_content);
 
-			if(find_index(line_content,"(")!=-1):	line_content = line_content[line_content.index("(")+1:len(line_content)];
-			if(find_index(line_content,")")!=-1):	line_content = line_content[0:line_content.index(")")];
+#			if(find_index(line_content,"(")!=-1):	line_content = line_content[line_content.index("(")+1:len(line_content)];
+#			if(find_index(line_content,")")!=-1):	line_content = line_content[0:line_content.index(")")];
 			if(line_content==""):
 				continue;
 
@@ -280,8 +285,8 @@ def rtl_module_map() :
 	##+test+
 	if(para_find==1 and debug==1):
 		for i in range(0,len(para_name)):
-			print("para_name"+str(i)+" is "+para_name[i]+"");
-			print("para_value"+str(i)+" is "+para_value[i]+"");
+			print("para_name"+str(i)+" is "+str(para_name[i])+"");
+			print("para_value"+str(i)+" is "+str(para_value[i])+"");
 	##-test-
 
 	##	===============================================================================================
@@ -298,14 +303,14 @@ def rtl_module_map() :
 		if(debug==1):	print("CurrentLine num is "+str(i)+"");
 
 		##	-------------------------------------------------------------------------------------
-		##
+		##	只包含 ( ,不包含 ),说明是在第一行，截取数据
 		##	-------------------------------------------------------------------------------------
-		if(find_index(line_content,"(")!=-1):
+		if(find_index(line_content,"(")!=-1 and find_index(line_content,")")==-1):
 			line_content	= line_content[line_content.index("(")+1:len(line_content)];
 		##	-------------------------------------------------------------------------------------
-		##
+		##	只包含 ) ,不包含 (,说明是在最后一行，截取数据
 		##	-------------------------------------------------------------------------------------
-		if(find_index(line_content,")")!=-1):
+		if(find_index(line_content,")")!=-1 and find_index(line_content,"(")==-1):
 			line_content	= line_content[0:line_content.index(")")];
 		##	-------------------------------------------------------------------------------------
 		##
@@ -654,12 +659,12 @@ def rtl_module_map() :
 	##	-------------------------------------------------------------------------------------
 	if(para_find==1):
 		for i in range(0,len(para_name)):
-			print("parameter	"+para_name[i]+"	= "+para_name[i]+"	;");
+			print("parameter	"+para_name[i]+"	= "+str(para_name[i])+"	;");
 		print("\r\n\r\n");
 
 	if(para_find==1):
 		for i in range(0,len(para_name)):
-			print("parameter	"+para_name[i]+"	= "+para_value[i]+"	;");
+			print("parameter	"+para_name[i]+"	= "+str(para_value[i])+"	;");
 		print("\r\n\r\n");
 
 	##	-------------------------------------------------------------------------------------
