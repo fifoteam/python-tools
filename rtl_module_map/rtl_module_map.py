@@ -59,9 +59,9 @@ def rtl_module_map() :
 	##	-------------------------------------------------------------------------------------
 	file_content 		= infile.readlines();
 	line_num 			= len(file_content);
-	[module_start_num,module_name]	= search_module(debug,line_num,"module",file_content);
+	[module_start_pos,module_name]	= search_module(debug,line_num,"module",file_content);
 	module_end_num		= line_num;
-	para_start_num		= module_start_num;
+	para_start_pos		= module_start_pos;
 	para_end_num		= line_num;
 
 	##	===============================================================================================
@@ -86,7 +86,7 @@ def rtl_module_map() :
 	##	-------------------------------------------------------------------------------------
 	##	找第一个"("，端口声明开始的一行
 	##	-------------------------------------------------------------------------------------
-	for i in range(module_start_num,line_num+1):
+	for i in range(module_start_pos,line_num):
 		line_content	= file_content[i];
 		##	-------------------------------------------------------------------------------------
 		##	去掉注释 回车 字符串两边的空格 tab转换为空格
@@ -95,17 +95,17 @@ def rtl_module_map() :
 		line_content	= trim_comment(line_content);
 
 		if(find_index(line_content,"(")!=-1):
-			para_start_num = i;
+			para_start_pos = i;
 			break;
 		if(i==line_num):
 			if(debug==1):	print("No ( Keyword!");
 			return;
 
-	if(debug==1):	print("para_start_num is "+str(para_start_num)+"");
+	if(debug==1):	print("para_start_pos is "+str(para_start_pos)+"");
 	##	-------------------------------------------------------------------------------------
 	##	在entitystart 与 第一个 ( 之间是否有 #
 	##	-------------------------------------------------------------------------------------
-	for i in range(module_start_num,para_start_num+1):
+	for i in range(module_start_pos,para_start_pos+1):
 		line_content	= file_content[i];
 		##	-------------------------------------------------------------------------------------
 		##	去掉注释 回车 字符串两边的空格 tab转换为空格
@@ -117,10 +117,10 @@ def rtl_module_map() :
 			para_find = 1;
 			if(debug==1):	print("Have Parameter");
 			break;
-		if(i==para_start_num):
-			module_start_num	= para_start_num;
+		if(i==para_start_pos):
+			module_start_pos	= para_start_pos;
 			if(debug==1):	print("No Parameter");
-			if(debug==1):	print("para_start_num is "+str(para_start_num)+"");
+			if(debug==1):	print("para_start_pos is "+str(para_start_pos)+"");
 
 	##	===============================================================================================
 	##	ref ***确定 module 的头和尾***
@@ -133,10 +133,10 @@ def rtl_module_map() :
 		##	-------------------------------------------------------------------------------------
 		##	find module_end_num
 		##	-------------------------------------------------------------------------------------
-		for i in range(module_start_num,line_num+1):
+		for i in range(module_start_pos,line_num):
 			line_content	= file_content[i];
 			##	-------------------------------------------------------------------------------------
-			##	去掉注释 回车 字符串两边的空格 tab转换为空格
+			##	去掉注释回车 字符串两边的空格 tab转换为空格
 			##	-------------------------------------------------------------------------------------
 			line_content	= trim_eol(line_content);
 			line_content	= trim_comment(line_content);
@@ -156,7 +156,7 @@ def rtl_module_map() :
 		##	-------------------------------------------------------------------------------------
 		##	find para_end_num
 		##	-------------------------------------------------------------------------------------
-		for i in range(para_start_num,line_num):
+		for i in range(para_start_pos,line_num):
 			line_content	= file_content[i];
 			##	-------------------------------------------------------------------------------------
 			##	去掉注释 回车 字符串两边的空格 tab转换为空格
@@ -174,7 +174,7 @@ def rtl_module_map() :
 				return;
 
 		##	-------------------------------------------------------------------------------------
-		##	find module_start_num
+		##	find module_start_pos
 		##	-------------------------------------------------------------------------------------
 		for i in range(para_end_num,line_num):
 			line_content	= file_content[i];
@@ -186,10 +186,10 @@ def rtl_module_map() :
 			##	-------------------------------------------------------------------------------------
 			##	para 开始和结束在同一行
 			##	-------------------------------------------------------------------------------------
-			if(i==para_start_num):
+			if(i==para_start_pos):
 				line_content = line_content[line_content.index(")")+1:len(line_content)];
 			if(find_index(line_content,"(")!=-1):
-				module_start_num = i;
+				module_start_pos = i;
 				break;
 			if(i==line_num):
 				if(debug==1):	print("No ( Keyword!");
@@ -198,7 +198,7 @@ def rtl_module_map() :
 		##	-------------------------------------------------------------------------------------
 		##	find module_end_num
 		##	-------------------------------------------------------------------------------------
-		for i in range(module_start_num,line_num):
+		for i in range(module_start_pos,line_num):
 			line_content	= file_content[i];
 			##	-------------------------------------------------------------------------------------
 			##	去掉注释 回车 字符串两边的空格 tab转换为空格
@@ -208,7 +208,7 @@ def rtl_module_map() :
 			##	-------------------------------------------------------------------------------------
 			##	para 开始和结束在同一行,entity 开始和结束也在这一行
 			##	-------------------------------------------------------------------------------------
-			if(i==para_start_num):
+			if(i==para_start_pos):
 				line_content = line_content[line_content.index(")")+1:len(line_content)];
 			##	-------------------------------------------------------------------------------------
 			##	一行里面之后 ) ,且没有(，才是结束符
@@ -224,7 +224,7 @@ def rtl_module_map() :
 	##	ref ***处理parameter信息***
 	##	===============================================================================================
 	if(para_find==1):
-		for i in range(para_start_num,para_end_num):
+		for i in range(para_start_pos,para_end_num):
 			line_content	= file_content[i];
 			##	-------------------------------------------------------------------------------------
 			##	去掉注释 回车 字符串两边的空格 tab转换为空格
@@ -293,7 +293,7 @@ def rtl_module_map() :
 	##	ref 处理 port 信息
 	##	===============================================================================================
 	port_declare=0;
-	for i in range(module_start_num,module_end_num+1):
+	for i in range(module_start_pos,module_end_num+1):
 		line_content	= file_content[i];
 		##	-------------------------------------------------------------------------------------
 		##	去掉注释 回车 字符串两边的空格 tab转换为空格
@@ -467,7 +467,7 @@ def rtl_module_map() :
 			##	-------------------------------------------------------------------------------------
 			##	某个信号在每一行中寻找
 			##	-------------------------------------------------------------------------------------
-			for i in range(module_end_num+1,line_num+1):
+			for i in range(module_end_num+1,line_num):
 				line_content	= file_content[i];
 				if(debug==1):	print("current line num is "+str(i)+"");
 				##	-------------------------------------------------------------------------------------
@@ -488,6 +488,14 @@ def rtl_module_map() :
 						line_content	= line_comma_split[k];
 						if(find_index(line_content,";")!=-1):
 							line_content		= line_content[0:line_content.index(";")];
+						##	-------------------------------------------------------------------------------------
+						##	为了防止  input[127:0]din;  这种字符串干扰，在[]前后添加空格
+						##	-------------------------------------------------------------------------------------
+						if(find_index(line_content,"[")!=-1):
+							line_content	= line_content[:line_content.index("[")]+" "+line_content[line_content.index("["):]
+						if(find_index(line_content,"]")!=-1):
+							line_content	= line_content[:line_content.index("]")+1]+" "+line_content[line_content.index("]")+1:]
+
 						line_content		= line_content.replace("\t"," ");
 						line_content		= line_content.strip();
 						line_space_split	= line_content.split(" ");
