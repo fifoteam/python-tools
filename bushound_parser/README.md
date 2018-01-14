@@ -35,7 +35,7 @@ Bushound的窗口中的数据必须是4列的模式，即每行的空间是16个字节。示例如下：
 
 ### step 3
 打开 命令控制台，输入如下信息
-bushound_parser -f f:\test\1.txt
+bushound_parser -f f:\test\1.txt -p
 
 ### step 4
 程序会在 f:\test\ 目录下输出2个解析文件
@@ -46,6 +46,12 @@ bushound_parser -f f:\test\1.txt
 命令行信息
 -d 打印调试信息
 -f 文件路径
+-p 解析bushound的命令
+-s 将图像保存为文件
+-c 根据端口名，拆分出每个端口
+-n 被拆分的端口名，一般写为 21.  22.  这种数字
+
+
 
 ### step 6
 文件分析
