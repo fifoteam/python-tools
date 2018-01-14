@@ -20,6 +20,10 @@ def bushound_parser() :
 	parse_info	= 0;
 	save_image	= 0;
 	cut_device	= 0;
+	device_num	= 0;
+	device_selected	= 0;
+
+
 
 	for i in range(0,len(sys.argv)):
 		if(sys.argv[i]=="-d"):
@@ -32,7 +36,8 @@ def bushound_parser() :
 			save_image	= 1;
 		if(sys.argv[i]=="-c"):
 			cut_device	= 1;
-
+		if(sys.argv[i]=="-n"):
+			device_num	= sys.argv[i+1];
 
 	##	===============================================================================================
 	##	ref ***source file operation***
@@ -61,19 +66,27 @@ def bushound_parser() :
 	##	-------------------------------------------------------------------------------------
 	for i in range(0,line_num):
 		line_content	= file_content[i];
-		##	-------------------------------------------------------------------------------------
-		##	如果一行的开头是 "------"，那么就认为下面就是数据开始
-		##	-------------------------------------------------------------------------------------
-		if(line_content.find("55 33 56 ")>=0):
-			if(debug==1):	print("******find U3V pattern line num is ",i);
-			line_start=i;
+
+		if (cut_device==0):
+			##	-------------------------------------------------------------------------------------
+			##	如果一行的开头是 "------"，那么就认为下面就是数据开始
+			##	-------------------------------------------------------------------------------------
+			if(line_content.find("55 33 56 ")>=0):
+				if(debug==1):	print("******find U3V pattern line num is ",i);
+				line_start=i;
+				break
+			##	-------------------------------------------------------------------------------------
+			##	如果最后一行都没有找到，那么就是没有pattern，就会退出
+			##	-------------------------------------------------------------------------------------
+			if(i==line_num-1):
+				if(debug==1):	print("******not found U3V pattern");
+				return -1
+		else:
+			##	-------------------------------------------------------------------------------------
+			##	如果要分割数据，那么从第一行开始找
+			##	-------------------------------------------------------------------------------------
+			line_start=0;
 			break
-		##	-------------------------------------------------------------------------------------
-		##	如果最后一行都没有找到，那么就是没有pattern，就会退出
-		##	-------------------------------------------------------------------------------------
-		if(i==line_num-1):
-			if(debug==1):	print("******not found U3V pattern");
-			return -1
 
 	##	-------------------------------------------------------------------------------------
 	##	在一行中定位"55 33 56 "出现的位置
@@ -85,31 +98,67 @@ def bushound_parser() :
 	##	ref ***parse file by keyword***
 	##	===============================================================================================
 	##	-------------------------------------------------------------------------------------
-	##	从line start开始，找 U3VC U3VL U3VT 的关键字
+	##	如果不是分割数据
 	##	-------------------------------------------------------------------------------------
-	list_parser = [];
-	for i in range(line_start,line_num):
-		line_content	= file_content[i];
-		if(line_content[first_byte_pos:first_byte_pos+11]=="55 33 56 43"):
-			if(debug==1):	print("find U3VC");
-			list_parser.append(u3vc_proc(debug,first_byte_pos,i,file_content));
-		elif(line_content[first_byte_pos:first_byte_pos+11]=="55 33 56 4c"):
-			if(debug==1):	print("find U3VL");
-			list_parser.append(u3vl_proc(debug,first_byte_pos,i,file_content));
-		elif(line_content[first_byte_pos:first_byte_pos+11]=="55 33 56 54"):
-			if(debug==1):	print("find U3VT");
-			list_parser.append(u3vt_proc(debug,first_byte_pos,i,file_content));
+	if (cut_device==0):
+		##	-------------------------------------------------------------------------------------
+		##	从line start开始，找 U3VC U3VL U3VT 的关键字
+		##	-------------------------------------------------------------------------------------
+		list_parser = [];
+		for i in range(line_start,line_num):
+			line_content	= file_content[i];
+			if(line_content[first_byte_pos:first_byte_pos+11]=="55 33 56 43"):
+				if(debug==1):	print("find U3VC");
+				list_parser.append(u3vc_proc(debug,first_byte_pos,i,file_content));
+			elif(line_content[first_byte_pos:first_byte_pos+11]=="55 33 56 4c"):
+				if(debug==1):	print("find U3VL");
+				list_parser.append(u3vl_proc(debug,first_byte_pos,i,file_content));
+			elif(line_content[first_byte_pos:first_byte_pos+11]=="55 33 56 54"):
+				if(debug==1):	print("find U3VT");
+				list_parser.append(u3vt_proc(debug,first_byte_pos,i,file_content));
 
-		if(i==int(line_num*0.1)):	print(".",end="");
-		if(i==int(line_num*0.2)):	print(".",end="");
-		if(i==int(line_num*0.3)):	print(".",end="");
-		if(i==int(line_num*0.4)):	print(".",end="");
-		if(i==int(line_num*0.5)):	print(".",end="");
-		if(i==int(line_num*0.6)):	print(".",end="");
-		if(i==int(line_num*0.7)):	print(".",end="");
-		if(i==int(line_num*0.8)):	print(".",end="");
-		if(i==int(line_num*0.9)):	print(".",end="");
-		if(i==int(line_num-1)):		print("!",end="");
+			if(i==int(line_num*0.1)):	print(".",end="");
+			if(i==int(line_num*0.2)):	print(".",end="");
+			if(i==int(line_num*0.3)):	print(".",end="");
+			if(i==int(line_num*0.4)):	print(".",end="");
+			if(i==int(line_num*0.5)):	print(".",end="");
+			if(i==int(line_num*0.6)):	print(".",end="");
+			if(i==int(line_num*0.7)):	print(".",end="");
+			if(i==int(line_num*0.8)):	print(".",end="");
+			if(i==int(line_num*0.9)):	print(".",end="");
+			if(i==int(line_num-1)):		print("!",end="");
+	##	-------------------------------------------------------------------------------------
+	##	如果是分割数据
+	##	-------------------------------------------------------------------------------------
+	else:
+		list_parser = [];
+		for i in range(line_start,line_num):
+			line_content	= file_content[i];
+			##	-------------------------------------------------------------------------------------
+			##	如果port端口包含信息
+			##	-------------------------------------------------------------------------------------
+			if('.' in line_content[0:5]):
+				##	-------------------------------------------------------------------------------------
+				##	如果端口是所选端口，那么要声明选中，保留信息
+				##	-------------------------------------------------------------------------------------
+				if(device_num in line_content[0:5]):
+					device_selected	= 1;
+					list_parser.append(line_content);
+					if(debug==1):	print("line_num is "+str(i)+",find device");
+				##	-------------------------------------------------------------------------------------
+				##	如果端口不是所选端口，那么要声明未选中
+				##	-------------------------------------------------------------------------------------
+				else:
+					device_selected	= 0;
+			##	-------------------------------------------------------------------------------------
+			##	如果port端口不包含信息
+			##	-------------------------------------------------------------------------------------
+			else:
+				##	-------------------------------------------------------------------------------------
+				##	如果端口已经被选中，说明还是被选择的端口的数据，应该要保留下来
+				##	-------------------------------------------------------------------------------------
+				if (device_selected==1):
+					list_parser.append(line_content);
 
 	##	===============================================================================================
 	##	ref ***output result***
@@ -128,36 +177,48 @@ def bushound_parser() :
 	parser_path = only_path+'\\'+parser_name;
 	summary_path = only_path+'\\'+summary_name;
 
-	##	-------------------------------------------------------------------------------------
-	##	重新编辑file_content 把要写入的内容添加到其中
-	##	--list_parser是一个二维列表，每一个元素都是一个列表，其中0代表行号，1代表解析内容
-	##	--要把list_parser列表中的内容添加到对应行中，file_content的最后一个字符是回车符要去掉
-	##	-------------------------------------------------------------------------------------
-	for i in range(0,len(list_parser)):
-		file_content[list_parser[i][0]]	= file_content[list_parser[i][0]].rstrip("\n")+"\t#"+list_parser[i][1]+"\n";
+	cut_name	= only_name + "_" + device_num + "cut" +".txt";
+	cut_path	= only_path+'\\'+cut_name;
 
-	file_content_summay = list_parser;
-	for i in range(0,len(list_parser)):
-		file_content_summay[i]	= "line num is "+str(list_parser[i][0]+1)+"\t"+list_parser[i][1]+"\n";
+	if (cut_device==0):
+		##	-------------------------------------------------------------------------------------
+		##	重新编辑file_content 把要写入的内容添加到其中
+		##	--list_parser是一个二维列表，每一个元素都是一个列表，其中0代表行号，1代表解析内容
+		##	--要把list_parser列表中的内容添加到对应行中，file_content的最后一个字符是回车符要去掉
+		##	-------------------------------------------------------------------------------------
+		for i in range(0,len(list_parser)):
+			file_content[list_parser[i][0]]	= file_content[list_parser[i][0]].rstrip("\n")+"\t#"+list_parser[i][1]+"\n";
 
-	##	-------------------------------------------------------------------------------------
-	##	建立新的文件
-	##	-------------------------------------------------------------------------------------
-	outfile_parser = open(parser_path,"w+");
-	outfile_summary = open(summary_path,"w+");
+		file_content_summay = list_parser;
+		for i in range(0,len(list_parser)):
+			file_content_summay[i]	= "line num is "+str(list_parser[i][0]+1)+"\t"+list_parser[i][1]+"\n";
 
-	##	-------------------------------------------------------------------------------------
-	##	建立新的文件
-	##	-------------------------------------------------------------------------------------
-	outfile_parser.writelines(file_content);
-	outfile_summary.writelines(file_content_summay);
+		##	-------------------------------------------------------------------------------------
+		##	建立新的文件
+		##	-------------------------------------------------------------------------------------
+		outfile_parser = open(parser_path,"w+");
+		outfile_summary = open(summary_path,"w+");
 
-	##	===============================================================================================
-	##	ref ***end***
-	##	===============================================================================================
-	outfile_parser.close()
-	outfile_summary.close()
-	infile.close()
+		##	-------------------------------------------------------------------------------------
+		##	建立新的文件
+		##	-------------------------------------------------------------------------------------
+		outfile_parser.writelines(file_content);
+		outfile_summary.writelines(file_content_summay);
+
+		##	===============================================================================================
+		##	ref ***end***
+		##	===============================================================================================
+		outfile_parser.close()
+		outfile_summary.close()
+		infile.close()
+
+	else:
+		##	-------------------------------------------------------------------------------------
+		##	建立新的文件
+		##	-------------------------------------------------------------------------------------
+		outfile_cut = open(cut_path,"w+");
+		outfile_cut.writelines(list_parser);
+		outfile_cut.close()
 
 
 
