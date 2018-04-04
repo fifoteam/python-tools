@@ -13,7 +13,7 @@ def bushound_parser() :
 	##	src_path		文件路径
 	##	parse_info		解析leader trailer control的信息
 	##	save_image		保存图像
-	##	cut_device		去掉某些端口的数据
+	##	cut_device		提取某些端口的数据
 	##	-------------------------------------------------------------------------------------
 	debug 		= 0;
 	src_path	= 0;
