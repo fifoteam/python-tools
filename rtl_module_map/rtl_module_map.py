@@ -641,6 +641,7 @@ def rtl_module_map() :
 		for i in range(0,len(para_name)-1):
 			print("."+para_name[i]+"	("+para_name[i]+"	),");
 		if(len(para_name)>0):
+			i	= i+1;
 			print("."+para_name[i]+"	("+para_name[i]+"	)");
 		print(")");
 		print(""+module_name+"_inst (");
