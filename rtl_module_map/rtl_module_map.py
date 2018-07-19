@@ -13,6 +13,8 @@ def rtl_module_map() :
 	##	版本信息，在后面会打印
 	##	-------------------------------------------------------------------------------------
 	version_message	= "https://github.com/fifoteam/python-tools/rtl_module_map v1.0 2017.9.14";
+	code_path		= sys.path[0]+'\\rtl_module_map.py';
+
 	##	-------------------------------------------------------------------------------------
 	##	debug			调试开关，默认关闭
 	##	vhdl			是否例化vhdl调用的模块，默认关闭
@@ -36,6 +38,9 @@ def rtl_module_map() :
 	##	-------------------------------------------------------------------------------------
 	##	获取输入文件
 	##	-------------------------------------------------------------------------------------
+	if(debug==1):
+##		print(version_message);
+		print(code_path);
 	if(debug==1):	print("src_path is",src_path);
 
 	##	-------------------------------------------------------------------------------------
@@ -638,18 +643,19 @@ def rtl_module_map() :
 		##	包含parameter的map
 		##	-------------------------------------------------------------------------------------
 		print(""+module_name+" # (");
-		for i in range(0,len(para_name)-1):
-			print("."+para_name[i]+"	("+para_name[i]+"	),");
-		if(len(para_name)>0):
+		i = 0;
+		if(len(para_name)>1):
+			for i in range(0,len(para_name)-1):
+				print("."+para_name[i]+"	("+para_name[i]+"	),");
 			i	= i+1;
-			print("."+para_name[i]+"	("+para_name[i]+"	)");
+		print("."+para_name[i]+"	("+para_name[i]+"	)");
 		print(")");
 		print(""+module_name+"_inst (");
-		for i in range(0,len(signal_name)-1):
-			print("."+signal_name[i]+"\t("+signal_name[i]+"	),");
-		if(len(signal_name)>0):
+		if(len(signal_name)>1):
+			for i in range(0,len(signal_name)-1):
+				print("."+signal_name[i]+"\t("+signal_name[i]+"	),");
 			i	= i+1;
-			print("."+signal_name[i]+"\t("+signal_name[i]+"	)");
+		print("."+signal_name[i]+"\t("+signal_name[i]+"	)");
 		print(");\r\n");
 	else:
 		##	-------------------------------------------------------------------------------------

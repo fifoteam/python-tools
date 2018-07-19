@@ -13,6 +13,7 @@ def rtl_parser() :
 	##	版本信息，在后面会打印
 	##	-------------------------------------------------------------------------------------
 	version_message	= "https://github.com/fifoteam/python-tools/rtl_parser v1.3 2017.5.11";
+	code_path		= sys.path[0]+'\\rtl_parser.py';
 	##	-------------------------------------------------------------------------------------
 	##	debug			调试开关，默认关闭
 	##	src_path		文件路径
@@ -118,7 +119,8 @@ def rtl_parser() :
 	##	-------------------------------------------------------------------------------------
 	##	头
 	##	-------------------------------------------------------------------------------------
-	print(version_message);
+##	print(version_message);
+	print(code_path);
 	src_file_message	= "src file is : "+src_path+"";
 	word_sel_message	= "selected word is \""+word_sel+"\"";
 	find_num_message	= "find num : "+str(len(all_list))+"";

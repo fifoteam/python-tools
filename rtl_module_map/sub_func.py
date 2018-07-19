@@ -100,6 +100,7 @@ def trim_comment(line_content):
 	except ValueError:
 	    index_value = -1
 	if(index_value!=-1): line_value	= line_content[0:index_value];
+
 	return	line_value;
 
 ##	-------------------------------------------------------------------------------------
