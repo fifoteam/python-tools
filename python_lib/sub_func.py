@@ -34,19 +34,19 @@ def trim_eol(line_content):
 	index_value	= 0;
 	line_value	= line_content;
 	try:
-	    index_value = line_content.index("/n")
+	    index_value = line_content.index("\n")
 	except ValueError:
 	    index_value = -1
 	if(index_value!=-1): line_value	= line_content[0:index_value];
 
 	try:
-	    index_value = line_content.index("/r/n")
+	    index_value = line_content.index("\r\n")
 	except ValueError:
 	    index_value = -1
 	if(index_value!=-1): line_value	= line_content[0:index_value];
 
 	try:
-	    index_value = line_content.index("/r")
+	    index_value = line_content.index("\r")
 	except ValueError:
 	    index_value = -1
 	if(index_value!=-1): line_value	= line_content[0:index_value];

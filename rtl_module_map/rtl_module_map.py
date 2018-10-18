@@ -303,9 +303,14 @@ def rtl_module_map() :
 		##	-------------------------------------------------------------------------------------
 		##	去掉注释 回车 字符串两边的空格 tab转换为空格
 		##	-------------------------------------------------------------------------------------
+		if(debug==1):	print("CurrentLine num is "+str(i)+"");
+		if(debug==1):	print("line_content is "+line_content+"");
 		line_content	= trim_eol(line_content);
+		if(debug==1):	print("CurrentLine num is "+str(i)+"");
+		if(debug==1):	print("line_content is "+line_content+"");
 		line_content	= trim_comment(line_content);
 		if(debug==1):	print("CurrentLine num is "+str(i)+"");
+		if(debug==1):	print("line_content is "+line_content+"");
 
 		##	-------------------------------------------------------------------------------------
 		##	只包含 ( ,不包含 ),说明是在第一行，截取数据
