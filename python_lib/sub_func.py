@@ -1,7 +1,5 @@
 #coding=utf-8
 import re
-from tkinter import Tk
-
 
 ##	-------------------------------------------------------------------------------------
 ##	精确查找一个单词。\b means word boundary, basically. Can be space, punctuation, etc
@@ -13,6 +11,83 @@ def find_word(text, search):
 		return 1
 	else:
 		return 0
+
+##	-------------------------------------------------------------------------------------
+##	find_index
+##	如果没有找到，则返回 -1
+##	-------------------------------------------------------------------------------------
+def find_index(text,keyword):
+	try:
+	    index_value = text.index(keyword)
+	except ValueError:
+	    index_value = -1
+	return index_value
+
+def find_declare(line_content):
+	signal_name	= "";
+	is_declare	= 0;
+
+	##	-------------------------------------------------------------------------------------
+	##	声明的关键字列表
+	##	-------------------------------------------------------------------------------------
+	key_word_list	= ["parameter","localparam","function","task","input","output","inout","wire","reg"];
+
+	##	-------------------------------------------------------------------------------------
+	##	行头第一个字符作为关键字
+	##	-------------------------------------------------------------------------------------
+	key_word	= line_content.split(' ')[0];
+
+	##	-------------------------------------------------------------------------------------
+	##	在关键字列表中循环查找
+	##	-------------------------------------------------------------------------------------
+	for i in range(0,len(key_word_list)):
+		if(key_word==key_word_list[i]):
+			is_declare	= 1;
+			break
+#	print("is_declare is "+str(is_declare)+"")
+	##	-------------------------------------------------------------------------------------
+	##	如果是声明语句，则继续找信号名字
+	##	-------------------------------------------------------------------------------------
+	if(is_declare==1):
+		##	-------------------------------------------------------------------------------------
+		##	去掉关键字
+		##	-------------------------------------------------------------------------------------
+		line_value	= line_content.split(' ');
+		del line_value[0];
+		##	-------------------------------------------------------------------------------------
+		##	合并空格
+		##	-------------------------------------------------------------------------------------
+		line_value	= ' '.join(line_value);
+		##	-------------------------------------------------------------------------------------
+		##	如果定义了位宽，则删掉位宽
+		##	-------------------------------------------------------------------------------------
+		try:
+		    index_value = line_value.index("]")
+		except ValueError:
+		    index_value = -1
+		if(index_value!=-1):
+			line_value	= line_value[index_value+1:len(line_value)];
+		##	-------------------------------------------------------------------------------------
+		##	去掉=后面的内容，如果=和信号名之间没有空格，后面会解析不出来，因此要删掉=之后的内容
+		##	-------------------------------------------------------------------------------------
+		try:
+		    index_value = line_value.index("=")
+		except ValueError:
+		    index_value = -1
+		if(index_value!=-1):
+			line_value	= line_value[0:index_value];
+		##	-------------------------------------------------------------------------------------
+		##	合并空格
+		##	tab 转换为空格
+		##	去掉行首行尾的空格符
+		##	提取信号名称
+		##	-------------------------------------------------------------------------------------
+		line_value	= line_value.replace("\t"," ");
+		line_value	= line_value.strip();
+		signal_name	= line_value.split(' ')[0];
+
+	return	signal_name
+
 
 ##	-------------------------------------------------------------------------------------
 ##	去掉注释
@@ -54,78 +129,219 @@ def trim_eol(line_content):
 	return	line_value;
 
 ##	-------------------------------------------------------------------------------------
-##	复制剪贴板的字符
+##	去除行头关键字
 ##	-------------------------------------------------------------------------------------
-def copy_clip():
-	r = Tk()
-	c = r.clipboard_get()
-	return c
+def trim_keywords( line_content ):
+	loop			= 1;
+	find_key_word	= 0;
+	while (loop==1):
+		##	-------------------------------------------------------------------------------------
+		##	去掉行首的空字符
+		##	-------------------------------------------------------------------------------------
+		line_content	= line_content.strip();
+
+		if(line_content[0]=="."):
+			line_content	= line_content[1:len(line_content)];
+		elif(line_content[0]=="["):
+			line_content	= line_content[1:len(line_content)];
+		elif(line_content[0]==":"):
+			line_content	= line_content[1:len(line_content)];
+
+		key_word_list	= ["wire","reg","integer","parameter","localparam","input","output","inout",
+		"assign","always","task","begin","end"]
+
+		line_content		= line_content.replace("\t"," ");
+		line_content		= line_content.strip();
+		key_word			= line_content.split(' ')[0].lower();
+
+		##	-------------------------------------------------------------------------------------
+		##	在关键字列表中循环查找
+		##	-------------------------------------------------------------------------------------
+		for i in range(0,len(key_word_list)):
+			if(key_word==key_word_list[i]):
+				line_content	= line_content[len(key_word_list[i]):len(line_content)];
+				find_key_word	= 1;
+		##	-------------------------------------------------------------------------------------
+		##	如果在一轮查找中，没有发现关键字，则退出
+		##	如果发现了关键，则要重复一轮查找，并将标志复位
+		##	-------------------------------------------------------------------------------------
+		if(find_key_word==0):
+			break;
+		else:
+			find_key_word	= 0;
+
+	return	line_content;
 
 ##	-------------------------------------------------------------------------------------
-##	判断字符串是否是赋值语句
+##	查找module name
 ##	-------------------------------------------------------------------------------------
-def judge_driver(line_content):
-	line_value	= "";
+def search_module(debug,line_num,keyword,file_content):
+	found			= 0;
+	line_content	= 0;
+	module_name		= 0;
+	##	-------------------------------------------------------------------------------------
+	##	在文件中找module名字，如果找到，则退出
+	##	-------------------------------------------------------------------------------------
+	for i in range(0,line_num+1):
+		line_content	= file_content[i];
+		##	-------------------------------------------------------------------------------------
+		##	去掉注释 回车 字符串两边的空格 tab转换为空格
+		##	-------------------------------------------------------------------------------------
+		line_content	= trim_eol(line_content);
+		line_content	= trim_comment(line_content);
+		line_content	= line_content.strip();
+		line_content	= line_content.replace("\t"," ");
+		line_space_split	= line_content.split(' ');
 
-	##	-------------------------------------------------------------------------------------
-	##	检查是否包含赋值符号
-	##	-------------------------------------------------------------------------------------
-	try:
-	    index_value = line_content.index("=")
-	except ValueError:
-	    index_value = -1
-	if(index_value!=-1):
-		line_value	= line_content[0:index_value];
+		if(line_space_split[0].lower()==keyword):
+			for j in range(1,len(line_space_split)):
+				if(line_space_split[j]!=""):
+					module_name	= line_space_split[j];
+					found		= 1;
+					break;
+		if(found==1):
+			break;
+
+	if(found==1):
+		##	-------------------------------------------------------------------------------------
+		##	去除行尾回车符
+		##	-------------------------------------------------------------------------------------
+		module_name	= trim_eol(module_name);
+		##	-------------------------------------------------------------------------------------
+		##	去除行尾分隔符
+		##	-------------------------------------------------------------------------------------
+		if(find_index(module_name,"(")!=-1):	module_name	= module_name[0:module_name.index("(")];
+		if(debug==1):	print("module line is "+str(i)+",module name is "+module_name+"");
+		return	[i,module_name];
 	else:
-		line_value	= "";
-		return	line_value
+		if(debug==1):	print("not find module!");
+		return	[-1,module_name];
+
+
+##	-------------------------------------------------------------------------------------
+##	如果是赋值语句，返回被赋值信号名称
+##	-------------------------------------------------------------------------------------
+def find_driver(line_content):
+	signal_name	= "";
+	is_driver	= 0;
+	line_value	= line_content;
 
 	##	-------------------------------------------------------------------------------------
-	##	如果是case赋值，那么会有冒号
+	##	如果有 < ，说明是赋值语句，提取之前的信息
 	##	-------------------------------------------------------------------------------------
 	try:
-	    index_value = line_content.index(":")
+	    index_value = line_value.index("<")
 	except ValueError:
 	    index_value = -1
 	if(index_value!=-1):
-		line_value	= line_content[index_value:len(line_value)];
+		line_value	= line_value[0:index_value];
+		is_driver	= 1;
+	##	-------------------------------------------------------------------------------------
+	##	如果有 = ，说明是赋值语句，提取之前的信息
+	##	-------------------------------------------------------------------------------------
+	try:
+	    index_value = line_value.index("=")
+	except ValueError:
+	    index_value = -1
+	if(index_value!=-1):
+		line_value	= line_value[0:index_value];
+		is_driver	= 1;
+
+	##	-------------------------------------------------------------------------------------
+	##	如果有 : ，说明是case赋值语句，删掉
+	##	先截取 = ，再截取 :。否则 assign 语句就会解析错误
+	##	-------------------------------------------------------------------------------------
+	try:
+	    index_value = line_value.index(":")
+	except ValueError:
+	    index_value = -1
+	if(index_value!=-1): line_value	= line_value[index_value+1:len(line_value)];
+
+	##	-------------------------------------------------------------------------------------
+	##	如果有 ) ，说明有条件语句，删掉
+	##	-------------------------------------------------------------------------------------
+	try:
+	    index_value = line_value.index(")")
+	except ValueError:
+	    index_value = -1
+	if(index_value!=-1): line_value	= line_value[index_value+1:len(line_value)];
+
+	##	-------------------------------------------------------------------------------------
+	##	如果有 ( ，说明是半条 条件语句，此时不是赋值语句
+	##	-------------------------------------------------------------------------------------
+	try:
+	    index_value = line_value.index("(")
+	except ValueError:
+	    index_value = -1
+	if(index_value!=-1): is_driver	= 0;
+
+	##	-------------------------------------------------------------------------------------
+	##	如果是赋值语句，那么要提取信号名称
+	##	-------------------------------------------------------------------------------------
+	if(is_driver==1):
+#		print("is_driver")
+		##	-------------------------------------------------------------------------------------
+		##	合并空格
+		##	tab 转换为空格
+		##	去掉行首行尾的空格符
+		##	提取信号名称
+		##	-------------------------------------------------------------------------------------
 		line_value	= line_value.replace("\t"," ");
 		line_value	= line_value.strip();
+		line_value	= line_value.split();
+		signal_name	= line_value[len(line_value)-1];
+	return signal_name
 
-	if(line_value.split(' ')[0]=="assign"):
-		judge	= 1;
-	elif(line_value.split(' ')[0][0:len(word_sel)]==word_sel):
-		driver_list.append(all_list[i]);
+def find_map(line_content):
+	signal_name	= "";
+	is_map	= 0;
+	line_value	= line_content;
 
-	judge	= 0;
-	if(line_content.split(' ')[0]=="parameter"):
-		judge	= 1;
-	elif(line_content.split(' ')[0]=="localparam"):
-		judge	= 1;
-	elif(line_content.split(' ')[0]=="function"):
-		judge	= 1;
-	elif(line_content.split(' ')[0]=="task"):
-		judge	= 1;
-	elif(line_content.split(' ')[0]=="input"):
-		judge	= 1;
-	elif(line_content.split(' ')[0]=="output"):
-		judge	= 1;
-	elif(line_content.split(' ')[0]=="inout"):
-		judge	= 1;
-	elif(line_content.split(' ')[0]=="wire"):
-		judge	= 1;
-	elif(line_content.split(' ')[0]=="reg"):
-		judge	= 1;
+	##	-------------------------------------------------------------------------------------
+	##	查看是否是map映射，如果包含 .，且 () 之中有所选单词，说明是映射
+	##	-------------------------------------------------------------------------------------
+	if(line_content[0]=="."):
+		##	-------------------------------------------------------------------------------------
+		##	判断是否有括号
+		##	-------------------------------------------------------------------------------------
+		try:
+		    index_value = line_value.index("(")
+		except ValueError:
+		    index_value = -1
+		##	-------------------------------------------------------------------------------------
+		##	如果包含括号，则截取括号中的内容，判断是否有所选单词
+		##	-------------------------------------------------------------------------------------
+		if(index_value!=-1):
+			line_value	= line_value[index_value+1:len(line_value)];
+			##	-------------------------------------------------------------------------------------
+			##	去掉行尾的括号
+			##	-------------------------------------------------------------------------------------
+			try:
+			    index_value = line_value.index(")")
+			except ValueError:
+			    index_value = -1
+			if(index_value!=-1):
+				line_value	= line_value[0:index_value];
+			##	-------------------------------------------------------------------------------------
+			##	去掉行尾的结束符
+			##	-------------------------------------------------------------------------------------
+			line_value	= trim_eol(line_value);
+			##	-------------------------------------------------------------------------------------
+			##	去掉行头行尾空格
+			##	-------------------------------------------------------------------------------------
+			line_value	= line_value.replace("\t"," ");
+			line_value	= line_value.strip();
+			signal_name	= line_value;
 
-	return	judge
+			##	-------------------------------------------------------------------------------------
+			##	如果行头有 . ，但是括号中没有所选单词，说明所选单词是子模块的信号
+			##	-------------------------------------------------------------------------------------
+
+		##	-------------------------------------------------------------------------------------
+		##	如果行头有 . ，但是没有括号，说明不是一个完整赋值语句，不做处理
+		##	-------------------------------------------------------------------------------------
 
 
-##	-------------------------------------------------------------------------------------
-##	判断字符串是否一个语句的结尾
-##	-------------------------------------------------------------------------------------
-end
-if
-/Indent Strings = "module" "generate" "begin" "case" "fork" "specify" "table" "config" "function" "`ifdef" "`ifndef" "`elsif" "`else" "task"
-/Unindent Strings = "endmodule" "endgenerate" "end" "endcase" "join" "endspecify" "endtable" "endconfig" "endfunction" "`elsif" "`endif" "`else" "endtask"
-/Open Fold Strings = "module" "task" "function" "generate" "primitive" "begin" "case" "fork" "specify" "table" "config" "`ifdef" "(" "{" "`ifdef" "`ifndef"
-/Close Fold Strings = "endmodule" "endtask" "endfunction" "endgenerate" "endprimitive" "end" "endcase" "join" "endspecify" "endtable" "endconfig" "`endif" ")" "}" "`endif"
+
+	return signal_name
+
