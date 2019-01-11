@@ -71,7 +71,9 @@ def rtl_get_signal() :
 				##	如果是空字符串，不需要提取信息
 				##	-------------------------------------------------------------------------------------
 				if(line_comma_split[j]==""): continue;
+				if(debug==1):	print("line_comma_split[j] is "+line_comma_split[j]+"");
 				line_comma_split[j]	= trim_keywords(line_comma_split[j]);
+
 				if(";" in line_comma_split[j]):	line_comma_split[j]	= line_comma_split[j][0:line_comma_split[j].index(";")];
 				if("," in line_comma_split[j]):	line_comma_split[j]	= line_comma_split[j][0:line_comma_split[j].index(",")];
 				if("(" in line_comma_split[j]):	line_comma_split[j]	= line_comma_split[j][0:line_comma_split[j].index("(")];
