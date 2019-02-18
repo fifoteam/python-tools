@@ -11,6 +11,7 @@
 ##  -- Changelog    :
 ##  -- Author       | Version	| Date                  | Content
 ##  -- Michael      | V1.4		| 2019/2/18 17:52:52	| driver section,will output the previous line
+##  													| reference section,will output the next line
 ##-------------------------------------------------------------------------------------------------
 
 import os
@@ -182,6 +183,23 @@ def rtl_parser() :
 	for i in range(0,len(reference_list)):
 		if(reverse_message==0):
 			print(""+src_path+"("+str(reference_list[i][1])+"):"+reference_list[i][0]+"");
+			##	-------------------------------------------------------------------------------------
+			##	如果被引用的行不是第最后一行，那么也要输出被赋值语句的前一行，因为前一行一般都是条件语句
+			##	-------------------------------------------------------------------------------------
+			if (reference_list[i][1]<=line_num-2):
+				line_content	= file_content[reference_list[i][1]];
+				##	-------------------------------------------------------------------------------------
+				##	去掉注释 回车 字符串两边的空格 tab转换为空格
+				##	-------------------------------------------------------------------------------------
+				line_content	= trim_eol(line_content);
+				line_content	= trim_comment(line_content);
+				##	-------------------------------------------------------------------------------------
+				##	1.把tab转换为空格
+				##	2.去掉头尾空格
+				##	-------------------------------------------------------------------------------------
+				line_content	= line_content.replace("\t"," ");
+				line_content	= line_content.strip();
+				print(""+src_path+"("+str(reference_list[i][1]+1)+"):"+line_content+"");
 		else:
 			print(""+reference_list[i][0]+":"+src_path+"("+str(reference_list[i][1])+")");
 
