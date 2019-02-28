@@ -16,9 +16,16 @@ raw_pattern -f f:\test\ -i 8 8 -m "random"
 
 -d 打印调试信息
 
--f 输出文件的路径
+-o 输出文件的路径
 
 -p 像素格式 默认8bit
+
+-b bayer格式 暂不支持
+	"mono"					- 黑白格式
+	"rg"					- rg格式
+	"gr"					- gr格式
+	"bg"					- bg格式
+	"gb"					- gb格式
 
 -i [width height] 输出图像宽高
 
@@ -27,18 +34,17 @@ raw_pattern -f f:\test\ -i 8 8 -m "random"
 
 	"pix_inc"               - 第一个像素是0，整帧图像依次递增
 
-	"pix_inc_by_line"       - 每一行的第一个像素是0，行内依次递增
-
-	"pix_inc_by_line_slide" - 第一行从0开始递增，第二行从1开始递增，依次循环
+	"slide_fix"             - 静态斜条纹，每一行的第一个像素是0，行内依次递增，第二行的第一个像素是1，行内一次递增
 
 	"line_inc"              - 第一行的所有数据都是0，第二行的所有数据都是1，依次循环
 
-	"walking-0"             -
+	"frame_fix N"           - 整帧灰度为固定值，N的取值范围为0-255
 
-	"walking-1"             -
+	"walking-0"             - 暂不支持
 
-	"hammer"                -
+	"walking-1"             - 暂不支持
 
-	"neighbor"              -
+	"hammer"                - 暂不支持
 
-	"fix" number            -
+	"neighbor"              - 暂不支持
+
