@@ -45,7 +45,7 @@ def raw_pattern() :
 			debug			= 1;
 		if(sys.argv[i]=="-o"):
 			param_avail		= 1;
-			src_path		= sys.argv[i+1];
+			out_path		= sys.argv[i+1];
 		if(sys.argv[i]=="-p"):
 			param_avail		= 1;
 			pix_format		= int(sys.argv[i+1]);
@@ -65,19 +65,21 @@ def raw_pattern() :
 				if(sys.argv[i+j][0]=="-"):
 					break;
 				else:
-					pattern_list.append(int(sys.argv[i+j]));
+					pattern_list.append(sys.argv[i+j]);
 
 	if (param_avail==0):
 		print("-d debug switch,if exist -d,debug will be on");
 		print("-o [file path] output file path");
-		print("-p [8 to 16] defines byte numbers");
+		print("-b [\"mono\" or \"rg\" \"gr\" \"bg\" \"gb\"] bayer format,default is mono,and only support mono");
+		print("-p [8 to 16] pixel bit width");
 		print("-i [width height] defines resolution,default is 64x64");
-		print("-m [pattern mode] supports \"random\" \"pix_inc\" \"pix_inc_by_line\" \"line_inc\" \"frame_fix N\" ");
+		print("-m [pattern mode]");
 		print("\t\"randomm\"\t\t\t- random numbers");
 		print("\t\"pix_inc\"\t\t\t- first pix is 0,increase in frame");
 		print("\t\"slide_fix\"\t\t- first pix is 0,increase in line");
 		print("\t\"line_inc\"\t\t\t- first line is 0,increase by line");
-		print("\t\"frame_fix N\"\t- full frame is N,N is 0 to 255");
+		print("\t\"frame_fix integer\"\t- full frame is N,N is integer");
+		print("\t\"color \"red\" or \"green\" or \"blue\" or \"yellow\" or \"cyan\" or \"magenta\" \"\t- pure color");
 		return
 
 
@@ -125,26 +127,12 @@ def raw_pattern() :
 		elif (pattern_mode=="line_inc"):
 			pixel		= i;
 		elif (pattern_mode=="frame_fix"):
-			pixel		= pattern_list[1];
+			pixel		= int(pattern_list[1]);
 
 		##	-------------------------------------------------------------------------------------
 		##	内层循环-宽度
 		##	-------------------------------------------------------------------------------------
 		for j in range(0, width):
-			##	-------------------------------------------------------------------------------------
-			##	第一步，获取一个像素的数据
-			##	1byte unsigned char
-			##	2byte unsigned short
-			##	4byte unsigned int
-			##	-------------------------------------------------------------------------------------
-			if(pix_byte==1):
-				(pixel,)	 = struct.unpack("B",infile.read(1));
-			elif(pix_byte==2):
-				(pixel,)	 = struct.unpack("H",infile.read(2));
-			elif(pix_byte==4):
-				(pixel,)	 = struct.unpack("I",infile.read(4));
-			pixel_list.append(pixel);
-
 			if (pattern_mode=="random"):
 				if(pix_byte==1):
 					pixel_list.append(random.randint(0,255));
@@ -177,11 +165,23 @@ def raw_pattern() :
 	temp = os.path.split(out_path);
 	only_path = temp[0];
 	only_name = temp[1];
-	if(only_name.rindex(".")!=-1):
-		only_name	= only_name[0:only_name.rindex(".")];
+#	if(only_name.rindex(".")!=-1):
+#		only_name	= only_name[0:only_name.rindex(".")];
 #	print("only_path is ",only_path);
 #	print("only_name is ",only_name);
-	path = only_path+'\\'+only_name+'_'+str(width)+'-'+str(height)+'-'+str(pattern_mode)+".raw";
+	path = only_path+'\\'+str(width)+'x'+str(height)+'-'+str(pattern_mode)+".raw";
+#	print("path is "+path+"");
+
+
+
+	##	-------------------------------------------------------------------------------------
+	##	判断是否重命名
+	##	-------------------------------------------------------------------------------------
+	i=0;
+	while (os.path.isfile(path)):
+		path = only_path+'\\'+str(width)+'x'+str(height)+'-'+str(pattern_mode)+'_'+str(i)+".raw";
+		i=i+1;
+
 
 	##	-------------------------------------------------------------------------------------
 	##	建立新的文件
@@ -193,10 +193,13 @@ def raw_pattern() :
 	##	-------------------------------------------------------------------------------------
 	for eachpix in pixel_list:
 		if(pix_byte==1):
+			eachpix	= eachpix%256;
 			write_data	 = struct.pack("B",eachpix);
 		elif(pix_byte==2):
+			eachpix	= eachpix%65536;
 			write_data	 = struct.pack("H",eachpix);
 		elif(pix_byte==4):
+			eachpix	= eachpix%4294967295;
 			write_data	 = struct.pack("I",eachpix);
 		outfile.write(write_data);
 
