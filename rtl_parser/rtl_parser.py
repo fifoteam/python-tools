@@ -12,6 +12,7 @@
 ##  -- Author       | Version	| Date                  | Content
 ##  -- Michael      | V1.4		| 2019/2/18 17:52:52	| driver section,will output the previous line
 ##  													| reference section,will output the next line
+##  -- Michael      | V1.5		| 2019/3/6 13:12:49		| dirver and reference indent
 ##-------------------------------------------------------------------------------------------------
 
 import os
@@ -26,7 +27,7 @@ def rtl_parser() :
 	##	-------------------------------------------------------------------------------------
 	##	版本信息，在后面会打印
 	##	-------------------------------------------------------------------------------------
-	version_message	= "https://github.com/fifoteam/python-tools/rtl_parser v1.4 2019/2/18 17:52:52";
+	version_message	= "https://github.com/fifoteam/python-tools/rtl_parser v1.5 2019/3/6 13:11:22";
 	code_path		= sys.path[0]+'\\rtl_parser.py';
 	##	-------------------------------------------------------------------------------------
 	##	debug			调试开关，默认关闭
@@ -112,7 +113,6 @@ def rtl_parser() :
 	##	-------------------------------------------------------------------------------------
 	for i in range(0,len(all_list)):
 		line_content	= all_list[i][0];
-
 		##	-------------------------------------------------------------------------------------
 		##	如果赋值语句中被赋值的信号是所选单词，则添加到赋值列表
 		##	-------------------------------------------------------------------------------------
@@ -157,8 +157,9 @@ def rtl_parser() :
 		if(reverse_message==0):
 			##	-------------------------------------------------------------------------------------
 			##	如果被赋值的行不是第一行，那么也要输出被赋值语句的前一行，因为前一行一般都是条件语句
+			##	如果赋值语句是 assign 直接赋值，那么就没有必要将上一行的语句输出
 			##	-------------------------------------------------------------------------------------
-			if (driver_list[i][1]>=2):
+			if (driver_list[i][1]>=2 and driver_list[i][0].split()[0]!="assign"):
 				line_content	= file_content[driver_list[i][1]-2];
 				##	-------------------------------------------------------------------------------------
 				##	去掉注释 回车 字符串两边的空格 tab转换为空格
@@ -172,7 +173,12 @@ def rtl_parser() :
 				line_content	= line_content.replace("\t"," ");
 				line_content	= line_content.strip();
 				print(""+src_path+"("+str(driver_list[i][1]-1)+"):"+line_content+"");
-			print(""+src_path+"("+str(driver_list[i][1])+"):"+driver_list[i][0]+"");
+				print(""+src_path+"("+str(driver_list[i][1])+"):\t\t"+driver_list[i][0]+"");
+			##	-------------------------------------------------------------------------------------
+			##	当是直接赋值的时候，不用 tab
+			##	-------------------------------------------------------------------------------------
+			else:
+				print(""+src_path+"("+str(driver_list[i][1])+"):"+driver_list[i][0]+"");
 		else:
 			print(""+driver_list[i][0]+":"+src_path+"("+str(driver_list[i][1])+")");
 
@@ -185,8 +191,9 @@ def rtl_parser() :
 			print(""+src_path+"("+str(reference_list[i][1])+"):"+reference_list[i][0]+"");
 			##	-------------------------------------------------------------------------------------
 			##	如果被引用的行不是第最后一行，那么也要输出被赋值语句的前一行，因为前一行一般都是条件语句
+			##	如果引用语句是 assign 直接赋值，那么就没有必要将下一行的语句输出
 			##	-------------------------------------------------------------------------------------
-			if (reference_list[i][1]<=line_num-2):
+			if (reference_list[i][1]<=line_num-2 and reference_list[i][0].split()[0]!="assign"):
 				line_content	= file_content[reference_list[i][1]];
 				##	-------------------------------------------------------------------------------------
 				##	去掉注释 回车 字符串两边的空格 tab转换为空格
@@ -199,7 +206,7 @@ def rtl_parser() :
 				##	-------------------------------------------------------------------------------------
 				line_content	= line_content.replace("\t"," ");
 				line_content	= line_content.strip();
-				print(""+src_path+"("+str(reference_list[i][1]+1)+"):"+line_content+"");
+				print(""+src_path+"("+str(reference_list[i][1]+1)+"):\t\t"+line_content+"");
 		else:
 			print(""+reference_list[i][0]+":"+src_path+"("+str(reference_list[i][1])+")");
 
